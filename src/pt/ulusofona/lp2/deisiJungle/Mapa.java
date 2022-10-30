@@ -1,8 +1,11 @@
 package pt.ulusofona.lp2.deisiJungle;
 
-import java.util.HashMap;
-
 class Mapa {
     Casa[] casas;
+
+    public Mapa(int nrCasas) {
+        this.casas = new Casa[nrCasas];
+    }
+
 
 }

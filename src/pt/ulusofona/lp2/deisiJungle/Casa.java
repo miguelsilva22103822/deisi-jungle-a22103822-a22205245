@@ -1,6 +1,6 @@
 package pt.ulusofona.lp2.deisiJungle;
 
 class Casa {
-    Jogador[] jogadores;
+    Jogador[] jogadores = new Jogador[4];
 
 }

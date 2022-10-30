@@ -4,6 +4,8 @@ class Jogador {
     int id;
     String nome;
     Especie especie;
+    int energia;
+
 
     public Jogador(int id, String nome, Especie especie) {
         this.id = id;
