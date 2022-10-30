@@ -1,7 +1,5 @@
 package pt.ulusofona.lp2.deisiJungle;
 
-import kotlin.reflect.jvm.internal.ReflectProperties;
-
 import javax.swing.*;
 import java.util.ArrayList;
 
@@ -29,23 +27,19 @@ class GameManager {
             return false;
         }
 
-        if (jungleSize >= )
+        if (jungleSize < 2 * playersInfo.length) {
+            return false;
+        }
 
-
-
-
-
-
+        if (initialEnergy < 0) {
+            return false;
+        }
 
         //mapa tem de ter pelo menos 2* num jogadores casas
 
-
-
-
-
-
         mapa = new Mapa(jungleSize);
 
+        return true;
     }
 
     public int[] getPlayerIds(int squareNr) {

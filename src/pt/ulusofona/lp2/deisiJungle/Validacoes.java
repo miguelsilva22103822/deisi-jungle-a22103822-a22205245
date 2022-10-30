@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 class Validacoes {
 
     public static ArrayList<String> speciesToArrayList(String[][] species) {
-        ArrayList<String> speciesArrayList= new ArrayList<>();
+        ArrayList<String> speciesArrayList = new ArrayList<>();
 
         for (int i = 0; i < species.length; i++) {
             speciesArrayList.add(species[i][0]);
@@ -28,6 +28,10 @@ class Validacoes {
         List<String> ids = new ArrayList<>();
 
         for (String[] player : playersInfo) {
+            if (Integer.parseInt(player[0]) < 0) {
+                return false;
+            }
+
             ids.add(player[0]);
 
             if (player[1] == null || player[1].equals("")) {
@@ -43,12 +47,14 @@ class Validacoes {
         //Ver se há 2 id's iguais
         for (int i = 0; i < ids.size(); i++) {
             for (int j = 0; j < ids.size(); j++) {
-                if (ids.get(i).equals(ids.get(j))) {
-                    return false;
+                if (i != j) {
+                    if (ids.get(i).equals(ids.get(j))) {
+                        return false;
+                    }
+
                 }
             }
         }
-
         return true;
     }
 }
