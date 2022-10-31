@@ -48,16 +48,11 @@ class GameManager {
 
     public int[] getPlayerIds(int squareNr) {
 
-        int [] IDsJogadores = new int[0];
-
         if (squareNr <= 0 || squareNr > mapa.getNrCasas()) {
-            return IDsJogadores;
+            return new int[0];
         }
 
-        mapa.getCasa(squareNr);
-
-        return IDsJogadores;
-
+        return mapa.getCasa(squareNr).getIDsJogadores();
     }
 
 
@@ -139,7 +134,7 @@ class GameManager {
         return true;
     }
 
-    public static ArrayList<String> speciesToArrayList(String[][] species) {
+    public ArrayList<String> speciesToArrayList(String[][] species) {
         ArrayList<String> speciesArrayList = new ArrayList<>();
 
         if (species == null || species.length == 0) {

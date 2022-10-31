@@ -1,24 +1,43 @@
 package pt.ulusofona.lp2.deisiJungle;
 
+import java.util.ArrayList;
+
 class Casa {
-    Jogador[] jogadores = new Jogador[4];
+    ArrayList<Jogador> jogadores;
+    int tamanhoMax = 4;
 
     public Casa() {
-
+        this.jogadores = new ArrayList<>();
     }
 
-    public void addJogador(int id, String nome, int idEspecie, int energiaInicial) {
+    public boolean addJogador(int id, String nome, int idEspecie, int energiaInicial) {
+
+        if (jogadores.size() >= 4) {
+            return false;
+        }
+
+        Jogador jogadorAAdicionar = new Jogador(id, nome, idEspecie);
+        jogadorAAdicionar.setEnergia(energiaInicial);
+        jogadores.add(jogadorAAdicionar);
+
+        return false;
+    }
+
+    public int[] getIDsJogadores() {
+
+        if (jogadores.size() >= 4) {
+            return new int[0];
+        }
+
+        int i = 0;
+        int[] IDsJogadores = new int[4];
 
         for (Jogador jogador : jogadores) {
-            if (jogador == null) {
-                jogador = new Jogador(id, nome);
-                jogador.setEnergia(energiaInicial);
-            }
+            IDsJogadores[i] = jogador.getID();
+            i++;
         }
-    }
 
-    public Jogador[] getJogador (){
-        return jogadores;
+        return IDsJogadores;
     }
 
 
