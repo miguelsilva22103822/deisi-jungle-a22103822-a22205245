@@ -11,7 +11,7 @@ class Mapa {
         casas[0] = new Casa();
 
         for (String[] player : playersInfo) {
-            casas[0].addJogador(Integer.parseInt(player[0]), player[1], initialEnergy);
+            casas[0].addJogador(Integer.parseInt(player[0]), player[1], Integer.parseInt(player[2]),  initialEnergy);
         }
 
     }
