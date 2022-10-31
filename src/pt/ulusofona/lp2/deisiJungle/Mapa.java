@@ -16,4 +16,12 @@ class Mapa {
 
     }
 
+    public int getNrCasas(){
+        return casas.length;
+    }
+
+    public Casa getCasa (int nrCasa){
+        return casas[nrCasa];
+    }
+
 }

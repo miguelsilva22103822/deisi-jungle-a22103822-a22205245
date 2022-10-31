@@ -47,8 +47,19 @@ class GameManager {
     }
 
     public int[] getPlayerIds(int squareNr) {
-        return null;
+
+        int [] IDsJogadores = new int[0];
+
+        if (squareNr <= 0 || squareNr > mapa.getNrCasas()) {
+            return IDsJogadores;
+        }
+
+        mapa.getCasa(squareNr);
+
+        return IDsJogadores;
+
     }
+
 
     public String[] getSquareInfo(int squareNr) {
         return null;

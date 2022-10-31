@@ -17,4 +17,9 @@ class Casa {
         }
     }
 
+    public Jogador[] getJogador (){
+        return jogadores;
+    }
+
+
 }
