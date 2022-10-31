@@ -104,7 +104,7 @@ class GameManager {
         List<String> ids = new ArrayList<>();
 
         for (String[] player : playersInfo) {
-            if (Integer.parseInt(player[0]) < 0) {
+            if (!(isStringNumeric(player[0])) || Integer.parseInt(player[0]) < 0) {
                 return false;
             }
 
@@ -135,6 +135,7 @@ class GameManager {
     }
 
     public ArrayList<String> speciesToArrayList(String[][] species) {
+
         ArrayList<String> speciesArrayList = new ArrayList<>();
 
         if (species == null || species.length == 0) {
@@ -146,5 +147,22 @@ class GameManager {
         }
 
         return speciesArrayList;
+    }
+
+    public boolean isStringNumeric(String string) {
+
+        if (string == null) {
+            return false;
+        }
+
+        for (int i = 0; i < string.length(); i++) {
+
+            if (string.charAt(i) > '9' || string.charAt(i) < '0') {
+                return false;
+            }
+
+        }
+
+        return true;
     }
 }
