@@ -3,10 +3,10 @@ package pt.ulusofona.lp2.deisiJungle;
 class Jogador {
     int id;
     String nome;
-    int idEspecie;
+    String idEspecie;
     int energia;
 
-    public Jogador(int id, String nome, int idEspecie) {
+    public Jogador(int id, String nome, String idEspecie) {
         this.id = id;
         this.nome = nome;
         this.idEspecie = idEspecie;
@@ -16,7 +16,7 @@ class Jogador {
         energia = energiaInicial;
     }
 
-    public void setEspecie(int idEspecie) {
+    public void setEspecie(String idEspecie) {
         this.idEspecie = idEspecie;
     }
 

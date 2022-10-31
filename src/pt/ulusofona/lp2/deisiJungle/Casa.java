@@ -10,7 +10,7 @@ class Casa {
         this.jogadores = new ArrayList<>();
     }
 
-    public boolean addJogador(int id, String nome, int idEspecie, int energiaInicial) {
+    public boolean addJogador(int id, String nome, String idEspecie, int energiaInicial) {
 
         if (jogadores.size() >= 4) {
             return false;
