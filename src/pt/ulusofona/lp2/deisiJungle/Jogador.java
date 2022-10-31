@@ -6,10 +6,16 @@ class Jogador {
     Especie especie;
     int energia;
 
-
-    public Jogador(int id, String nome, Especie especie) {
+    public Jogador(int id, String nome) {
         this.id = id;
         this.nome = nome;
-        this.especie = especie;
+    }
+
+    public void setEnergia(int energiaInicial) {
+        energia = energiaInicial;
+    }
+
+    public void setEspecie(int idEspecie) {
+
     }
 }

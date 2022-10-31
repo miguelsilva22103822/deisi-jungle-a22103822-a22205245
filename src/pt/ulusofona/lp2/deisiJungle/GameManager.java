@@ -2,12 +2,18 @@ package pt.ulusofona.lp2.deisiJungle;
 
 import javax.swing.*;
 import java.util.ArrayList;
+import java.util.List;
 
 class GameManager {
     String[][] especies;
     Mapa mapa;
 
     public GameManager() {
+
+    }
+
+    //funções obrigatórias
+    public String[][] getSpecies() {
         String[] elefante = {"E", "Elefante", "elephant.png"};
         String[] leao = {"L", "Leão", "lion.png"};
         String[] tartaruga = {"T", "Tartaruga", "turtle.png"};
@@ -15,19 +21,17 @@ class GameManager {
         String[] tarzan = {"Z", "Tarzan", "tarzan.png"};
 
         String[][] especies = {elefante, leao, tartaruga, passaro, tarzan};
-    }
 
-    public String[][] getSpecies() {
         return especies;
     }
 
     public boolean createInitialJungle(int jungleSize, int initialEnergy, String[][] playersInfo) {
 
-        if(!Validacoes.validarPlayersInfo(playersInfo, getSpecies())) {
+        if(!validarPlayersInfo(playersInfo)) {
             return false;
         }
 
-        if (jungleSize < 2 * playersInfo.length) {
+        if (jungleSize < (2 * playersInfo.length)) {
             return false;
         }
 
@@ -35,9 +39,9 @@ class GameManager {
             return false;
         }
 
-        //mapa tem de ter pelo menos 2* num jogadores casas
-
         mapa = new Mapa(jungleSize);
+        mapa.initializeMap(playersInfo, initialEnergy);
+        //poe jogadores na primeira casa do mapa, mas os jogadores não têm especie ainda, acho que deviam ter mas é complidado
 
         return true;
     }
@@ -80,5 +84,61 @@ class GameManager {
 
     public String whoIsTaborda() {
         return null;
+    }
+
+    //funções para organizar
+    public boolean validarPlayersInfo(String[][] playersInfo) {
+
+        if(playersInfo.length < 2 || playersInfo.length > 4) {
+            return false;
+        }
+
+        ArrayList<String> species = speciesToArrayList(getSpecies());
+
+        List<String> ids = new ArrayList<>();
+
+        for (String[] player : playersInfo) {
+            if (Integer.parseInt(player[0]) < 0) {
+                return false;
+            }
+
+            ids.add(player[0]);
+
+            if (player[1] == null || player[1].equals("")) {
+                return false;
+            }
+            //
+            if (!species.contains(player[2])) {
+                return false;
+            }
+
+        }
+
+        //id's têm que ser todos diferentes
+        for (int i = 0; i < ids.size(); i++) {
+            for (int j = 0; j < ids.size(); j++) {
+                if (i != j) {
+                    if (ids.get(i).equals(ids.get(j))) {
+                        return false;
+                    }
+
+                }
+            }
+        }
+        return true;
+    }
+
+    public static ArrayList<String> speciesToArrayList(String[][] species) {
+        ArrayList<String> speciesArrayList = new ArrayList<>();
+
+        if (species == null || species.length == 0) {
+            return null;
+        }
+
+        for (int i = 0; i < species.length; i++) {
+            speciesArrayList.add(species[i][0]);
+        }
+
+        return speciesArrayList;
     }
 }

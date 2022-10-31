@@ -7,5 +7,13 @@ class Mapa {
         this.casas = new Casa[nrCasas];
     }
 
+    public void initializeMap(String[][] playersInfo, int initialEnergy) {
+        casas[0] = new Casa();
+
+        for (String[] player : playersInfo) {
+            casas[0].addJogador(Integer.parseInt(player[0]), player[1], initialEnergy);
+        }
+
+    }
 
 }
