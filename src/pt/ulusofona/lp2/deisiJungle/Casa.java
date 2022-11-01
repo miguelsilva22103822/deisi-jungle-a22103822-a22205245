@@ -51,9 +51,10 @@ class Casa {
         }
 
 
-        for (int i = 0; i < squareNr && ; i++){
+        for (int i = 0; i < squareNr ; i++){
                 info[i] = "finish.png";
         }
+        return String.valueOf(info);
     }
 
 
