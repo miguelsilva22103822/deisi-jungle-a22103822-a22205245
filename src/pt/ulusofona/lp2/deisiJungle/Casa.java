@@ -40,21 +40,28 @@ class Casa {
         return IDsJogadores;
     }
 
-    public String getPosicao (int squareNr) {
+    public String[] getInfo() {
 
-        String[] info = new String[10];
+        int[] iDsJogadores = getIDsJogadores();
+        StringBuilder iDsJogadoresString = new StringBuilder();
+
+        //pôr os ids dos jogadores numa string, separados por virgulas
+        for(int i = 0; i < iDsJogadores.length; i++) {
+            if (i == iDsJogadores.length - 1) {
+                iDsJogadoresString.append(iDsJogadores[i]);
+            }
+            else {
+                iDsJogadoresString.append(iDsJogadores[i]).append(", ");
+            }
+        }
+
+        String[] info = new String[3];
 
         info[0] = "blank.png";
         info[1] = "Meta";
-        for(Jogador jogador : jogadores){
-            return info[2] = String.valueOf(jogador.getID());
-        }
+        info[2] = iDsJogadoresString.toString();
 
-
-        for (int i = 0; i < squareNr ; i++){
-                info[i] = "finish.png";
-        }
-        return String.valueOf(info);
+        return info;
     }
 
 

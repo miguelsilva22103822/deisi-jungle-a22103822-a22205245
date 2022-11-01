@@ -20,7 +20,6 @@ class Mapa {
         for (String[] player : playersInfo) {
             casas.get(0).addJogador(Integer.parseInt(player[0]), player[1], player[2], initialEnergy);
         }
-
     }
 
     public int getNrCasas() {

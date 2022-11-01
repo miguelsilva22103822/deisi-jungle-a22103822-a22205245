@@ -55,12 +55,13 @@ class GameManager {
         return mapa.getCasa(squareNr).getIDsJogadores();
     }
 
-
     public String[] getSquareInfo(int squareNr) {
 
-        if (squareNr <= 0 ) {
+        if (squareNr <= 0) {
             return null;
         }
+
+
 
 
     }
@@ -97,7 +98,7 @@ class GameManager {
         return null;
     }
 
-    //funções para organizar
+    //funções auxiliares
     public boolean validarPlayersInfo(String[][] playersInfo) {
 
         if(playersInfo.length < 2 || playersInfo.length > 4) {

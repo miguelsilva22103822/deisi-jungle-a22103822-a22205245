@@ -12,13 +12,15 @@ public class TestGameManager {
 
         GameManager gameManager = new GameManager();
 
-        String[] jog1 = {"2", "asd", "A"};
-        String[] jog2 = {"2", "joao", "E"};
+        String[] jog1 = {"1", "asd", "A"};
+        String[] jog2 = {"4", "joao", "E"};
+        String[] jog3 = {"8", "asd", "A"};
+        String[] jog4 = {"3", "joao", "E"};
 
-        String[][] jogadores = {jog1, jog2};
+        String[][] jogadores = {jog1, jog2, jog3, jog4};
 
         assertFalse(gameManager.createInitialJungle(5, 5, jogadores));
-
     }
+
 
 }
