@@ -5,6 +5,7 @@ import java.util.ArrayList;
 class Casa {
     ArrayList<Jogador> jogadores;
     int tamanhoMax = 4;
+    boolean isMeta;
 
     public Casa() {
         this.jogadores = new ArrayList<>();
@@ -57,12 +58,24 @@ class Casa {
 
         String[] info = new String[3];
 
-        info[0] = "blank.png";
-        info[1] = "Meta";
+        if (isMeta) {
+            info[0] = "finish.png";
+            info[1] = "Meta";
+        } else {
+            info[0] = "blank.png";
+            info[1] = "Vazio";
+        }
         info[2] = iDsJogadoresString.toString();
 
         return info;
     }
 
+    public void setAsMeta() {
+        isMeta = true;
+    }
+
+    public boolean isMeta() {
+        return isMeta;
+    }
 
 }
