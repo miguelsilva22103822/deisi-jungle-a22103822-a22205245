@@ -57,7 +57,12 @@ class GameManager {
 
 
     public String[] getSquareInfo(int squareNr) {
-        return null;
+
+        if (squareNr <= 0 ) {
+            return null;
+        }
+
+
     }
 
     public String[] getPlayerInfo(int playerId) {

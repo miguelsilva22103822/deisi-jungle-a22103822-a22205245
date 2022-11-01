@@ -40,5 +40,21 @@ class Casa {
         return IDsJogadores;
     }
 
+    public String getPosicao (int squareNr) {
+
+        String[] info = new String[10];
+
+        info[0] = "blank.png";
+        info[1] = "Meta";
+        for(Jogador jogador : jogadores){
+            return info[2] = String.valueOf(jogador.getID());
+        }
+
+
+        for (int i = 0; i < squareNr && ; i++){
+                info[i] = "finish.png";
+        }
+    }
+
 
 }
