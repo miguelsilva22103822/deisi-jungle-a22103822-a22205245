@@ -93,7 +93,7 @@ class GameManager {
     }
 
     public String whoIsTaborda() {
-        return "wrestling";
+        return "wrestling" ;
     }
 
     //funções auxiliares

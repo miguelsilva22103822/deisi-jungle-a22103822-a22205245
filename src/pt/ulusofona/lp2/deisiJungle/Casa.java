@@ -25,7 +25,7 @@ class Casa {
     }
 
     public int[] getIDsJogadores() {
-        
+
         if (jogadores.size() >= 4) {
             return new int[0];
         }
