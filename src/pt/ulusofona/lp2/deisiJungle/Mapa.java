@@ -27,7 +27,8 @@ class Mapa {
     }
 
     public Casa getCasa(int nrCasa) {
-        nrCasa--;
+
+        //nrCasa--; idk anymore
         return casas.get(nrCasa);
     }
 

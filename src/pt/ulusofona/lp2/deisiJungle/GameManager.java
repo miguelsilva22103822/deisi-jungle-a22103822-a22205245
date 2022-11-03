@@ -65,7 +65,7 @@ class GameManager {
 
     public String[] getSquareInfo(int squareNr) {
 
-        if (squareNr < 0 || squareNr > mapa.getNrCasas()) {
+        if (squareNr < 1 || squareNr > mapa.getNrCasas()) {
             return null;
         }
 
