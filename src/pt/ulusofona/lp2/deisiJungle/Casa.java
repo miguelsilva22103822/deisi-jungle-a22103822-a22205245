@@ -17,7 +17,7 @@ class Casa {
             return false;
         }
 
-        Jogador jogadorAAdicionar = new Jogador(id, nome, idEspecie);
+        Jogador jogadorAAdicionar = new Jogador(id, nome, idEspecie, energiaInicial);
         jogadorAAdicionar.setEnergia(energiaInicial);
         jogadores.add(jogadorAAdicionar);
 

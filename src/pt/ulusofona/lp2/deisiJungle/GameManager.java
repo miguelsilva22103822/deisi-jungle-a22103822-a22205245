@@ -2,14 +2,16 @@ package pt.ulusofona.lp2.deisiJungle;
 
 import javax.swing.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 class GameManager {
     String[][] especies;
     Mapa mapa;
+    HashMap<Integer, Jogador> jogadores;
 
     public GameManager() {
-
+        this.jogadores = new HashMap<>();
     }
 
     //funções obrigatórias
@@ -41,7 +43,13 @@ class GameManager {
 
         mapa = new Mapa(jungleSize);
         mapa.initializeMap(playersInfo, initialEnergy);
-        //poe jogadores na primeira casa do mapa, mas os jogadores não têm especie ainda, acho que deviam ter mas é complidado
+
+        for (String[] player : playersInfo) {
+            jogadores.put(Integer.parseInt(player[0]),
+                    new Jogador(Integer.parseInt(player[0]), player[1], player[2], initialEnergy));
+        }
+        //Os jogadores ficam guardados em dois sitios, isto é mau, depois resolve-se.
+        //A melhor solução talvez seja as casas guardarem apenas o id do jogador.
 
         return true;
     }
@@ -65,7 +73,11 @@ class GameManager {
     }
 
     public String[] getPlayerInfo(int playerId) {
-        return null;
+        if (!(jogadores.containsKey(playerId))) {
+            return null;
+        }
+
+        return jogadores.get(playerId).getInfo();
     }
 
     public String[] getCurrentPlayerInfo() {
