@@ -48,7 +48,7 @@ class GameManager {
 
     public int[] getPlayerIds(int squareNr) {
 
-        if (squareNr <= 0 || squareNr > mapa.getNrCasas()) {
+        if (squareNr < 0 || squareNr > mapa.getNrCasas()) {
             return new int[0];
         }
 
@@ -57,7 +57,7 @@ class GameManager {
 
     public String[] getSquareInfo(int squareNr) {
 
-        if (squareNr <= 0 || squareNr > mapa.getNrCasas()) {
+        if (squareNr < 0 || squareNr > mapa.getNrCasas()) {
             return null;
         }
 

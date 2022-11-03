@@ -13,7 +13,7 @@ class Casa {
 
     public boolean addJogador(int id, String nome, String idEspecie, int energiaInicial) {
 
-        if (jogadores.size() >= 4) {
+        if (jogadores.size() >= tamanhoMax) {
             return false;
         }
 
@@ -21,17 +21,21 @@ class Casa {
         jogadorAAdicionar.setEnergia(energiaInicial);
         jogadores.add(jogadorAAdicionar);
 
-        return false;
+        return true;
     }
 
     public int[] getIDsJogadores() {
 
-        if (jogadores.size() >= 4) {
+        if (jogadores.size() > tamanhoMax) {
+            return new int[0];
+        }
+
+        if (jogadores.size() == 0) {
             return new int[0];
         }
 
         int i = 0;
-        int[] IDsJogadores = new int[4];
+        int[] IDsJogadores = new int[jogadores.size()];
 
         for (Jogador jogador : jogadores) {
             IDsJogadores[i] = jogador.getID();

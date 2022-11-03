@@ -23,7 +23,7 @@ class Mapa {
     }
 
     public int getNrCasas() {
-        return casas.size();
+        return tamanhoMax;
     }
 
     public Casa getCasa(int nrCasa) {
