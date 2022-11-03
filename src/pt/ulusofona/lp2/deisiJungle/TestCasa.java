@@ -55,6 +55,6 @@ public class TestCasa {
         casa.addJogador(4, "Maria", "Z", 5);
         casa.addJogador(7, "Antonio", "P", 5);
 
-        System.out.println(Arrays.toString(casa.getInfo()));
+        //System.out.println(Arrays.toString(casa.getInfo()));
     }
 }
