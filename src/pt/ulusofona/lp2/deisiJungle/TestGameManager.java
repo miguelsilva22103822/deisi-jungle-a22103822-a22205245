@@ -57,7 +57,7 @@ public class TestGameManager {
         gameManager.createInitialJungle(9, 5, jogadores);
 
         String[] correctInfo = {"blank.png", "Vazio", "1, 4, 6, 8"};
-        System.out.println(Arrays.toString(gameManager.mapa.getCasa(1).getInfo()));
+        //System.out.println(Arrays.toString(gameManager.mapa.getCasa(1).getInfo()));
 
     }
 
@@ -78,6 +78,28 @@ public class TestGameManager {
         String[] correctInfo = {"4", "joao", "T", "5"};
 
         assertArrayEquals(gameManager.getPlayerInfo(4), correctInfo);
+
+    }
+
+    @Test
+    public void testManyThings() {
+
+        GameManager gameManager = new GameManager();
+
+        String[] jog1 = {"1", "Manel", "E"};
+        String[] jog2 = {"3", "Joao", "T"};
+        String[] jog3 = {"4", "Maria", "Z"};
+        String[] jog4 = {"7", "Antonio", "P"};
+
+        String[][] jogadores = {jog1, jog2, jog3, jog4};
+
+        gameManager.createInitialJungle(9, 5, jogadores);
+
+        System.out.println(Arrays.toString(gameManager.getSquareInfo(1)));
+
+        System.out.println(Arrays.toString(gameManager.getSquareInfo(2)));
+
+        System.out.println(Arrays.toString(gameManager.getSquareInfo(9)));
 
     }
 

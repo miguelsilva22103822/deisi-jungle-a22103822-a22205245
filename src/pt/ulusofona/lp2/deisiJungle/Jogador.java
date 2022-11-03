@@ -13,10 +13,6 @@ class Jogador {
         this.energia = energiaInicial;
     }
 
-    public void setEnergia(int energiaInicial) {
-        energia = energiaInicial;
-    }
-
     public void setEspecie(String idEspecie) {
         this.idEspecie = idEspecie;
     }

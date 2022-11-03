@@ -18,7 +18,6 @@ class Casa {
         }
 
         Jogador jogadorAAdicionar = new Jogador(id, nome, idEspecie, energiaInicial);
-        jogadorAAdicionar.setEnergia(energiaInicial);
         jogadores.add(jogadorAAdicionar);
 
         return true;
@@ -75,7 +74,7 @@ class Casa {
     }
 
     public void setAsMeta() {
-        isMeta = true;
+        this.isMeta = true;
     }
 
     public boolean isMeta() {
