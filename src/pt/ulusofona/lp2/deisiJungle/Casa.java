@@ -3,45 +3,36 @@ package pt.ulusofona.lp2.deisiJungle;
 import java.util.ArrayList;
 
 class Casa {
-    ArrayList<Jogador> jogadores;
+    ArrayList<Integer> iDsJogadores;
     int tamanhoMax = 4;
     boolean isMeta;
 
     public Casa() {
-        this.jogadores = new ArrayList<>();
+        this.iDsJogadores = new ArrayList<>();
     }
 
-    public boolean addJogador(int id, String nome, String idEspecie, int energiaInicial) {
+    public boolean addJogador(int id) {
 
-        if (jogadores.size() >= tamanhoMax) {
+        if (iDsJogadores.size() >= tamanhoMax) {
             return false;
         }
 
-        Jogador jogadorAAdicionar = new Jogador(id, nome, idEspecie, energiaInicial);
-        jogadores.add(jogadorAAdicionar);
+        iDsJogadores.add(id);
 
         return true;
     }
 
     public int[] getIDsJogadores() {
 
-        if (jogadores.size() > tamanhoMax) {
+        if (iDsJogadores.size() > tamanhoMax) {
             return new int[0];
         }
 
-        if (jogadores.size() == 0) {
+        if (iDsJogadores.size() == 0) {
             return new int[0];
         }
 
-        int i = 0;
-        int[] IDsJogadores = new int[jogadores.size()];
-
-        for (Jogador jogador : jogadores) {
-            IDsJogadores[i] = jogador.getID();
-            i++;
-        }
-
-        return IDsJogadores;
+        return iDsJogadores.stream().mapToInt(i -> i).toArray();
     }
 
     public String[] getInfo() {

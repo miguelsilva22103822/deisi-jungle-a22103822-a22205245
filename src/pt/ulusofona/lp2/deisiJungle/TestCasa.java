@@ -12,10 +12,10 @@ public class TestCasa {
     public void testGetIDsJogadores() {
         Casa casa = new Casa();
 
-        casa.addJogador(1, "Manel", "E", 5);
-        casa.addJogador(3, "Joao", "T", 5);
-        casa.addJogador(4, "Maria", "Z", 5);
-        casa.addJogador(7, "Antonio", "P", 5);
+        casa.addJogador(1);
+        casa.addJogador(3);
+        casa.addJogador(4);
+        casa.addJogador(7);
 
 
         int[] ids = {1, 3, 4, 7};
@@ -50,10 +50,10 @@ public class TestCasa {
     public void testGetInfo2() {
         Casa casa = new Casa();
 
-        casa.addJogador(1, "Manel", "E", 5);
-        casa.addJogador(3, "Joao", "T", 5);
-        casa.addJogador(4, "Maria", "Z", 5);
-        casa.addJogador(7, "Antonio", "P", 5);
+        casa.addJogador(1);
+        casa.addJogador(3);
+        casa.addJogador(4);
+        casa.addJogador(7);
 
         //System.out.println(Arrays.toString(casa.getInfo()));
     }

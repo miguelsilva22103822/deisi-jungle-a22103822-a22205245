@@ -1,17 +1,18 @@
 package pt.ulusofona.lp2.deisiJungle;
 
 import javax.swing.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 class GameManager {
     String[][] especies;
     Mapa mapa;
     HashMap<Integer, Jogador> jogadores;
+    int[] iDsJogadores;
+    int indiceJogadorAtual;
 
     public GameManager() {
         this.jogadores = new HashMap<>();
+        indiceJogadorAtual = 0;
     }
 
     //funções obrigatórias
@@ -48,6 +49,9 @@ class GameManager {
             jogadores.put(Integer.parseInt(player[0]),
                     new Jogador(Integer.parseInt(player[0]), player[1], player[2], initialEnergy));
         }
+
+        saveIDsJogadores();
+
         //Os jogadores ficam guardados em dois sitios, isto é mau, depois resolve-se.
         //A melhor solução talvez seja as casas guardarem apenas o id do jogador.
 
@@ -81,7 +85,10 @@ class GameManager {
     }
 
     public String[] getCurrentPlayerInfo() {
-        return null;
+        int iDJogadorAtual = iDsJogadores[indiceJogadorAtual];
+
+        return jogadores.get(iDJogadorAtual).getInfo();
+
     }
 
     public String[][] getPlayersInfo() {
@@ -105,7 +112,7 @@ class GameManager {
     }
 
     public String whoIsTaborda() {
-        return "wrestling" ;
+        return "wrestling";
     }
 
     //funções auxiliares
@@ -180,5 +187,16 @@ class GameManager {
         }
 
         return true;
+    }
+
+    public void saveIDsJogadores() {
+        iDsJogadores = new int[jogadores.size()];
+
+        int i = 0;
+        for (Jogador jogador : jogadores.values()) {
+            iDsJogadores[i] = jogador.getID();
+            i++;
+        }
+        Arrays.sort(iDsJogadores);
     }
 }

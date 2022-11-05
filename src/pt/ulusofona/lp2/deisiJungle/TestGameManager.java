@@ -95,11 +95,37 @@ public class TestGameManager {
 
         gameManager.createInitialJungle(9, 5, jogadores);
 
+
+        //System.out.println(Arrays.toString(gameManager.getSquareInfo(1)));
+
+        //System.out.println(Arrays.toString(gameManager.getSquareInfo(2)));
+
+        //System.out.println(Arrays.toString(gameManager.getSquareInfo(9)));
+
+    }
+
+    @Test
+    public void testLinkedList() {
+
+        GameManager gameManager = new GameManager();
+
+        String[] jog1 = {"3", "Manel", "E"};
+        String[] jog2 = {"2", "Joao", "T"};
+        String[] jog3 = {"9", "Maria", "Z"};
+        String[] jog4 = {"4", "Antonio", "P"};
+
+        String[][] jogadores = {jog1, jog2, jog3, jog4};
+
+        gameManager.createInitialJungle(9, 5, jogadores);
+
+
         System.out.println(Arrays.toString(gameManager.getSquareInfo(1)));
 
         System.out.println(Arrays.toString(gameManager.getSquareInfo(2)));
 
         System.out.println(Arrays.toString(gameManager.getSquareInfo(9)));
+
+        System.out.println(Arrays.toString(gameManager.iDsJogadores));
 
     }
 
