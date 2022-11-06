@@ -92,6 +92,11 @@ class GameManager {
     }
 
     public String[][] getPlayersInfo() {
+
+        if(iDsJogadores == null || iDsJogadores.length == 0){
+            return null;
+        }
+
         String [][] playersInfo = new String[iDsJogadores.length][4];
 
         for (int i = 0 ; i < iDsJogadores.length ; i ++){
