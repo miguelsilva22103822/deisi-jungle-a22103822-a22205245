@@ -92,7 +92,14 @@ class GameManager {
     }
 
     public String[][] getPlayersInfo() {
-        return null;
+        String [][] playersInfo = new String[iDsJogadores.length][4];
+
+        for (int i = 0 ; i < iDsJogadores.length ; i ++){
+            String[] player = jogadores.get(i).getInfo();
+            playersInfo[i] = player;
+        }
+
+        return playersInfo;
     }
 
     public boolean moveCurrentPlayer(int nrSquares, boolean bypassValidations) {
