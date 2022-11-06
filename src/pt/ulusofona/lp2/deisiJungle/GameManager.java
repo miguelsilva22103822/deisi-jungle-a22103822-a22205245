@@ -114,7 +114,7 @@ class GameManager {
                 return false;
             }
 
-            if (jogadores.get(iDsJogadores[indiceJogadorAtual]).getEnergia() < 2) {
+            if (jogadores.get(getIDJogadorAtual()).getEnergia() < 2) {
                 return false;
             }
         }
@@ -128,6 +128,7 @@ class GameManager {
         if (casaDestino > mapa.getNrCasas()) {
             casaDestino = mapa.getNrCasas();
         }
+        //falta tirar energia ao gajo
 
         mapa.getCasa(casaDestino).addJogador(getIDJogadorAtual());
 

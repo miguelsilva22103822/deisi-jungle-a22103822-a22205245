@@ -46,7 +46,7 @@ class Casa {
                 iDsJogadoresString.append(iDsJogadores[i]);
             }
             else {
-                iDsJogadoresString.append(iDsJogadores[i]).append(", ");
+                iDsJogadoresString.append(iDsJogadores[i]).append(",");
             }
         }
 
