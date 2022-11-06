@@ -100,7 +100,7 @@ class GameManager {
         String [][] playersInfo = new String[iDsJogadores.length][4];
 
         for (int i = 0 ; i < iDsJogadores.length ; i ++){
-            String[] player = jogadores.get(i).getInfo();
+            String[] player = jogadores.get(iDsJogadores[i]).getInfo();
             playersInfo[i] = player;
         }
 

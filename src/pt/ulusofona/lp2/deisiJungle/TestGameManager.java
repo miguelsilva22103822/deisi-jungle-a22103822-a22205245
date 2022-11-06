@@ -129,4 +129,21 @@ public class TestGameManager {
 
     }
 
+    @Test
+    public void testGetPlayersInfo() {
+        GameManager gameManager = new GameManager();
+
+        String[] jog1 = {"1", "asd", "E"};
+        String[] jog2 = {"4", "joao", "T"};
+        String[] jog3 = {"6", "dfg", "Z"};
+        String[] jog4 = {"8", "dfgh", "P"};
+
+
+        String[][] jogadores = {jog1, jog2, jog3, jog4};
+
+        gameManager.createInitialJungle(9, 5, jogadores);
+
+        System.out.println(Arrays.deepToString(gameManager.getPlayersInfo()));
+
+    }
 }
