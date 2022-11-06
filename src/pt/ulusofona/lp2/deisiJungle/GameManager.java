@@ -119,6 +119,8 @@ class GameManager {
             }
         }
 
+        jogadores.get(getIDJogadorAtual()).spendEnergy();
+
         int nrCasaAtual = mapa.findNrCasaContaining(getIDJogadorAtual());
 
         mapa.getCasa(nrCasaAtual).removeJogador(getIDJogadorAtual());
@@ -128,7 +130,6 @@ class GameManager {
         if (casaDestino > mapa.getNrCasas()) {
             casaDestino = mapa.getNrCasas();
         }
-        //falta tirar energia ao gajo
 
         mapa.getCasa(casaDestino).addJogador(getIDJogadorAtual());
 

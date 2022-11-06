@@ -35,4 +35,11 @@ class Jogador {
     public int getEnergia() {
         return energia;
     }
+
+    public void spendEnergy() {
+        energia -= 2;
+        if (energia < 0) {
+            energia = 0;
+        }
+    }
 }
