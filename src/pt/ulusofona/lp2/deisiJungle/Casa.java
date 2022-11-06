@@ -72,4 +72,23 @@ class Casa {
         return isMeta;
     }
 
+    public boolean containsJogador(int playerID) {
+        for (Integer iD : iDsJogadores) {
+            if (iD == playerID) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean removeJogador(int playerID) {
+        for (int i = 0; i < iDsJogadores.size(); i++) {
+            if (iDsJogadores.get(i) == playerID) {
+                iDsJogadores.remove(i);
+                return true;
+            }
+        }
+        return false;
+    }
+
 }

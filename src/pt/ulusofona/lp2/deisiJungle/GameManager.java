@@ -88,18 +88,17 @@ class GameManager {
         int iDJogadorAtual = iDsJogadores[indiceJogadorAtual];
 
         return jogadores.get(iDJogadorAtual).getInfo();
-
     }
 
     public String[][] getPlayersInfo() {
 
-        if(iDsJogadores == null || iDsJogadores.length == 0){
+        if(iDsJogadores == null || iDsJogadores.length == 0) {
             return null;
         }
 
         String [][] playersInfo = new String[iDsJogadores.length][4];
 
-        for (int i = 0 ; i < iDsJogadores.length ; i ++){
+        for (int i = 0 ; i < iDsJogadores.length ; i ++) {
             String[] player = jogadores.get(iDsJogadores[i]).getInfo();
             playersInfo[i] = player;
         }
@@ -108,7 +107,32 @@ class GameManager {
     }
 
     public boolean moveCurrentPlayer(int nrSquares, boolean bypassValidations) {
-        return false;
+        if (!bypassValidations) {
+
+            if (nrSquares < 1 || nrSquares > 6) {
+                updateCurrentPlayer();
+                return false;
+            }
+
+            if (jogadores.get(iDsJogadores[indiceJogadorAtual]).getEnergia() < 2) {
+                return false;
+            }
+        }
+
+        int nrCasaAtual = mapa.findNrCasaContaining(getIDJogadorAtual());
+
+        mapa.getCasa(nrCasaAtual).removeJogador(getIDJogadorAtual());
+
+        int casaDestino = nrCasaAtual + nrSquares;
+
+        if (casaDestino > mapa.getNrCasas()) {
+            casaDestino = mapa.getNrCasas();
+        }
+
+        mapa.getCasa(casaDestino).addJogador(getIDJogadorAtual());
+
+        updateCurrentPlayer();
+        return true;
     }
 
     public String[] getWinnerInfo() {
@@ -210,5 +234,16 @@ class GameManager {
             i++;
         }
         Arrays.sort(iDsJogadores);
+    }
+
+    public void updateCurrentPlayer() {
+        indiceJogadorAtual++;
+        if (indiceJogadorAtual >= iDsJogadores.length) {
+            indiceJogadorAtual = 0;
+        }
+    }
+
+    public int getIDJogadorAtual() {
+        return iDsJogadores[indiceJogadorAtual];
     }
 }

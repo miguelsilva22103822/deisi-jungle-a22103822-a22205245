@@ -31,4 +31,8 @@ class Jogador {
 
         return info;
     }
+
+    public int getEnergia() {
+        return energia;
+    }
 }

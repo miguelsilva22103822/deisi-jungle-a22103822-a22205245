@@ -17,7 +17,7 @@ class Mapa {
 
         getCasa(nrCasas).setAsMeta();
     }
-
+    //não respeita principios de encapsulamento
     public void initializeMap(String[][] playersInfo, int initialEnergy) {
 
         for (String[] player : playersInfo) {
@@ -28,10 +28,19 @@ class Mapa {
     public int getNrCasas() {
         return tamanhoMax;
     }
-
+    //não respeita principios de encapsulamento
     public Casa getCasa(int nrCasa) {
         nrCasa--;
         return casas.get(nrCasa);
+    }
+
+    public int findNrCasaContaining(int playerID) {
+        for (int i = 0; i < casas.size(); i++) {
+            if (casas.get(i).containsJogador(playerID)) {
+                return i + 1;
+            }
+        }
+        return -1;
     }
 
 }
