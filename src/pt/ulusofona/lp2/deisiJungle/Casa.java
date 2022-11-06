@@ -32,7 +32,7 @@ class Casa {
             return new int[0];
         }
 
-        return iDsJogadores.stream().mapToInt(i -> i).toArray();
+        return arrayListToArray(iDsJogadores);
     }
 
     public String[] getInfo() {
@@ -81,14 +81,28 @@ class Casa {
         return false;
     }
 
-    public boolean removeJogador(int playerID) {
+    public void removeJogador(int playerID) {
         for (int i = 0; i < iDsJogadores.size(); i++) {
             if (iDsJogadores.get(i) == playerID) {
                 iDsJogadores.remove(i);
-                return true;
+                return;
             }
         }
-        return false;
     }
 
+    public int[] arrayListToArray(ArrayList<Integer> arrayList) {
+        if (arrayList == null || arrayList.size() == 0) {
+            return null;
+        }
+
+        int[] array = new int[arrayList.size()];
+
+        int i = 0;
+        for (Integer integer : arrayList) {
+            array[i] = integer;
+            i++;
+        }
+
+        return array;
+    }
 }

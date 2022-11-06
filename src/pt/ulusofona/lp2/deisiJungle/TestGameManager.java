@@ -93,15 +93,48 @@ public class TestGameManager {
 
         String[][] jogadores = {jog1, jog2, jog3, jog4};
 
-        gameManager.createInitialJungle(9, 5, jogadores);
+        gameManager.createInitialJungle(15, 5, jogadores);
 
+        System.out.println(Arrays.toString(gameManager.getSquareInfo(1)));
+        System.out.println(Arrays.toString(gameManager.getSquareInfo(2)));
+        System.out.println(Arrays.toString(gameManager.getPlayerIds(1)));
+        System.out.println(Arrays.toString(gameManager.getPlayerIds(2)));
 
-        //System.out.println(Arrays.toString(gameManager.getSquareInfo(1)));
+        System.out.println(gameManager.moveCurrentPlayer(1, true));
 
-        //System.out.println(Arrays.toString(gameManager.getSquareInfo(2)));
+        System.out.println(Arrays.toString(gameManager.getSquareInfo(1)));
+        System.out.println(Arrays.toString(gameManager.getSquareInfo(2)));
+        System.out.println(Arrays.toString(gameManager.getPlayerIds(1)));
+        System.out.println(Arrays.toString(gameManager.getPlayerIds(2)));
 
-        //System.out.println(Arrays.toString(gameManager.getSquareInfo(9)));
+        System.out.println(gameManager.moveCurrentPlayer(1, true));
 
+        System.out.println(Arrays.toString(gameManager.getSquareInfo(1)));
+        System.out.println(Arrays.toString(gameManager.getSquareInfo(2)));
+        System.out.println(Arrays.toString(gameManager.getPlayerIds(1)));
+        System.out.println(Arrays.toString(gameManager.getPlayerIds(2)));
+
+        System.out.println(gameManager.moveCurrentPlayer(1, true));
+
+        System.out.println(Arrays.toString(gameManager.getSquareInfo(1)));
+        System.out.println(Arrays.toString(gameManager.getSquareInfo(2)));
+        System.out.println(Arrays.toString(gameManager.getPlayerIds(1)));
+        System.out.println(Arrays.toString(gameManager.getPlayerIds(2)));
+
+        System.out.println(gameManager.moveCurrentPlayer(1, true));
+
+        System.out.println(Arrays.toString(gameManager.getSquareInfo(1)));
+        System.out.println(Arrays.toString(gameManager.getSquareInfo(2)));
+        System.out.println(Arrays.toString(gameManager.getPlayerIds(1)));
+        System.out.println(Arrays.toString(gameManager.getPlayerIds(2)));
+
+        System.out.println(gameManager.moveCurrentPlayer(1, true));
+
+        System.out.println(Arrays.toString(gameManager.getSquareInfo(1)));
+        System.out.println(Arrays.toString(gameManager.getSquareInfo(2)));
+        System.out.println(Arrays.toString(gameManager.getSquareInfo(3)));
+
+        System.out.println();
     }
 
     @Test
