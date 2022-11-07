@@ -235,4 +235,24 @@ public class TestGameManager {
 
         System.out.println();
     }
+
+    @Test
+    public void testTheWinner() {
+
+        GameManager gameManager = new GameManager();
+
+        String[] jog1 = {"1", "Manel", "E"};
+        String[] jog2 = {"3", "Joao", "T"};
+        String[] jog3 = {"4", "Maria", "Z"};
+        String[] jog4 = {"7", "Antonio", "P"};
+
+        String[][] jogadores = {jog1, jog2};
+
+        gameManager.createInitialJungle(15, 5, jogadores);
+        gameManager.moveCurrentPlayer(1,true);
+        gameManager.moveCurrentPlayer(15,true);
+        gameManager.moveCurrentPlayer(20,true);
+
+        System.out.println(Arrays.toString(gameManager.getWinnerInfo()));
+    }
 }

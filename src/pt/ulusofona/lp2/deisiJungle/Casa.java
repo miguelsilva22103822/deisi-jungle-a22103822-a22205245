@@ -105,4 +105,23 @@ class Casa {
 
         return array;
     }
+
+    public int nrJogadores () {
+        return iDsJogadores.size();
+    }
+
+    public int jogadorIDMenor (){
+        if (nrJogadores() == 0){
+            return  -1;
+        }
+
+        int jogadorMenor = iDsJogadores.get(0);
+
+        for (int i = 0; i < iDsJogadores.size(); i++){
+            if (iDsJogadores.get(i) < jogadorMenor){
+                jogadorMenor = iDsJogadores.get(i);
+            }
+        }
+        return jogadorMenor;
+    }
 }

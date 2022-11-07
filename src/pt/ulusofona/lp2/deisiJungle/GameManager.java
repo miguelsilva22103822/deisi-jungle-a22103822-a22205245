@@ -115,6 +115,7 @@ class GameManager {
             }
 
             if (jogadores.get(getIDJogadorAtual()).getEnergia() < 2) {
+                updateCurrentPlayer();
                 return false;
             }
         }
@@ -138,6 +139,18 @@ class GameManager {
     }
 
     public String[] getWinnerInfo() {
+
+        if (mapa.getCasa(mapa.getNrCasas()).nrJogadores() > 0 ){
+            return jogadores.get(mapa.getCasa(mapa.getNrCasas()).jogadorIDMenor()).getInfo();
+        }
+
+        if (todosSemEnergia()){
+            for (int i = mapa.getNrCasas(); i > 1 ; i--){
+                if (mapa.getCasa(i).nrJogadores() > 0 ){
+                    return jogadores.get(mapa.getCasa(i).jogadorIDMenor()).getInfo();
+                }
+            }
+        }
         return null;
     }
 
@@ -248,4 +261,14 @@ class GameManager {
     public int getIDJogadorAtual() {
         return iDsJogadores[indiceJogadorAtual];
     }
+
+    public boolean todosSemEnergia () {
+        for (Jogador jogador : jogadores.values()) {
+            if (jogador.getEnergia() > 2){
+                return false;
+            }
+        }
+        return true;
+    }
+
 }

@@ -42,4 +42,5 @@ class Jogador {
             energia = 0;
         }
     }
+
 }
