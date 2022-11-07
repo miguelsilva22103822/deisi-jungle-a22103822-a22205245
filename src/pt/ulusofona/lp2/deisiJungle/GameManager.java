@@ -155,7 +155,14 @@ class GameManager {
     }
 
     public ArrayList<String> getGameResults() {
-        return null;
+        ArrayList <String> listaResultado = new ArrayList<>();
+
+        for (int i = mapa.getNrCasas(); i > 1 ; i--){
+            if (mapa.getCasa(i).nrJogadores() > 0){
+                
+            }
+        }
+        return listaResultado;
     }
 
     public JPanel getAuthorsPanel() {
