@@ -112,15 +112,14 @@ public class GameManager {
 
     public boolean moveCurrentPlayer(int nrSquares, boolean bypassValidations) {
         if (!bypassValidations) {
-
             if (nrSquares < 1 || nrSquares > 6) {
                 return false;
             }
+        }
 
-            if (jogadores.get(getIDJogadorAtual()).getEnergia() < 2) {
-                updateCurrentPlayer();
-                return false;
-            }
+        if (jogadores.get(getIDJogadorAtual()).getEnergia() < 2) {
+            updateCurrentPlayer();
+            return false;
         }
 
         jogadores.get(getIDJogadorAtual()).spendEnergy();
