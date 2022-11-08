@@ -59,9 +59,6 @@ public class GameManager {
 
         saveIDsJogadores();
 
-        //Os jogadores ficam guardados em dois sitios, isto é mau, depois resolve-se.
-        //A melhor solução talvez seja as casas guardarem apenas o id do jogador.
-
         return true;
     }
 
@@ -114,6 +111,8 @@ public class GameManager {
     }
 
     public boolean moveCurrentPlayer(int nrSquares, boolean bypassValidations) {
+        boolean gameOver = false;
+
         if (!bypassValidations) {
 
             if (nrSquares < 1 || nrSquares > 6) {
@@ -135,11 +134,19 @@ public class GameManager {
 
         if (casaDestino > mapa.getNrCasas()) {
             casaDestino = mapa.getNrCasas();
+            gameOver = true;
+        }
+
+        if (todosSemEnergia()) {
+            gameOver = true;
         }
 
         mapa.getCasa(casaDestino).addJogador(getIDJogadorAtual());
 
-        updateCurrentPlayer();
+        if (!gameOver) {
+            updateCurrentPlayer();
+        }
+
         return true;
     }
 
@@ -161,7 +168,7 @@ public class GameManager {
 
     public ArrayList<String> getGameResults() {
         ArrayList <String> listaResultados = new ArrayList<>();
-        ArrayList <Integer> iDsOrdenados = new ArrayList<Integer>();
+        ArrayList <Integer> iDsOrdenados = new ArrayList<>();
 
         for (int i = mapa.getNrCasas(); i >= 1 ; i--){
             if (mapa.getCasa(i).nrJogadores() > 0) {
