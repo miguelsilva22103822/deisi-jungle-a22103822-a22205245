@@ -119,7 +119,7 @@ public class GameManager {
 
         if (jogadores.get(getIDJogadorAtual()).getEnergia() < 2) {
             updateCurrentPlayer();
-            return false;
+            return true;
         }
 
         jogadores.get(getIDJogadorAtual()).spendEnergy();
@@ -200,6 +200,8 @@ public class GameManager {
 
         List<String> ids = new ArrayList<>();
 
+        int nrTarzans = 0;
+
         for (String[] player : playersInfo) {
             if (!(isStringNumeric(player[0])) || Integer.parseInt(player[0]) < 0) {
                 return false;
@@ -210,11 +212,18 @@ public class GameManager {
             if (player[1] == null || player[1].equals("")) {
                 return false;
             }
-            //
+
             if (!species.contains(player[2])) {
                 return false;
             }
 
+            if (player[2].equals("T")) {
+                nrTarzans++;
+            }
+        }
+
+        if (nrTarzans > 1) {
+            return false;
         }
 
         //id's têm que ser todos diferentes
