@@ -17,4 +17,8 @@ class Especie {
         this.id = id;
         this.nome = nome;
     }
+
+    public String getNome() {
+        return nome;
+    }
 }

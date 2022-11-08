@@ -177,7 +177,7 @@ class GameManager {
         for (int i = 0; i < iDsOrdenados.size(); i++) {
             Jogador jogador = jogadores.get(iDsOrdenados.get(i));
             String playerResult = "#" + (i+1) + " " + jogador.getNome() + ", "
-                    + especies.get(jogador.getIdEspecie()) + ", "
+                    + especies.get(jogador.getIdEspecie()).getNome() + ", "
                     + mapa.findNrCasaContaining(jogador.getID());
 
             listaResultados.add(playerResult);
