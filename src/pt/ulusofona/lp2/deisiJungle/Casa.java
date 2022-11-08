@@ -1,6 +1,9 @@
 package pt.ulusofona.lp2.deisiJungle;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 class Casa {
     ArrayList<Integer> iDsJogadores;
@@ -123,5 +126,9 @@ class Casa {
             }
         }
         return jogadorMenor;
+    }
+
+    public void sortIDs() {
+        Collections.sort(iDsJogadores);
     }
 }

@@ -43,4 +43,12 @@ class Jogador {
         }
     }
 
+    public String getNome() {
+        return nome;
+    }
+
+    public String getIdEspecie() {
+        return idEspecie;
+    }
+
 }

@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.util.*;
 
 class GameManager {
-    String[][] especies;
+    HashMap<String, Especie> especies;
     Mapa mapa;
     HashMap<Integer, Jogador> jogadores;
     int[] iDsJogadores;
@@ -12,6 +12,13 @@ class GameManager {
 
     public GameManager() {
         this.jogadores = new HashMap<>();
+        this.especies = new HashMap<>();
+
+        String[][] especies = getSpecies();
+        for (int i = 0; i < especies.length; i++) {
+            this.especies.put(especies[i][0], new Especie(especies[i][0], especies[i][1]));
+        }
+
         indiceJogadorAtual = 0;
     }
 
@@ -146,7 +153,7 @@ class GameManager {
 
         if (todosSemEnergia()){
             for (int i = mapa.getNrCasas(); i > 1 ; i--){
-                if (mapa.getCasa(i).nrJogadores() > 0 ){
+                if (mapa.nrJogadoresCasa(i) > 0 ){
                     return jogadores.get(mapa.getCasa(i).jogadorIDMenor()).getInfo();
                 }
             }
@@ -155,14 +162,28 @@ class GameManager {
     }
 
     public ArrayList<String> getGameResults() {
-        ArrayList <String> listaResultado = new ArrayList<>();
+        ArrayList <String> listaResultados = new ArrayList<>();
+        ArrayList <Integer> iDsOrdenados = new ArrayList<Integer>();
 
-        for (int i = mapa.getNrCasas(); i > 1 ; i--){
-            if (mapa.getCasa(i).nrJogadores() > 0){
-                
+        for (int i = mapa.getNrCasas(); i >= 1 ; i--){
+            if (mapa.getCasa(i).nrJogadores() > 0) {
+                mapa.getCasa(i).sortIDs();
+                for (int id : mapa.getCasa(i).getIDsJogadores()) {
+                    iDsOrdenados.add(id);
+                }
             }
         }
-        return listaResultado;
+
+        for (int i = 0; i < iDsOrdenados.size(); i++) {
+            Jogador jogador = jogadores.get(iDsOrdenados.get(i));
+            String playerResult = "#" + (i+1) + " " + jogador.getNome() + ", "
+                    + especies.get(jogador.getIdEspecie()) + ", "
+                    + mapa.findNrCasaContaining(jogador.getID());
+
+            listaResultados.add(playerResult);
+        }
+
+        return listaResultados;
     }
 
     public JPanel getAuthorsPanel() {
@@ -271,7 +292,7 @@ class GameManager {
 
     public boolean todosSemEnergia () {
         for (Jogador jogador : jogadores.values()) {
-            if (jogador.getEnergia() > 2){
+            if (jogador.getEnergia() >= 2){
                 return false;
             }
         }
