@@ -111,15 +111,15 @@ public class GameManager {
     }
 
     public boolean moveCurrentPlayer(int nrSquares, boolean bypassValidations) {
-        boolean gameOver = false;
-
         if (!bypassValidations) {
 
             if (nrSquares < 1 || nrSquares > 6) {
+                updateCurrentPlayer();
                 return false;
             }
 
             if (jogadores.get(getIDJogadorAtual()).getEnergia() < 2) {
+                updateCurrentPlayer();
                 return false;
             }
         }
@@ -134,19 +134,11 @@ public class GameManager {
 
         if (casaDestino > mapa.getNrCasas()) {
             casaDestino = mapa.getNrCasas();
-            gameOver = true;
-        }
-
-        if (todosSemEnergia()) {
-            gameOver = true;
         }
 
         mapa.getCasa(casaDestino).addJogador(getIDJogadorAtual());
 
-        if (!gameOver) {
-            updateCurrentPlayer();
-        }
-
+        updateCurrentPlayer();
         return true;
     }
 
