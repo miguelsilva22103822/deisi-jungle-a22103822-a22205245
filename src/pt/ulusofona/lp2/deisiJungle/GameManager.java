@@ -3,7 +3,7 @@ package pt.ulusofona.lp2.deisiJungle;
 import javax.swing.*;
 import java.util.*;
 
-class GameManager {
+public class GameManager {
     HashMap<String, Especie> especies;
     Mapa mapa;
     HashMap<Integer, Jogador> jogadores;
@@ -117,12 +117,10 @@ class GameManager {
         if (!bypassValidations) {
 
             if (nrSquares < 1 || nrSquares > 6) {
-                updateCurrentPlayer();
                 return false;
             }
 
             if (jogadores.get(getIDJogadorAtual()).getEnergia() < 2) {
-                updateCurrentPlayer();
                 return false;
             }
         }
@@ -152,7 +150,7 @@ class GameManager {
         }
 
         if (todosSemEnergia()){
-            for (int i = mapa.getNrCasas(); i > 1 ; i--){
+            for (int i = mapa.getNrCasas() - 1; i >= 1 ; i--){
                 if (mapa.nrJogadoresCasa(i) > 0 ){
                     return jogadores.get(mapa.getCasa(i).jogadorIDMenor()).getInfo();
                 }

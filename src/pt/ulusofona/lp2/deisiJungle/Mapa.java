@@ -44,7 +44,7 @@ class Mapa {
     }
 
     public int nrJogadoresCasa(int nrCasa) {
-        return casas.get(nrCasa).nrJogadores();
+        return casas.get(nrCasa - 1).nrJogadores();
     }
 
 }
