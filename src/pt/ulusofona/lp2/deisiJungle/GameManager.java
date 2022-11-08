@@ -114,7 +114,6 @@ public class GameManager {
         if (!bypassValidations) {
 
             if (nrSquares < 1 || nrSquares > 6) {
-                updateCurrentPlayer();
                 return false;
             }
 
