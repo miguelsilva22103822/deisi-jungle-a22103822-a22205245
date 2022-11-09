@@ -113,7 +113,7 @@ public class GameManager {
     public boolean moveCurrentPlayer(int nrSquares, boolean bypassValidations) {
         if (!bypassValidations) {
             if (nrSquares < 1 || nrSquares > 6) {
-                //updateCurrentPlayer(); No enunciado diz que o turno deve sempre mudar, mas se fizer isso dá erro.
+                updateCurrentPlayer(); //Será que vai dar
                 return false;
             }
         }
