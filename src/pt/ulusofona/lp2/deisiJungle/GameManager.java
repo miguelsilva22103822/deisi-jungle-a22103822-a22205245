@@ -68,7 +68,8 @@ public class GameManager {
             return new int[0];
         }
 
-        return mapa.getCasa(squareNr).getIDsJogadores();
+        return mapa.getPlayerIds(squareNr);
+        //return mapa.getCasa(squareNr).getIDsJogadores();
     }
 
     public String[] getSquareInfo(int squareNr) {
@@ -77,7 +78,8 @@ public class GameManager {
             return null;
         }
 
-        return mapa.getCasa(squareNr).getInfo();
+        return mapa.getSquareInfo(squareNr);
+        //return mapa.getCasa(squareNr).getInfo();
     }
 
     public String[] getPlayerInfo(int playerId) {
@@ -127,7 +129,8 @@ public class GameManager {
 
         int nrCasaAtual = mapa.findNrCasaContaining(getIDJogadorAtual());
 
-        mapa.getCasa(nrCasaAtual).removeJogador(getIDJogadorAtual());
+        mapa.removeJogadorFromCasa(getIDJogadorAtual(), nrCasaAtual);
+        //mapa.getCasa(nrCasaAtual).removeJogador(getIDJogadorAtual());
 
         int casaDestino = nrCasaAtual + nrSquares;
 
@@ -135,7 +138,8 @@ public class GameManager {
             casaDestino = mapa.getNrCasas();
         }
 
-        mapa.getCasa(casaDestino).addJogador(getIDJogadorAtual());
+        mapa.addPlayerToCasa(getIDJogadorAtual(), casaDestino);
+        //mapa.getCasa(casaDestino).addJogador(getIDJogadorAtual());
 
         updateCurrentPlayer();
         return true;
@@ -143,14 +147,16 @@ public class GameManager {
 
     public String[] getWinnerInfo() {
 
-        if (mapa.getCasa(mapa.getNrCasas()).nrJogadores() > 0 ){
-            return jogadores.get(mapa.getCasa(mapa.getNrCasas()).jogadorIDMenor()).getInfo();
+        if (mapa.nrJogadoresInCasa(mapa.getNrCasas()) > 0){
+            return jogadores.get(mapa.getJogadorIDMenorInCasa(mapa.getNrCasas())).getInfo();
+            //return jogadores.get(mapa.getCasa(mapa.getNrCasas()).jogadorIDMenor()).getInfo();
         }
 
         if (todosSemEnergia()){
             for (int i = mapa.getNrCasas() - 1; i >= 1 ; i--){
-                if (mapa.nrJogadoresCasa(i) > 0 ){
-                    return jogadores.get(mapa.getCasa(i).jogadorIDMenor()).getInfo();
+                if (mapa.nrJogadoresInCasa(i) > 0 ) {
+                    return jogadores.get(mapa.getJogadorIDMenorInCasa(i)).getInfo();
+                    //return jogadores.get(mapa.getCasa(i).jogadorIDMenor()).getInfo();
                 }
             }
         }
@@ -162,9 +168,10 @@ public class GameManager {
         ArrayList <Integer> iDsOrdenados = new ArrayList<>();
 
         for (int i = mapa.getNrCasas(); i >= 1 ; i--){
-            if (mapa.getCasa(i).nrJogadores() > 0) {
-                mapa.getCasa(i).sortIDs();
-                for (int id : mapa.getCasa(i).getIDsJogadores()) {
+            if (mapa.nrJogadoresInCasa(i) > 0) {
+                mapa.sortIDsCasa(i);
+                //mapa.getCasa(i).sortIDs();
+                for (int id : mapa.getPlayerIds(i)) {
                     iDsOrdenados.add(id);
                 }
             }

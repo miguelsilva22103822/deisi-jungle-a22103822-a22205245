@@ -15,23 +15,46 @@ class Mapa {
 
         this.tamanhoMax = nrCasas;
 
-        getCasa(nrCasas).setAsMeta();
+        casas.get(cIndex(nrCasas)).setAsMeta();
     }
-    //não respeita principios de encapsulamento
+
     public void initializeMap(String[][] playersInfo, int initialEnergy) {
 
         for (String[] player : playersInfo) {
-            getCasa(1).addJogador(Integer.parseInt(player[0]));
+            casas.get(cIndex(1)).addJogador(Integer.parseInt(player[0]));
         }
     }
 
     public int getNrCasas() {
         return tamanhoMax;
     }
-    //não respeita principios de encapsulamento
-    public Casa getCasa(int nrCasa) {
-        nrCasa--;
-        return casas.get(nrCasa);
+
+    public int[] getPlayerIds(int nrCasa) {
+        return casas.get(cIndex(nrCasa)).getIDsJogadores();
+    }
+
+    public String[] getSquareInfo(int nrCasa) {
+        return casas.get(cIndex(nrCasa)).getInfo();
+    }
+
+    public void removeJogadorFromCasa(int idJogador, int nrCasa) {
+        casas.get(cIndex(nrCasa)).removeJogador(idJogador);
+    }
+
+    public void addPlayerToCasa(int idJogador, int nrCasa) {
+        casas.get(cIndex(nrCasa)).addJogador(idJogador);
+    }
+
+    public int nrJogadoresInCasa(int nrCasa) {
+        return casas.get(cIndex(nrCasa)).nrJogadores();
+    }
+
+    public int getJogadorIDMenorInCasa(int nrCasa) {
+        return casas.get(cIndex(nrCasa)).jogadorIDMenor();
+    }
+
+    public void sortIDsCasa(int nrCasa) {
+        casas.get(cIndex(nrCasa)).sortIDs();
     }
 
     public int findNrCasaContaining(int playerID) {
@@ -43,8 +66,8 @@ class Mapa {
         return -1;
     }
 
-    public int nrJogadoresCasa(int nrCasa) {
-        return casas.get(nrCasa - 1).nrJogadores();
+    public int cIndex(int nrCasa) {
+        return nrCasa - 1;
     }
 
 }
