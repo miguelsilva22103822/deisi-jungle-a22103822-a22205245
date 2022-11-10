@@ -229,20 +229,4 @@ public class TestGameManager {
 
         System.out.println(Arrays.toString(gameManager.getWinnerInfo()));
     }
-
-    @Test
-    public void testTarzan() {
-
-        GameManager gameManager = new GameManager();
-
-        String[] jog1 = {"1", "Manel", "E"};
-        String[] jog2 = {"3", "Joao", "T"};
-        String[] jog3 = {"4", "Maria", "T"};
-        String[] jog4 = {"7", "Antonio", "P"};
-
-        String[][] jogadores = {jog1, jog2, jog3, jog4};
-
-        System.out.println(gameManager.createInitialJungle(15, 5, jogadores));
-
-    }
 }
