@@ -1,8 +1,6 @@
 package pt.ulusofona.lp2.deisiJungle;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
 
 class Casa {
@@ -84,13 +82,14 @@ class Casa {
         return false;
     }
 
-    public void removeJogador(int playerID) {
+    public boolean removeJogador(int playerID) {
         for (int i = 0; i < iDsJogadores.size(); i++) {
             if (iDsJogadores.get(i) == playerID) {
                 iDsJogadores.remove(i);
-                return;
+                return true;
             }
         }
+        return false;
     }
 
     public int[] arrayListToArray(ArrayList<Integer> arrayList) {

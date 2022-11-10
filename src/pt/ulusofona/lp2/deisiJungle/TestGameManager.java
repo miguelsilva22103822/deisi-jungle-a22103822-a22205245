@@ -3,7 +3,6 @@ package pt.ulusofona.lp2.deisiJungle;
 import org.junit.*;
 
 import java.util.Arrays;
-import java.util.Objects;
 
 import static org.junit.Assert.*;
 
