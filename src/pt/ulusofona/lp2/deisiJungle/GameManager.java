@@ -189,27 +189,10 @@ public class GameManager {
         JPanel panel=new JPanel();
         panel.setBackground(Color.black);
 
-
         JLabel label1 = new JLabel("<html><pre>Ana Weng : 22205245\n\nMiguel Silva : 22103822</pre></html>");
-        label1.setFont(new Font("Monospaced", Font.BOLD, 15));
+        label1.setFont(new Font("Monospaced", Font.BOLD, 16));
         label1.setForeground(Color.getHSBColor(0.47f, 1.0f, 1.0f));
-
         panel.add(label1, Component.LEFT_ALIGNMENT);
-
-
-
-
-
-
-        /*
-        JButton b1=new JButton("Button 1");
-        b1.setBounds(50,100,80,30);
-        b1.setBackground(Color.yellow);
-        JButton b2=new JButton("Button 2");
-        b2.setBounds(100,100,80,30);
-        b2.setBackground(Color.green);
-        panel.add(b1); panel.add(b2);
-        */
 
         return panel;
     }
