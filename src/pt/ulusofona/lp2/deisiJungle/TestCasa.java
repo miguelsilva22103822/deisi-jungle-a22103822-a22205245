@@ -9,52 +9,17 @@ import static org.junit.Assert.*;
 
 public class TestCasa {
     @Test
-    public void testGetIDsJogadores() {
+    public void testNrJogadores() {
         Casa casa = new Casa();
 
         casa.addJogador(1);
-        casa.addJogador(3);
-        casa.addJogador(4);
         casa.addJogador(7);
-
-
-        int[] ids = {1, 3, 4, 7};
-
-        //System.out.println(Arrays.toString(ids));
-        //System.out.println(Arrays.toString(casa.getIDsJogadores()));
-        assertTrue(Arrays.equals(casa.getIDsJogadores(), ids));
-
-    }
-
-    @Test
-    public void testGetIDsJogadores2() {
-        Casa casa = new Casa();
-
-        int[] ids = {};
-
-        //System.out.println(Arrays.toString(ids));
-        //System.out.println(Arrays.toString(casa.getIDsJogadores()));
-
-        assertTrue(Arrays.equals(casa.getIDsJogadores(), ids));
-
-    }
-
-    @Test
-    public void testGetInfo() {
-        Casa casa = new Casa();
-
-        //System.out.println(Arrays.toString(casa.getInfo()));
-    }
-
-    @Test
-    public void testGetInfo2() {
-        Casa casa = new Casa();
-
-        casa.addJogador(1);
-        casa.addJogador(3);
         casa.addJogador(4);
-        casa.addJogador(7);
 
-        //System.out.println(Arrays.toString(casa.getInfo()));
+        int[] expectedIDs = {1, 7, 4};
+        assertArrayEquals(expectedIDs, casa.getIDsJogadores());
+
+        int expectedNrPlayers = 3;
+        assertEquals(expectedNrPlayers, casa.nrJogadores());
     }
 }

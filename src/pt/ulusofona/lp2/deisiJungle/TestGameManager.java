@@ -7,225 +7,73 @@ import java.util.Arrays;
 import static org.junit.Assert.*;
 
 public class TestGameManager {
-
     @Test
-    public void testCreateInitialJungle() {
-
+    public void testGetPlayerIds() {
         GameManager gameManager = new GameManager();
 
-        String[] jog1 = {"1", "asd", "E"};
-        String[] jog2 = {"4", "joao", "E"};
-        String[] jog3 = {"6", "asd", "E"};
-        String[] jog4 = {"8", "abd", "E"};
+        String[] jogador1 = {"1", "João", "E"};
+        String[] jogador2 = {"4", "Manuel", "T"};
+        String[] jogador3 = {"6", "Pedro", "Z"};
+        String[] jogador4 = {"8", "Maria", "P"};
 
-        String[][] jogadores = {jog1, jog2, jog3, jog4};
+        String[][] jogadores = {jogador1, jogador2, jogador3, jogador4};
 
-        assertTrue(gameManager.createInitialJungle(9, 5, jogadores));
+        assertTrue(gameManager.createInitialJungle(20, 4, jogadores));
+
+        int[] expectedPlayerIds = {1, 4, 6, 8};
+
+        assertArrayEquals(expectedPlayerIds, gameManager.getPlayerIds(1));
     }
 
     @Test
-    public void testGetPlayerIds() {
-
+    public void testMoveCurrentPlayer() {
         GameManager gameManager = new GameManager();
 
-        String[] jog1 = {"1", "asd", "E"};
-        String[] jog2 = {"4", "joao", "E"};
-        String[] jog3 = {"6", "dfg", "E"};
-        String[] jog4 = {"8", "dfgh", "E"};
+        String[] jogador1 = {"1", "João", "E"};
+        String[] jogador2 = {"4", "Manuel", "T"};
+        String[] jogador3 = {"6", "Pedro", "Z"};
 
+        String[][] jogadores = {jogador1, jogador2, jogador3};
 
-        String[][] jogadores = {jog1, jog2, jog3, jog4};
+        assertTrue(gameManager.createInitialJungle(22, 8, jogadores));
 
-        assertTrue(gameManager.createInitialJungle(9, 5, jogadores));
+        assertTrue(gameManager.moveCurrentPlayer(5, false));
 
-        assertEquals(4, gameManager.getPlayerIds(1).length);
+        int[] expectedPlayerIds = {1};
+        assertArrayEquals(expectedPlayerIds, gameManager.getPlayerIds(6));
+
+        int expectedCurrentPlayerID = 4;
+        assertEquals(expectedCurrentPlayerID, gameManager.getIDJogadorAtual());
     }
 
     @Test
     public void testGetSquareInfo() {
         GameManager gameManager = new GameManager();
 
-        String[] jog1 = {"1", "asd", "E"};
-        String[] jog2 = {"4", "joao", "T"};
-        String[] jog3 = {"6", "dfg", "Z"};
-        String[] jog4 = {"8", "dfgh", "P"};
+        String[] jogador1 = {"3", "João", "E"};
+        String[] jogador2 = {"2", "Manuel", "T"};
+        String[] jogador3 = {"1", "Pedro", "Z"};
+        String[] jogador4 = {"5", "Maria", "P"};
 
+        String[][] jogadores = {jogador1, jogador2, jogador3, jogador4};
 
-        String[][] jogadores = {jog1, jog2, jog3, jog4};
+        assertTrue(gameManager.createInitialJungle(20, 4, jogadores));
 
-        gameManager.createInitialJungle(9, 5, jogadores);
-
-        String[] correctInfo = {"blank.png", "Vazio", "1, 4, 6, 8"};
-        //System.out.println(Arrays.toString(gameManager.mapa.getCasa(1).getInfo()));
-
+        String[] expectedSquareInfo = {"blank.png", "Vazio", "3,2,1,5"};
+        assertArrayEquals(expectedSquareInfo, gameManager.getSquareInfo(1));
     }
 
     @Test
-    public void testGetPlayerInfo() {
+    public void testCreateInitialJungle2Tarzans() {
         GameManager gameManager = new GameManager();
 
-        String[] jog1 = {"1", "asd", "E"};
-        String[] jog2 = {"4", "joao", "T"};
-        String[] jog3 = {"6", "dfg", "Z"};
-        String[] jog4 = {"8", "dfgh", "P"};
+        String[] jogador1 = {"1", "João", "E"};
+        String[] jogador2 = {"3", "Manuel", "Z"};
+        String[] jogador3 = {"5", "Pedro", "Z"};
+        String[] jogador4 = {"2", "Maria", "P"};
 
+        String[][] jogadores = {jogador1, jogador2, jogador3, jogador4};
 
-        String[][] jogadores = {jog1, jog2, jog3, jog4};
-
-        gameManager.createInitialJungle(9, 5, jogadores);
-
-        String[] correctInfo = {"4", "joao", "T", "5"};
-
-        assertArrayEquals(gameManager.getPlayerInfo(4), correctInfo);
-
-    }
-
-    @Test
-    public void testManyThings() {
-
-        GameManager gameManager = new GameManager();
-
-        String[] jog1 = {"1", "Manel", "E"};
-        String[] jog2 = {"3", "Joao", "T"};
-        String[] jog3 = {"4", "Maria", "Z"};
-        String[] jog4 = {"7", "Antonio", "P"};
-
-        String[][] jogadores = {jog1, jog2, jog3, jog4};
-
-        gameManager.createInitialJungle(15, 5, jogadores);
-
-        System.out.println(Arrays.toString(gameManager.getSquareInfo(1)));
-        System.out.println(Arrays.toString(gameManager.getSquareInfo(2)));
-        System.out.println(Arrays.toString(gameManager.getPlayerIds(1)));
-        System.out.println(Arrays.toString(gameManager.getPlayerIds(2)));
-
-        System.out.println(gameManager.moveCurrentPlayer(1, true));
-
-        System.out.println(Arrays.toString(gameManager.getSquareInfo(1)));
-        System.out.println(Arrays.toString(gameManager.getSquareInfo(2)));
-        System.out.println(Arrays.toString(gameManager.getPlayerIds(1)));
-        System.out.println(Arrays.toString(gameManager.getPlayerIds(2)));
-
-        System.out.println(gameManager.moveCurrentPlayer(1, true));
-
-        System.out.println(Arrays.toString(gameManager.getSquareInfo(1)));
-        System.out.println(Arrays.toString(gameManager.getSquareInfo(2)));
-        System.out.println(Arrays.toString(gameManager.getPlayerIds(1)));
-        System.out.println(Arrays.toString(gameManager.getPlayerIds(2)));
-
-        System.out.println(gameManager.moveCurrentPlayer(1, true));
-
-        System.out.println(Arrays.toString(gameManager.getSquareInfo(1)));
-        System.out.println(Arrays.toString(gameManager.getSquareInfo(2)));
-        System.out.println(Arrays.toString(gameManager.getPlayerIds(1)));
-        System.out.println(Arrays.toString(gameManager.getPlayerIds(2)));
-
-        System.out.println(gameManager.moveCurrentPlayer(1, true));
-
-        System.out.println(Arrays.toString(gameManager.getSquareInfo(1)));
-        System.out.println(Arrays.toString(gameManager.getSquareInfo(2)));
-        System.out.println(Arrays.toString(gameManager.getPlayerIds(1)));
-        System.out.println(Arrays.toString(gameManager.getPlayerIds(2)));
-
-        System.out.println(gameManager.moveCurrentPlayer(1, true));
-
-        System.out.println(Arrays.toString(gameManager.getSquareInfo(1)));
-        System.out.println(Arrays.toString(gameManager.getSquareInfo(2)));
-        System.out.println(Arrays.toString(gameManager.getSquareInfo(3)));
-
-        System.out.println();
-    }
-
-    @Test
-    public void testLinkedList() {
-
-        GameManager gameManager = new GameManager();
-
-        String[] jog1 = {"3", "Manel", "E"};
-        String[] jog2 = {"2", "Joao", "T"};
-        String[] jog3 = {"9", "Maria", "Z"};
-        String[] jog4 = {"4", "Antonio", "P"};
-
-        String[][] jogadores = {jog1, jog2, jog3, jog4};
-
-        gameManager.createInitialJungle(9, 5, jogadores);
-
-
-        System.out.println(Arrays.toString(gameManager.getSquareInfo(1)));
-
-        System.out.println(Arrays.toString(gameManager.getSquareInfo(2)));
-
-        System.out.println(Arrays.toString(gameManager.getSquareInfo(9)));
-
-        System.out.println(Arrays.toString(gameManager.iDsJogadores));
-
-    }
-
-    @Test
-    public void testGetPlayersInfo() {
-        GameManager gameManager = new GameManager();
-
-        String[] jog1 = {"1", "asd", "E"};
-        String[] jog2 = {"4", "joao", "T"};
-        String[] jog3 = {"6", "dfg", "Z"};
-        String[] jog4 = {"8", "dfgh", "P"};
-
-
-        String[][] jogadores = {jog1, jog2, jog3, jog4};
-
-        gameManager.createInitialJungle(9, 5, jogadores);
-
-        System.out.println(Arrays.deepToString(gameManager.getPlayersInfo()));
-
-    }
-
-    @Test
-    public void test123() {
-
-        GameManager gameManager = new GameManager();
-
-        String[] jog1 = {"4", "Manel", "E"};
-        String[] jog2 = {"3", "Joao", "T"};
-        String[] jog3 = {"5", "Maria", "Z"};
-        String[] jog4 = {"7", "Antonio", "P"};
-
-        String[][] jogadores = {jog1, jog2, jog3};
-
-        gameManager.createInitialJungle(15, 5, jogadores);
-        System.out.println(gameManager.getIDJogadorAtual());
-
-        System.out.println(gameManager.moveCurrentPlayer(7, false));
-        System.out.println(gameManager.getIDJogadorAtual());
-
-        System.out.println(gameManager.moveCurrentPlayer(2, false));
-        System.out.println(gameManager.getIDJogadorAtual());
-
-
-        System.out.println(gameManager.moveCurrentPlayer(1, false));
-        System.out.println(gameManager.getIDJogadorAtual());
-
-
-
-        System.out.println();
-    }
-
-    @Test
-    public void testTheWinner() {
-
-        GameManager gameManager = new GameManager();
-
-        String[] jog1 = {"1", "Manel", "E"};
-        String[] jog2 = {"3", "Joao", "T"};
-        String[] jog3 = {"4", "Maria", "Z"};
-        String[] jog4 = {"7", "Antonio", "P"};
-
-        String[][] jogadores = {jog1, jog2};
-
-        gameManager.createInitialJungle(15, 5, jogadores);
-        gameManager.moveCurrentPlayer(1,true);
-        gameManager.moveCurrentPlayer(15,true);
-        gameManager.moveCurrentPlayer(20,true);
-
-        System.out.println(Arrays.toString(gameManager.getWinnerInfo()));
+        assertFalse(gameManager.createInitialJungle(15, 4, jogadores));
     }
 }

@@ -1,7 +1,9 @@
 package pt.ulusofona.lp2.deisiJungle;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.*;
+import java.util.List;
 
 public class GameManager {
     HashMap<String, Especie> especies;
@@ -69,7 +71,6 @@ public class GameManager {
         }
 
         return mapa.getPlayerIds(squareNr);
-        //return mapa.getCasa(squareNr).getIDsJogadores();
     }
 
     public String[] getSquareInfo(int squareNr) {
@@ -79,7 +80,6 @@ public class GameManager {
         }
 
         return mapa.getSquareInfo(squareNr);
-        //return mapa.getCasa(squareNr).getInfo();
     }
 
     public String[] getPlayerInfo(int playerId) {
@@ -115,7 +115,7 @@ public class GameManager {
     public boolean moveCurrentPlayer(int nrSquares, boolean bypassValidations) {
         if (!bypassValidations) {
             if (nrSquares < 1 || nrSquares > 6) {
-                updateCurrentPlayer(); //Será que vai dar
+                updateCurrentPlayer();
                 return false;
             }
         }
@@ -130,7 +130,6 @@ public class GameManager {
         int nrCasaAtual = mapa.findNrCasaContaining(getIDJogadorAtual());
 
         mapa.removeJogadorFromCasa(getIDJogadorAtual(), nrCasaAtual);
-        //mapa.getCasa(nrCasaAtual).removeJogador(getIDJogadorAtual());
 
         int casaDestino = nrCasaAtual + nrSquares;
 
@@ -139,7 +138,6 @@ public class GameManager {
         }
 
         mapa.addPlayerToCasa(getIDJogadorAtual(), casaDestino);
-        //mapa.getCasa(casaDestino).addJogador(getIDJogadorAtual());
 
         updateCurrentPlayer();
         return true;
@@ -156,7 +154,6 @@ public class GameManager {
             for (int i = mapa.getNrCasas() - 1; i >= 1 ; i--){
                 if (mapa.nrJogadoresInCasa(i) > 0 ) {
                     return jogadores.get(mapa.getJogadorIDMenorInCasa(i)).getInfo();
-                    //return jogadores.get(mapa.getCasa(i).jogadorIDMenor()).getInfo();
                 }
             }
         }
@@ -170,7 +167,6 @@ public class GameManager {
         for (int i = mapa.getNrCasas(); i >= 1 ; i--){
             if (mapa.nrJogadoresInCasa(i) > 0) {
                 mapa.sortIDsCasa(i);
-                //mapa.getCasa(i).sortIDs();
                 for (int id : mapa.getPlayerIds(i)) {
                     iDsOrdenados.add(id);
                 }
@@ -190,7 +186,32 @@ public class GameManager {
     }
 
     public JPanel getAuthorsPanel() {
-        return null;
+        JPanel panel=new JPanel();
+        panel.setBackground(Color.black);
+
+
+        JLabel label1 = new JLabel("<html><pre>Ana Weng : 22205245\n\nMiguel Silva : 22103822</pre></html>");
+        label1.setFont(new Font("Monospaced", Font.BOLD, 15));
+        label1.setForeground(Color.getHSBColor(0.47f, 1.0f, 1.0f));
+
+        panel.add(label1, Component.LEFT_ALIGNMENT);
+
+
+
+
+
+
+        /*
+        JButton b1=new JButton("Button 1");
+        b1.setBounds(50,100,80,30);
+        b1.setBackground(Color.yellow);
+        JButton b2=new JButton("Button 2");
+        b2.setBounds(100,100,80,30);
+        b2.setBackground(Color.green);
+        panel.add(b1); panel.add(b2);
+        */
+
+        return panel;
     }
 
     public String whoIsTaborda() {
@@ -225,7 +246,7 @@ public class GameManager {
                 return false;
             }
 
-            if (player[2].equals("T")) {
+            if (player[2].equals("Z")) {
                 nrTarzans++;
             }
         }

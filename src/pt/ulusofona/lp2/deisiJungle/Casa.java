@@ -108,11 +108,11 @@ class Casa {
         return array;
     }
 
-    public int nrJogadores () {
+    public int nrJogadores() {
         return iDsJogadores.size();
     }
 
-    public int jogadorIDMenor (){
+    public int jogadorIDMenor() {
         if (nrJogadores() == 0){
             return  -1;
         }
