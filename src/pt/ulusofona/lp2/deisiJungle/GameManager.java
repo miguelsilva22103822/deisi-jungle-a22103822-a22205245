@@ -187,11 +187,24 @@ public class GameManager {
 
     public JPanel getAuthorsPanel() {
         JPanel panel=new JPanel();
-        panel.setBackground(Color.black);
+        panel.setBackground(Color.getHSBColor(0f, 0f, 0.1f));
 
-        JLabel label1 = new JLabel("<html><pre>Ana Weng : 22205245\n\nMiguel Silva : 22103822</pre></html>");
-        label1.setFont(new Font("Monospaced", Font.BOLD, 16));
-        label1.setForeground(Color.getHSBColor(0.47f, 1.0f, 1.0f));
+        JLabel label1 = new JLabel("<html><font face=\"Big Money-sw\" size=\"10px\" color=\"#FF7A59\"><pre>Ana Weng : 22205245\nMiguel Silva : 22103822\n" +
+                " __        _______    ______  \n" +
+                "/  |      /       \\  /      \\ \n" +
+                "$$ |      $$$$$$$  |/$$$$$$  |\n" +
+                "$$ |      $$ |__$$ |$$____$$ |\n" +
+                "$$ |      $$    $$/  /    $$/ \n" +
+                "$$ |      $$$$$$$/  /$$$$$$/  \n" +
+                "$$ |_____ $$ |      $$ |_____ \n" +
+                "$$       |$$ |      $$       |\n" +
+                "$$$$$$$$/ $$/       $$$$$$$$/ \n" +
+                "                              \n" +
+                "                              \n" +
+                "                              \n</pre></font></html>");
+        
+        label1.setForeground(Color.getHSBColor(0.7f, 0.6f, 1f));
+        label1.setFont(new Font(label1.getFont().getFontName(), Font.BOLD, 14));
         panel.add(label1, Component.LEFT_ALIGNMENT);
 
         return panel;
