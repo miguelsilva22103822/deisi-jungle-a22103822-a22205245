@@ -202,7 +202,7 @@ public class GameManager {
                 "                              \n" +
                 "                              \n" +
                 "                              \n</pre></font></html>");
-        
+
         label1.setForeground(Color.getHSBColor(0.7f, 0.6f, 1f));
         label1.setFont(new Font(label1.getFont().getFontName(), Font.BOLD, 14));
         panel.add(label1, Component.LEFT_ALIGNMENT);
