@@ -18,9 +18,18 @@ public class GameManager {
 
         String[][] especies = getSpecies();
         for (int i = 0; i < especies.length; i++) {
-            this.especies.put(especies[i][0], new Especie(especies[i][0], especies[i][1]));
-        }
 
+            switch (especies[i][0]) {
+                case "E" -> this.especies.put(especies[i][0], new Elefante(especies[i][0], especies[i][1]));
+                case "L" -> this.especies.put(especies[i][0], new Leao(especies[i][0], especies[i][1]));
+                case "T" -> this.especies.put(especies[i][0], new Tartaruga(especies[i][0], especies[i][1]));
+                case "P" -> this.especies.put(especies[i][0], new Passaro(especies[i][0], especies[i][1]));
+                case "Z" -> this.especies.put(especies[i][0], new Tarzan(especies[i][0], especies[i][1]));
+                default -> {
+                }
+            }
+
+        }
         indiceJogadorAtual = 0;
     }
 
@@ -35,6 +44,10 @@ public class GameManager {
         String[][] especies = {elefante, leao, tartaruga, passaro, tarzan};
 
         return especies;
+    }
+
+    public String[][] getFoodTypes() {
+        return null;
     }
 
     public boolean createInitialJungle(int jungleSize, int initialEnergy, String[][] playersInfo) {

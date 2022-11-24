@@ -3,8 +3,8 @@ package pt.ulusofona.lp2.deisiJungle;
 import java.util.ArrayList;
 
 class Mapa {
-    ArrayList<Casa> casas;
-    int tamanhoMax;
+    private ArrayList<Casa> casas;
+    private final int tamanhoMax;
 
     public Mapa(int nrCasas) {
         this.casas = new ArrayList<>();

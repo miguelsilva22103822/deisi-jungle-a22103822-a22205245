@@ -1,10 +1,10 @@
 package pt.ulusofona.lp2.deisiJungle;
 
 class Jogador {
-    int id;
-    String nome;
-    String idEspecie;
-    int energia;
+    private final int id;
+    private final String nome;
+    private String idEspecie;
+    private int energia;
 
     public Jogador(int id, String nome, String idEspecie, int energiaInicial) {
         this.id = id;

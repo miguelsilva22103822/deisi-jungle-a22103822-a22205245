@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 class Casa {
-    ArrayList<Integer> iDsJogadores;
-    int tamanhoMax = 4;
-    boolean isMeta;
+    private ArrayList<Integer> iDsJogadores;
+    private final int tamanhoMax = 4;
+    private boolean isMeta;
 
     public Casa() {
         this.iDsJogadores = new ArrayList<>();
