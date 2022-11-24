@@ -1,30 +1,28 @@
 package pt.ulusofona.lp2.deisiJungle;
 
-import java.awt.image.BufferedImage;
-import java.util.stream.IntStream;
-
 class Leao extends Especie {
-    public Leao(String id, String nome, BufferedImage imagem) {
-        super(id, nome, imagem);
-    }
+    private final int energiaInicial = 80;
+    private final int consumoEnergia = 2;
+    private final int energiaDescanso = 10;
+    private final int[] velocidade = new int[]{4, 5, 6};
 
-    public Leao(String id, String nome) {
-        super(id, nome);
+    public Leao() {
+        super("L", "Leão", "lion.png");
     }
 
     public int getEnergiaInicial() {
-        return 80;
+        return energiaInicial;
     }
 
     public int getConsumoEnergia() {
-        return 2;
+        return consumoEnergia;
     }
 
     public int getEnergiaDescanso() {
-        return 10;
+        return energiaDescanso;
     }
 
-    public IntStream getVelocidade() {
-        return IntStream.range(4, 6);
+    public int[] getVelocidade() {
+        return velocidade;
     }
 }

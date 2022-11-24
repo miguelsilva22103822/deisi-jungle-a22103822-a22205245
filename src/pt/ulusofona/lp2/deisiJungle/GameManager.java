@@ -17,34 +17,24 @@ public class GameManager {
         this.jogadores = new HashMap<>();
         this.especies = new HashMap<>();
 
-        String[][] especies = getSpecies();
-        for (int i = 0; i < especies.length; i++) {
+        this.especies.put(new Elefante().getId(), new Elefante());
+        this.especies.put(new Leao().getId(), new Leao());
+        this.especies.put(new Tartaruga().getId(), new Tartaruga());
+        this.especies.put(new Passaro().getId(), new Passaro());
+        this.especies.put(new Tarzan().getId(), new Tarzan());
 
-            switch (especies[i][0]) {
-                case "E" -> this.especies.put(especies[i][0], new Elefante(especies[i][0], especies[i][1]));
-                case "L" -> this.especies.put(especies[i][0], new Leao(especies[i][0], especies[i][1]));
-                case "T" -> this.especies.put(especies[i][0], new Tartaruga(especies[i][0], especies[i][1]));
-                case "P" -> this.especies.put(especies[i][0], new Passaro(especies[i][0], especies[i][1]));
-                case "Z" -> this.especies.put(especies[i][0], new Tarzan(especies[i][0], especies[i][1]));
-                default -> {
-                }
-            }
-
-        }
         indiceJogadorAtual = 0;
     }
 
     //funções obrigatórias
     public String[][] getSpecies() {
-        String[] elefante = {"E", "Elefante", "elephant.png"};
-        String[] leao = {"L", "Leão", "lion.png"};
-        String[] tartaruga = {"T", "Tartaruga", "turtle.png"};
-        String[] passaro = {"P", "Pássaro", "bird.png"};
-        String[] tarzan = {"Z", "Tarzan", "tarzan.png"};
+        String[] elefante = new Elefante().getInfo();
+        String[] leao = new Leao().getInfo();
+        String[] tartaruga = new Tartaruga().getInfo();
+        String[] passaro = new Passaro().getInfo();
+        String[] tarzan = new Tarzan().getInfo();
 
-        String[][] especies = {elefante, leao, tartaruga, passaro, tarzan};
-
-        return especies;
+        return new String[][]{elefante, leao, tartaruga, passaro, tarzan};
     }
 
     public String[][] getFoodTypes() {

@@ -1,30 +1,28 @@
 package pt.ulusofona.lp2.deisiJungle;
 
-import java.awt.image.BufferedImage;
-import java.util.stream.IntStream;
-
 class Passaro extends Especie {
-    public Passaro(String id, String nome, BufferedImage imagem) {
-        super(id, nome, imagem);
-    }
+    private final int energiaInicial = 70;
+    private final int consumoEnergia = 4;
+    private final int energiaDescanso = 50;
+    private final int[] velocidade = new int[]{5, 6};
 
-    public Passaro(String id, String nome) {
-        super(id, nome);
+    public Passaro() {
+        super("P", "Pássaro", "bird.png");
     }
 
     public int getEnergiaInicial() {
-        return 70;
+        return energiaInicial;
     }
 
     public int getConsumoEnergia() {
-        return 4;
+        return consumoEnergia;
     }
 
     public int getEnergiaDescanso() {
-        return 50;
+        return energiaDescanso;
     }
 
-    public IntStream getVelocidade() {
-        return IntStream.range(5, 6);
+    public int[] getVelocidade() {
+        return velocidade;
     }
 }

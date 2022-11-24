@@ -1,35 +1,28 @@
 package pt.ulusofona.lp2.deisiJungle;
 
-import java.awt.image.BufferedImage;
-import java.util.stream.IntStream;
-
 class Elefante extends Especie {
-    //private final int energiaInicial = 180;
-    //private final int consumoEnergia = 4;
-    //private final int energiaDescanso = 10;
-    //private final IntStream velocidade = IntStream.range(1, 6);
+    private final int energiaInicial = 180;
+    private final int consumoEnergia = 4;
+    private final int energiaDescanso = 10;
+    private final int[] velocidade = new int[]{1, 2, 3, 4, 5, 6};
 
-    public Elefante(String id, String nome, BufferedImage imagem) {
-        super(id, nome, imagem);
-    }
-
-    public Elefante(String id, String nome) {
-        super(id, nome);
+    public Elefante() {
+        super("E", "Elefante", "elephant.png");
     }
 
     public int getEnergiaInicial() {
-        return 180;
+        return energiaInicial;
     }
 
     public int getConsumoEnergia() {
-        return 4;
+        return consumoEnergia;
     }
 
     public int getEnergiaDescanso() {
-        return 10;
+        return energiaDescanso;
     }
 
-    public IntStream getVelocidade() {
-        return IntStream.range(1, 6);
+    public int[] getVelocidade() {
+        return velocidade;
     }
 }

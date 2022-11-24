@@ -1,26 +1,36 @@
 package pt.ulusofona.lp2.deisiJungle;
 
-import java.awt.image.BufferedImage;
-import java.util.stream.IntStream;
-
 abstract class Especie {
     private final String id;
     private final String nome;
-    private BufferedImage imagem;
+    private final String nomeImagem;
 
-    public Especie(String id, String nome, BufferedImage imagem) {
+    public Especie(String id, String nome, String nomeImagem) {
         this.id = id;
         this.nome = nome;
-        this.imagem = imagem;
+        this.nomeImagem = nomeImagem;
     }
 
-    public Especie(String id, String nome) {
-        this.id = id;
-        this.nome = nome;
+    public String getNomeImagem() {
+        return nomeImagem;
+    }
+
+    public String getId() {
+        return id;
     }
 
     public String getNome() {
         return nome;
+    }
+
+    public String[] getInfo() {
+
+        String[] info = new String[3];
+        info[0] = getId();
+        info[1] = getNome();
+        info[2] = getNomeImagem();
+
+        return info;
     }
 
     abstract public int getEnergiaInicial();
@@ -29,7 +39,10 @@ abstract class Especie {
 
     abstract public int getEnergiaDescanso();
 
-    abstract public IntStream getVelocidade(); // não sei se se pode usar intStream
+    abstract public int[] getVelocidade();
 
-    //as funções não usam nenhumas vars das classes não sei se se pode
+
+
+    // não sei se se pode usar intStream
+    //não sei se as classes podem ter constantes mágicas
 }

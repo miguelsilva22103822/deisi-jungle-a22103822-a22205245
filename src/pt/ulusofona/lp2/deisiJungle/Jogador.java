@@ -4,12 +4,17 @@ class Jogador {
     private final int id;
     private final String nome;
     private String idEspecie;
+    private Especie especie;
     private int energia;
 
     public Jogador(int id, String nome, String idEspecie) {
         this.id = id;
         this.nome = nome;
         this.idEspecie = idEspecie;
+    }
+
+    public void updateEspecie(Especie especie) {
+        this.especie = especie;
     }
 
     public void setEspecie(String idEspecie) {

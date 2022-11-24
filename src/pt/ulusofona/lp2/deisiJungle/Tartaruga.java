@@ -1,30 +1,28 @@
 package pt.ulusofona.lp2.deisiJungle;
 
-import java.awt.image.BufferedImage;
-import java.util.stream.IntStream;
-
 class Tartaruga extends Especie {
-    public Tartaruga(String id, String nome, BufferedImage imagem) {
-        super(id, nome, imagem);
-    }
+    private final int energiaInicial = 150;
+    private final int consumoEnergia = 1;
+    private final int energiaDescanso = 5;
+    private final int[] velocidade = new int[]{1, 2, 3};
 
-    public Tartaruga(String id, String nome) {
-        super(id, nome);
+    public Tartaruga() {
+        super("T", "Tartaruga", "turtle.png");
     }
 
     public int getEnergiaInicial() {
-        return 150;
+        return energiaInicial;
     }
 
     public int getConsumoEnergia() {
-        return 1;
+        return consumoEnergia;
     }
 
     public int getEnergiaDescanso() {
-        return 5;
+        return energiaDescanso;
     }
 
-    public IntStream getVelocidade() {
-        return IntStream.range(1, 3);
+    public int[] getVelocidade() {
+        return velocidade;
     }
 }

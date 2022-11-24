@@ -1,30 +1,28 @@
 package pt.ulusofona.lp2.deisiJungle;
 
-import java.awt.image.BufferedImage;
-import java.util.stream.IntStream;
-
 class Tarzan extends Especie {
-    public Tarzan(String id, String nome, BufferedImage imagem) {
-        super(id, nome, imagem);
-    }
+    private final int energiaInicial = 70;
+    private final int consumoEnergia = 2;
+    private final int energiaDescanso = 20;
+    private final int[] velocidade = new int[]{1, 2, 3, 4, 5, 6};
 
-    public Tarzan(String id, String nome) {
-        super(id, nome);
+    public Tarzan() {
+        super("Z", "Tarzan","tarzan.png");
     }
 
     public int getEnergiaInicial() {
-        return 70;
+        return energiaInicial;
     }
 
     public int getConsumoEnergia() {
-        return 2;
+        return consumoEnergia;
     }
 
     public int getEnergiaDescanso() {
-        return 20;
+        return energiaDescanso;
     }
 
-    public IntStream getVelocidade() {
-        return IntStream.range(1, 6);
+    public int[] getVelocidade() {
+        return velocidade;
     }
 }
