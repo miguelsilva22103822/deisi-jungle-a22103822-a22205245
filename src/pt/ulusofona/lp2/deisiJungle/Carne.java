@@ -5,12 +5,12 @@ import java.awt.image.BufferedImage;
 class Carne extends Alimento {
     private final String toolTip = "Carne : +- 50 energia : <N> jogadas";
 
-    public Carne(String id, String nome, BufferedImage imagem) {
-        super(id, nome, imagem);
+    public Carne() {
+        super("c", "Carne", "meat.png");
     }
 
-    public Carne(String id, String nome) {
-        super(id, nome);
+    public Carne(String id, String nome, String imagem) {
+        super(id, nome, imagem);
     }
 
     @Override

@@ -26,8 +26,9 @@ public class GameManager {
         indiceJogadorAtual = 0;
     }
 
-    //funções obrigatórias
+    //funções obrigatórias--------------------------------------------------------------
     public String[][] getSpecies() {
+
         String[] elefante = new Elefante().getInfo();
         String[] leao = new Leao().getInfo();
         String[] tartaruga = new Tartaruga().getInfo();
@@ -38,7 +39,14 @@ public class GameManager {
     }
 
     public String[][] getFoodTypes() {
-        return null;
+
+        String[] cachoBanana = new CachoBananas().getFoodInfo();
+        String[] agua = new Agua().getFoodInfo();
+        String[] cogumelo = new Cogumelo().getFoodInfo();
+        String[] erva = new Erva().getFoodInfo();
+        String[] carne = new Carne().getFoodInfo();
+
+        return new String[][]{cachoBanana, agua, cogumelo, erva, carne};
     }
 
     public InitializationError createInitialJungle(int jungleSize, String[][] playersInfo, String[][] foodsInfo) {
@@ -50,8 +58,14 @@ public class GameManager {
             return new InitializationError("O mapa tem menos de duas posições por jogador");
         }
 
+        if (!validarAlimento(foodsInfo, jungleSize)) {
+            return new InitializationError("foodsInfo inválido");
+        }
+
         mapa = new Mapa(jungleSize);
         mapa.initializeMap(playersInfo);
+        mapa.initialzeMapFood(foodsInfo);
+
 
         for (String[] player : playersInfo) {
             Jogador tempJogador = new Jogador(Integer.parseInt(player[0]), player[1], player[2]);
@@ -68,33 +82,6 @@ public class GameManager {
     public InitializationError createInitialJungle(int jungleSize, String[][] playersInfo) {
         return createInitialJungle(jungleSize, playersInfo, null);
     }
-
-    /*public boolean createInitialJungle(int jungleSize, int initialEnergy, String[][] playersInfo) {
-
-        if(!validarPlayersInfo(playersInfo)) {
-            return false;
-        }
-
-        if (jungleSize < (2 * playersInfo.length)) {
-            return false;
-        }
-
-        if (initialEnergy < 0) {
-            return false;
-        }
-
-        mapa = new Mapa(jungleSize);
-        mapa.initializeMap(playersInfo, initialEnergy);
-
-        for (String[] player : playersInfo) {
-            jogadores.put(Integer.parseInt(player[0]),
-                    new Jogador(Integer.parseInt(player[0]), player[1], player[2], initialEnergy));
-        }
-
-        saveIDsJogadores();
-
-        return true;
-    }*/
 
     public int[] getPlayerIds(int squareNr) {
 
@@ -129,7 +116,9 @@ public class GameManager {
     }
 
     public String[] getCurrentPlayerEnergyInfo(int nrPositions) {
-        return null;
+
+        return jogadores.get(iDsJogadores[indiceJogadorAtual]).getInfoEnergy(nrPositions);
+
     }
 
     public String[][] getPlayersInfo() {
@@ -150,7 +139,7 @@ public class GameManager {
 
     public MovementResult moveCurrentPlayer(int nrSquares, boolean bypassValidations) {
         if (!bypassValidations) {
-            if (nrSquares < 1 || nrSquares > 6) {
+            if (nrSquares < -6 || nrSquares > 6) {
                 updateCurrentPlayer();
                 //return false;
             }
@@ -161,19 +150,7 @@ public class GameManager {
             //return false;
         }
 
-        jogadores.get(getIDJogadorAtual()).spendEnergy();
-
-        int nrCasaAtual = mapa.findNrCasaContaining(getIDJogadorAtual());
-
-        mapa.removeJogadorFromCasa(getIDJogadorAtual(), nrCasaAtual);
-
-        int casaDestino = nrCasaAtual + nrSquares;
-
-        if (casaDestino > mapa.getNrCasas()) {
-            casaDestino = mapa.getNrCasas();
-        }
-
-        mapa.addPlayerToCasa(getIDJogadorAtual(), casaDestino);
+        movePlayer(nrSquares);
 
         updateCurrentPlayer();
         //return true;
@@ -260,7 +237,7 @@ public class GameManager {
         return true;
     }
 
-    //funções auxiliares
+    //funções auxiliares------------------------------------------------------------------
     public boolean validarPlayersInfo(String[][] playersInfo) {
 
         if(playersInfo.length < 2 || playersInfo.length > 4) {
@@ -309,6 +286,42 @@ public class GameManager {
             }
         }
         return true;
+    }
+
+    public boolean validarAlimento(String[][] foodInfo, int jungleSize) {
+
+        if (foodInfo == null){
+            return true;
+        }
+
+        ArrayList<String> idAlimentos = foodToArrayList(getFoodTypes());
+
+        for (String[] food : foodInfo) {
+            if (!idAlimentos.contains(food[0])) {
+                return false;
+            }
+
+            if (Integer.parseInt(food[1]) >= jungleSize || Integer.parseInt(food[1]) <= 0) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public ArrayList<String> foodToArrayList(String[][] foods) {
+
+        ArrayList<String> foodArrayList = new ArrayList<>();
+
+        if (foods == null || foods.length == 0) {
+            return null;
+        }
+
+        for (int i = 0; i < foods.length; i++) {
+            foodArrayList.add(foods[i][0]);
+        }
+
+        return foodArrayList;
     }
 
     public ArrayList<String> speciesToArrayList(String[][] species) {
@@ -361,6 +374,23 @@ public class GameManager {
         }
     }
 
+    public void movePlayer(int nrSquares) {
+        int nrCasaAtual = mapa.findNrCasaContaining(getIDJogadorAtual());
+
+        mapa.removeJogadorFromCasa(getIDJogadorAtual(), nrCasaAtual);
+
+        int casaDestino = nrCasaAtual + nrSquares;
+
+        if (casaDestino > mapa.getNrCasas()) {
+            casaDestino = mapa.getNrCasas();
+        }
+
+        if (casaDestino < 0) {
+            casaDestino = 1;
+        }
+
+        mapa.addPlayerToCasa(getIDJogadorAtual(), casaDestino);
+    }
     public int getIDJogadorAtual() {
         return iDsJogadores[indiceJogadorAtual];
     }

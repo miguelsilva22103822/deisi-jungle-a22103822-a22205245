@@ -1,11 +1,15 @@
 package pt.ulusofona.lp2.deisiJungle;
 
+import javax.swing.*;
+import java.util.Arrays;
+
 class Jogador {
     private final int id;
     private final String nome;
     private String idEspecie;
     private Especie especie;
     private int energia;
+    private int velocidade;
 
     public Jogador(int id, String nome, String idEspecie) {
         this.id = id;
@@ -26,12 +30,22 @@ class Jogador {
     }
 
     public String[] getInfo() {
-        String[] info = new String[4];
+        String[] info = new String[5];
 
         info[0] = String.valueOf(id);
         info[1] = nome;
         info[2] = idEspecie;
         info[3] = String.valueOf(energia);
+        info[4] = Arrays.toString(especie.getVelocidade());
+
+        return info;
+    }
+
+    public String[] getInfoEnergy(int nrPositions) {
+        String[] info = new String[2];
+
+        info[0] = String.valueOf(nrPositions * especie.getConsumoEnergia());
+        info[1] = String.valueOf(especie.getEnergiaDescanso());
 
         return info;
     }

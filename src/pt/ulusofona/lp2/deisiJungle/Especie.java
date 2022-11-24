@@ -11,16 +11,16 @@ abstract class Especie {
         this.nomeImagem = nomeImagem;
     }
 
-    public String getNomeImagem() {
-        return nomeImagem;
-    }
-
     public String getId() {
         return id;
     }
 
     public String getNome() {
         return nome;
+    }
+
+    public String getNomeImagem() {
+        return nomeImagem;
     }
 
     public String[] getInfo() {
@@ -32,6 +32,7 @@ abstract class Especie {
 
         return info;
     }
+
 
     abstract public int getEnergiaInicial();
 

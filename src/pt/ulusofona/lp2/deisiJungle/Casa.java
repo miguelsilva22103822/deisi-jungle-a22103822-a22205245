@@ -7,6 +7,7 @@ class Casa {
     private ArrayList<Integer> iDsJogadores;
     private final int tamanhoMax = 4;
     private boolean isMeta;
+    private Alimento alimento;
 
     public Casa() {
         this.iDsJogadores = new ArrayList<>();
@@ -19,6 +20,24 @@ class Casa {
         }
 
         iDsJogadores.add(id);
+
+        return true;
+    }
+
+    public boolean addAlimento(String idAlimento) {
+
+        if (alimento != null) {
+            return false;
+        }
+
+        switch (idAlimento) {
+            case "a" -> alimento = new Agua();
+            case "b" -> alimento = new CachoBananas();
+            case "m" -> alimento = new Cogumelo();
+            case "c" -> alimento = new Carne();
+            case "e" -> alimento = new Erva();
+            default ->  { return false;}
+        }
 
         return true;
     }

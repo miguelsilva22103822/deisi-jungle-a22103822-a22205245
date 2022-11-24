@@ -25,6 +25,13 @@ class Mapa {
         }
     }
 
+    public void initialzeMapFood(String[][] foodsInfo) {
+
+        for (String[] food : foodsInfo) {
+            casas.get(cIndex(Integer.parseInt(food[1]))).addAlimento(food[0]);
+        }
+    }
+
     public int getNrCasas() {
         return tamanhoMax;
     }

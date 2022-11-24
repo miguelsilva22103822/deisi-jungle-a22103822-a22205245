@@ -5,7 +5,11 @@ import java.awt.image.BufferedImage;
 class CachoBananas extends Alimento {
     private final String toolTip = "Bananas : <N> : + 40 energia";
 
-    public CachoBananas(String id, String nome, BufferedImage imagem) {
+    public CachoBananas() {
+        super("b", "CachoBananas", "bananas.png");
+    }
+
+    public CachoBananas(String id, String nome, String imagem) {
         super(id, nome, imagem);
     }
 
