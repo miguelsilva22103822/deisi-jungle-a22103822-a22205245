@@ -168,7 +168,7 @@ public class GameManager {
         updateCurrentPlayer();
         //return true;
 
-        return new MovementResult();
+        return new MovementResult(MovementResultCode.CAUGHT_FOOD, "batata");
     }
 
     public String[] getWinnerInfo() {
@@ -249,7 +249,7 @@ public class GameManager {
     public boolean loadGame(File file) {
         return true;
     }
-    
+
     //funções auxiliares
     public boolean validarPlayersInfo(String[][] playersInfo) {
 
