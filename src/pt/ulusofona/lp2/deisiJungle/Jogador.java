@@ -6,11 +6,10 @@ class Jogador {
     private String idEspecie;
     private int energia;
 
-    public Jogador(int id, String nome, String idEspecie, int energiaInicial) {
+    public Jogador(int id, String nome, String idEspecie) {
         this.id = id;
         this.nome = nome;
         this.idEspecie = idEspecie;
-        this.energia = energiaInicial;
     }
 
     public void setEspecie(String idEspecie) {

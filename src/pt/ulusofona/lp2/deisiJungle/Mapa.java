@@ -18,7 +18,7 @@ class Mapa {
         casas.get(cIndex(nrCasas)).setAsMeta();
     }
 
-    public void initializeMap(String[][] playersInfo, int initialEnergy) {
+    public void initializeMap(String[][] playersInfo) {
 
         for (String[] player : playersInfo) {
             casas.get(cIndex(1)).addJogador(Integer.parseInt(player[0]));

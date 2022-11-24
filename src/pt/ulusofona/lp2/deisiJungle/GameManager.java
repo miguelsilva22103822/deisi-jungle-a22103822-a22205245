@@ -52,6 +52,26 @@ public class GameManager {
     }
 
     public InitializationError createInitialJungle(int jungleSize, String[][] playersInfo, String[][] foodsInfo) {
+        if(!validarPlayersInfo(playersInfo)) {
+            return new InitializationError("playersInfo inválido");
+        }
+
+        if (jungleSize < (2 * playersInfo.length)) {
+            return new InitializationError("O mapa tem menos de duas posições por jogador");
+        }
+
+        mapa = new Mapa(jungleSize);
+        mapa.initializeMap(playersInfo);
+
+        for (String[] player : playersInfo) {
+            Jogador tempJogador = new Jogador(Integer.parseInt(player[0]), player[1], player[2]);
+            //ainda não sei se a energia vai ficar no jogdador ou na especie, se ficar no jogador
+            //vai ser preciso dar set à energia inicial aqui com base na energia inicial da espécie
+            jogadores.put(tempJogador.getID(), tempJogador);
+        }
+
+        saveIDsJogadores();
+
         return null;
     }
 
