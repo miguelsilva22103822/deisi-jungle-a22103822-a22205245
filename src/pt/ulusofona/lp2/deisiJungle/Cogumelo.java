@@ -13,10 +13,6 @@ class Cogumelo extends Alimento {
         super(id, nome, imagem);
     }
 
-    public Cogumelo(String id, String nome) {
-        super(id, nome);
-    }
-
     @Override
     public String getToolTip() {
         return toolTip;

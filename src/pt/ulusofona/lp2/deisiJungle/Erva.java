@@ -13,10 +13,6 @@ class Erva extends Alimento {
         super(id, nome, imagem);
     }
 
-    public Erva(String id, String nome) {
-        super(id, nome);
-    }
-
     @Override
     public String getToolTip() {
         return toolTip;

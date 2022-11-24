@@ -13,10 +13,6 @@ class CachoBananas extends Alimento {
         super(id, nome, imagem);
     }
 
-    public CachoBananas(String id, String nome) {
-        super(id, nome);
-    }
-
     @Override
     public String getToolTip() {
         return toolTip;

@@ -13,10 +13,6 @@ class Agua extends Alimento {
         super(id, nome, imagem);
     }
 
-    public Agua(String id, String nome) {
-        super(id, nome);
-    }
-
     @Override
     public String getToolTip() {
         return toolTip;
