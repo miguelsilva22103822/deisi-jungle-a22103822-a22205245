@@ -2,6 +2,7 @@ package pt.ulusofona.lp2.deisiJungle;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
 import java.util.*;
 import java.util.List;
 
@@ -50,7 +51,15 @@ public class GameManager {
         return null;
     }
 
-    public boolean createInitialJungle(int jungleSize, int initialEnergy, String[][] playersInfo) {
+    public InitializationError createInitialJungle(int jungleSize, String[][] playersInfo, String[][] foodsInfo) {
+        return null;
+    }
+
+    public InitializationError createInitialJungle(int jungleSize, String[][] playersInfo) {
+        return createInitialJungle(jungleSize, playersInfo, null);
+    }
+
+    /*public boolean createInitialJungle(int jungleSize, int initialEnergy, String[][] playersInfo) {
 
         if(!validarPlayersInfo(playersInfo)) {
             return false;
@@ -75,7 +84,7 @@ public class GameManager {
         saveIDsJogadores();
 
         return true;
-    }
+    }*/
 
     public int[] getPlayerIds(int squareNr) {
 
@@ -109,6 +118,10 @@ public class GameManager {
         return jogadores.get(iDJogadorAtual).getInfo();
     }
 
+    public String[] getCurrentPlayerEnergyInfo(int nrPositions) {
+        return null;
+    }
+
     public String[][] getPlayersInfo() {
 
         if(iDsJogadores == null || iDsJogadores.length == 0) {
@@ -125,17 +138,17 @@ public class GameManager {
         return playersInfo;
     }
 
-    public boolean moveCurrentPlayer(int nrSquares, boolean bypassValidations) {
+    public MovementResult moveCurrentPlayer(int nrSquares, boolean bypassValidations) {
         if (!bypassValidations) {
             if (nrSquares < 1 || nrSquares > 6) {
                 updateCurrentPlayer();
-                return false;
+                //return false;
             }
         }
 
         if (jogadores.get(getIDJogadorAtual()).getEnergia() < 2) {
             updateCurrentPlayer();
-            return false;
+            //return false;
         }
 
         jogadores.get(getIDJogadorAtual()).spendEnergy();
@@ -153,7 +166,9 @@ public class GameManager {
         mapa.addPlayerToCasa(getIDJogadorAtual(), casaDestino);
 
         updateCurrentPlayer();
-        return true;
+        //return true;
+
+        return new MovementResult();
     }
 
     public String[] getWinnerInfo() {
@@ -227,6 +242,14 @@ public class GameManager {
         return "wrestling";
     }
 
+    public boolean saveGame(File file) {
+        return true;
+    }
+
+    public boolean loadGame(File file) {
+        return true;
+    }
+    
     //funções auxiliares
     public boolean validarPlayersInfo(String[][] playersInfo) {
 
