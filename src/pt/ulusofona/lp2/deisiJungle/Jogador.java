@@ -9,7 +9,6 @@ class Jogador {
     private String idEspecie;
     private Especie especie;
     private int energia;
-    private int velocidade;
 
     public Jogador(int id, String nome, String idEspecie) {
         this.id = id;
