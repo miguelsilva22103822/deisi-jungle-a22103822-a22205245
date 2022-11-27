@@ -8,6 +8,6 @@ class InitializationError {
     }
 
     public String getMessage()  {
-        return "ainda nao sei";
+        return erro;
     }
 }

@@ -4,7 +4,7 @@ class Tartaruga extends Especie {
     private final int energiaInicial = 150;
     private final int consumoEnergia = 1;
     private final int energiaDescanso = 5;
-    private final int[] velocidade = new int[]{1, 2, 3};
+    private final String velocidade = "1..3";
 
     public Tartaruga() {
         super("T", "Tartaruga", "turtle.png");
@@ -22,7 +22,7 @@ class Tartaruga extends Especie {
         return energiaDescanso;
     }
 
-    public int[] getVelocidade() {
+    public String getVelocidade() {
         return velocidade;
     }
 }

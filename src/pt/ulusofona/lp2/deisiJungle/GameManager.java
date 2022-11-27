@@ -58,14 +58,13 @@ public class GameManager {
             return new InitializationError("O mapa tem menos de duas posições por jogador");
         }
 
-        if (!validarAlimento(foodsInfo, jungleSize)) {
+        if (!validarfoodsInfo(foodsInfo, jungleSize)) {
             return new InitializationError("foodsInfo inválido");
         }
 
         mapa = new Mapa(jungleSize);
         mapa.initializeMap(playersInfo);
         mapa.initialzeMapFood(foodsInfo);
-
 
         for (String[] player : playersInfo) {
             Jogador tempJogador = new Jogador(Integer.parseInt(player[0]), player[1], player[2]);
@@ -84,6 +83,9 @@ public class GameManager {
     }
 
     public int[] getPlayerIds(int squareNr) {
+        if (mapa == null) {
+            return new int[0];
+        }
 
         if (squareNr < 1 || squareNr > mapa.getNrCasas()) {
             return new int[0];
@@ -93,6 +95,9 @@ public class GameManager {
     }
 
     public String[] getSquareInfo(int squareNr) {
+        if (mapa == null) {
+            return null;
+        }
 
         if (squareNr < 1 || squareNr > mapa.getNrCasas()) {
             return null;
@@ -116,9 +121,7 @@ public class GameManager {
     }
 
     public String[] getCurrentPlayerEnergyInfo(int nrPositions) {
-
         return jogadores.get(iDsJogadores[indiceJogadorAtual]).getInfoEnergy(nrPositions);
-
     }
 
     public String[][] getPlayersInfo() {
@@ -288,7 +291,7 @@ public class GameManager {
         return true;
     }
 
-    public boolean validarAlimento(String[][] foodInfo, int jungleSize) {
+    public boolean validarfoodsInfo(String[][] foodInfo, int jungleSize) {
 
         if (foodInfo == null){
             return true;
@@ -297,7 +300,7 @@ public class GameManager {
         ArrayList<String> idAlimentos = foodToArrayList(getFoodTypes());
 
         for (String[] food : foodInfo) {
-            if (!idAlimentos.contains(food[0])) {
+            if (!(idAlimentos.contains(food[0]))) {
                 return false;
             }
 
@@ -391,11 +394,12 @@ public class GameManager {
 
         mapa.addPlayerToCasa(getIDJogadorAtual(), casaDestino);
     }
+
     public int getIDJogadorAtual() {
         return iDsJogadores[indiceJogadorAtual];
     }
 
-    public boolean todosSemEnergia () {
+    public boolean todosSemEnergia() {
         for (Jogador jogador : jogadores.values()) {
             if (jogador.getEnergia() >= 2){
                 return false;

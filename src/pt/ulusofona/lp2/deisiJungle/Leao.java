@@ -4,7 +4,7 @@ class Leao extends Especie {
     private final int energiaInicial = 80;
     private final int consumoEnergia = 2;
     private final int energiaDescanso = 10;
-    private final int[] velocidade = new int[]{4, 5, 6};
+    private final String velocidade = "4..6";
 
     public Leao() {
         super("L", "Leão", "lion.png");
@@ -22,7 +22,7 @@ class Leao extends Especie {
         return energiaDescanso;
     }
 
-    public int[] getVelocidade() {
+    public String getVelocidade() {
         return velocidade;
     }
 }

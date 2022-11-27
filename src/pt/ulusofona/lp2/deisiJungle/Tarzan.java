@@ -4,7 +4,7 @@ class Tarzan extends Especie {
     private final int energiaInicial = 70;
     private final int consumoEnergia = 2;
     private final int energiaDescanso = 20;
-    private final int[] velocidade = new int[]{1, 2, 3, 4, 5, 6};
+    private final String velocidade = "1..6";
 
     public Tarzan() {
         super("Z", "Tarzan","tarzan.png");
@@ -22,7 +22,7 @@ class Tarzan extends Especie {
         return energiaDescanso;
     }
 
-    public int[] getVelocidade() {
+    public String getVelocidade() {
         return velocidade;
     }
 }

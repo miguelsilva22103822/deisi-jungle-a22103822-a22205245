@@ -4,7 +4,7 @@ class Elefante extends Especie {
     private final int energiaInicial = 180;
     private final int consumoEnergia = 4;
     private final int energiaDescanso = 10;
-    private final int[] velocidade = new int[]{1, 2, 3, 4, 5, 6};
+    private final String velocidade = "1..6";
 
     public Elefante() {
         super("E", "Elefante", "elephant.png");
@@ -22,7 +22,7 @@ class Elefante extends Especie {
         return energiaDescanso;
     }
 
-    public int[] getVelocidade() {
+    public String getVelocidade() {
         return velocidade;
     }
 }

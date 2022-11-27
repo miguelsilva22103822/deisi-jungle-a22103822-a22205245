@@ -26,6 +26,9 @@ class Mapa {
     }
 
     public void initialzeMapFood(String[][] foodsInfo) {
+        if (foodsInfo == null) {
+            return;
+        }
 
         for (String[] food : foodsInfo) {
             casas.get(cIndex(Integer.parseInt(food[1]))).addAlimento(food[0]);

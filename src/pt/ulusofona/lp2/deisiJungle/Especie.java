@@ -23,12 +23,16 @@ abstract class Especie {
         return nomeImagem;
     }
 
-    public String[] getInfo() {
+    String[] getInfo() {
 
-        String[] info = new String[3];
+        String[] info = new String[7];
         info[0] = getId();
         info[1] = getNome();
         info[2] = getNomeImagem();
+        info[3] = String.valueOf(getEnergiaInicial());
+        info[4] = String.valueOf(getConsumoEnergia());
+        info[5] = String.valueOf(getEnergiaDescanso());
+        info[6] = getVelocidade();
 
         return info;
     }
@@ -40,7 +44,7 @@ abstract class Especie {
 
     abstract public int getEnergiaDescanso();
 
-    abstract public int[] getVelocidade();
+    abstract public String getVelocidade();
 
 
 

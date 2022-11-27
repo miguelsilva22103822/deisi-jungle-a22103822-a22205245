@@ -4,7 +4,7 @@ class Passaro extends Especie {
     private final int energiaInicial = 70;
     private final int consumoEnergia = 4;
     private final int energiaDescanso = 50;
-    private final int[] velocidade = new int[]{5, 6};
+    private final String velocidade = "5..6";
 
     public Passaro() {
         super("P", "Pássaro", "bird.png");
@@ -22,7 +22,7 @@ class Passaro extends Especie {
         return energiaDescanso;
     }
 
-    public int[] getVelocidade() {
+    public String getVelocidade() {
         return velocidade;
     }
 }

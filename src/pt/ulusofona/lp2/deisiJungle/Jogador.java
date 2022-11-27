@@ -35,7 +35,7 @@ class Jogador {
         info[1] = nome;
         info[2] = idEspecie;
         info[3] = String.valueOf(energia);
-        info[4] = Arrays.toString(especie.getVelocidade());
+        info[4] = especie.getVelocidade();
 
         return info;
     }
