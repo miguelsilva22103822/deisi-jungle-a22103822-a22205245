@@ -76,8 +76,12 @@ class Mapa {
         return -1;
     }
 
-    public int cIndex(int nrCasa) {
+    private int cIndex(int nrCasa) {
         return nrCasa - 1;
+    }
+
+    public String getIdAlimentoCasa(int nrCasa) {
+        return casas.get(cIndex(nrCasa)).getIDAlimento();
     }
 
 }

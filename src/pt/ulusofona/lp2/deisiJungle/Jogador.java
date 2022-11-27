@@ -22,6 +22,8 @@ class Jogador {
             case "P" -> especie = new Passaro();
             case "Z" -> especie = new Tarzan();
         }
+
+        this.energia = especie.getEnergiaInicial();
     }
 
     public int getID() {
@@ -53,10 +55,39 @@ class Jogador {
         return energia;
     }
 
-    public void spendEnergy() {
-        energia -= 2;
-        if (energia < 0) {
-            energia = 0;
+    public boolean movementIsValid(int nrPositions) {
+        if (nrPositions == 0) {
+            return true;
+        }
+
+        nrPositions = Math.abs(nrPositions);
+
+        if (nrPositions < Character.getNumericValue(especie.getVelocidade().charAt(0))
+                || nrPositions > Character.getNumericValue(especie.getVelocidade().charAt(3))) {
+            return false;
+        }
+
+        return true;
+    }
+
+    public boolean hasEnergy(int nrPositions) {
+        if (nrPositions == 0) {
+            return true;
+        }
+
+        if (energia > nrPositions * especie.getConsumoEnergia()) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public void updateEnergyMovement(int nrPositions) {
+        if (nrPositions == 0) {
+            energia += especie.getEnergiaDescanso();
+        }
+        else {
+            energia -= nrPositions * especie.getConsumoEnergia();
         }
     }
 
@@ -68,4 +99,8 @@ class Jogador {
         return idEspecie;
     }
 
+    public void eat(String iDAlimento) {
+        //dependendo da especie tem efeitos diferentes
+        //provavelmente a parte mais complicada desta fase do projeto
+    }
 }

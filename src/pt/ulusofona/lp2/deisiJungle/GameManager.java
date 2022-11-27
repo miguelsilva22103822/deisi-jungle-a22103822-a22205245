@@ -144,15 +144,22 @@ public class GameManager {
                 updateCurrentPlayer();
                 return new MovementResult(MovementResultCode.INVALID_MOVEMENT,
                         "nrSquares ultrapassa intervalo válido.");
+
             }
         }
 
-        if (jogadores.get(getIDJogadorAtual()).getEnergia() < 2) {
+        if (!jogadores.get(getIDJogadorAtual()).movementIsValid(nrSquares)) {
+            updateCurrentPlayer();
+            return new MovementResult(MovementResultCode.INVALID_MOVEMENT, "Especie não permite movimento");
+        }
+
+        if (!jogadores.get(getIDJogadorAtual()).hasEnergy(nrSquares)) {
             updateCurrentPlayer();
             return new MovementResult(MovementResultCode.NO_ENERGY, "Jogador não tem energia suficiente.");
         }
 
-        movePlayer(nrSquares);
+
+        movePlayerAndUpdateEnergy(nrSquares);
 
         updateCurrentPlayer();
         return new MovementResult(MovementResultCode.VALID_MOVEMENT, "Jogador movido.");
@@ -376,7 +383,7 @@ public class GameManager {
         }
     }
 
-    private void movePlayer(int nrSquares) {
+    private void movePlayerAndUpdateEnergy(int nrSquares) {
         int nrCasaAtual = mapa.findNrCasaContaining(getIDJogadorAtual());
 
         mapa.removeJogadorFromCasa(getIDJogadorAtual(), nrCasaAtual);
@@ -390,6 +397,13 @@ public class GameManager {
         if (casaDestino < 0) {
             casaDestino = 1;
         }
+
+        jogadores.get(getIDJogadorAtual()).updateEnergyMovement(nrSquares);
+
+        if (mapa.getIdAlimentoCasa(casaDestino) != null) {
+            jogadores.get(getIDJogadorAtual()).eat(mapa.getIdAlimentoCasa(casaDestino));
+        }
+
 
         mapa.addPlayerToCasa(getIDJogadorAtual(), casaDestino);
     }

@@ -112,14 +112,22 @@ public class TestGameManager {
         String[] alimento4 = {"e", "6" };
         String[] alimento5 = {"m", "3" };
 
-        String[][] jogadores = {jogador1, jogador2, jogador3, jogador4};
-        String[][] alimentos = null;
+        String[][] jogadores = {jogador1, jogador2, jogador3};
+        String[][] alimentos = {alimento1, alimento2, alimento3, alimento4, alimento5};
 
-        System.out.println(Arrays.deepToString(gameManager.getSpecies()));
+        //System.out.println(Arrays.deepToString(gameManager.getSpecies()));
 
         gameManager.createInitialJungle(27, jogadores, alimentos);
 
-        gameManager.getCurrentPlayerInfo();
+        System.out.println(Arrays.deepToString(gameManager.getPlayersInfo()));
+
+        System.out.println(Arrays.toString(gameManager.getPlayerIds(1)));
+        System.out.println(Arrays.toString(gameManager.getSquareInfo(1)));
+
+        System.out.println(Arrays.toString(gameManager.getCurrentPlayerEnergyInfo(5)));
+
+
+        //System.out.println((Arrays.toString(gameManager.getCurrentPlayerInfo())));
 
 
     }

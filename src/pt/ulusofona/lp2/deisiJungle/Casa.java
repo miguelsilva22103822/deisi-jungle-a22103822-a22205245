@@ -42,6 +42,14 @@ class Casa {
         return true;
     }
 
+    public String getIDAlimento() {
+        if (alimento == null) {
+            return null;
+        }
+
+        return alimento.getId();
+    }
+
     public int[] getIDsJogadores() {
 
         if (iDsJogadores.size() > tamanhoMax) {
