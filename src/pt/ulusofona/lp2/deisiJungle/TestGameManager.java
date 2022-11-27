@@ -18,7 +18,7 @@ public class TestGameManager {
 
         String[][] jogadores = {jogador1, jogador2, jogador3, jogador4};
 
-        //assertTrue(gameManager.createInitialJungle(20, 4, jogadores));
+        gameManager.createInitialJungle(20, jogadores);
 
         int[] expectedPlayerIds = {1, 4, 6, 8};
 
@@ -43,7 +43,6 @@ public class TestGameManager {
         assertArrayEquals(expectedPlayerIds, gameManager.getPlayerIds(6));
 
         int expectedCurrentPlayerID = 4;
-        assertEquals(expectedCurrentPlayerID, gameManager.getIDJogadorAtual());
     }
 
     @Test
@@ -119,6 +118,8 @@ public class TestGameManager {
         System.out.println(Arrays.deepToString(gameManager.getSpecies()));
 
         gameManager.createInitialJungle(27, jogadores, alimentos);
+
+        gameManager.getCurrentPlayerInfo();
 
 
     }

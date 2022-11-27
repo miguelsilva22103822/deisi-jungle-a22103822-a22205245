@@ -7,11 +7,11 @@ import java.util.*;
 import java.util.List;
 
 public class GameManager {
-    HashMap<String, Especie> especies;
-    Mapa mapa;
-    HashMap<Integer, Jogador> jogadores;
-    int[] iDsJogadores;
-    int indiceJogadorAtual;
+    private HashMap<String, Especie> especies;
+    private Mapa mapa;
+    private HashMap<Integer, Jogador> jogadores;
+    private int[] iDsJogadores;
+    private int indiceJogadorAtual;
 
     public GameManager() {
         this.jogadores = new HashMap<>();
@@ -68,8 +68,6 @@ public class GameManager {
 
         for (String[] player : playersInfo) {
             Jogador tempJogador = new Jogador(Integer.parseInt(player[0]), player[1], player[2]);
-            //ainda não sei se a energia vai ficar no jogdador ou na especie, se ficar no jogador
-            //vai ser preciso dar set à energia inicial aqui com base na energia inicial da espécie
             jogadores.put(tempJogador.getID(), tempJogador);
         }
 
@@ -144,21 +142,22 @@ public class GameManager {
         if (!bypassValidations) {
             if (nrSquares < -6 || nrSquares > 6) {
                 updateCurrentPlayer();
-                //return false;
+                return new MovementResult(MovementResultCode.INVALID_MOVEMENT,
+                        "nrSquares ultrapassa intervalo válido.");
             }
         }
 
         if (jogadores.get(getIDJogadorAtual()).getEnergia() < 2) {
             updateCurrentPlayer();
-            //return false;
+            return new MovementResult(MovementResultCode.NO_ENERGY, "Jogador não tem energia suficiente.");
         }
 
         movePlayer(nrSquares);
 
         updateCurrentPlayer();
-        //return true;
+        return new MovementResult(MovementResultCode.VALID_MOVEMENT, "Jogador movido.");
 
-        return new MovementResult(MovementResultCode.CAUGHT_FOOD, "batata");
+
     }
 
     public String[] getWinnerInfo() {
@@ -241,7 +240,7 @@ public class GameManager {
     }
 
     //funções auxiliares------------------------------------------------------------------
-    public boolean validarPlayersInfo(String[][] playersInfo) {
+    private boolean validarPlayersInfo(String[][] playersInfo) {
 
         if(playersInfo.length < 2 || playersInfo.length > 4) {
             return false;
@@ -291,7 +290,7 @@ public class GameManager {
         return true;
     }
 
-    public boolean validarfoodsInfo(String[][] foodInfo, int jungleSize) {
+    private boolean validarfoodsInfo(String[][] foodInfo, int jungleSize) {
 
         if (foodInfo == null){
             return true;
@@ -312,7 +311,7 @@ public class GameManager {
         return true;
     }
 
-    public ArrayList<String> foodToArrayList(String[][] foods) {
+    private ArrayList<String> foodToArrayList(String[][] foods) {
 
         ArrayList<String> foodArrayList = new ArrayList<>();
 
@@ -327,7 +326,7 @@ public class GameManager {
         return foodArrayList;
     }
 
-    public ArrayList<String> speciesToArrayList(String[][] species) {
+    private ArrayList<String> speciesToArrayList(String[][] species) {
 
         ArrayList<String> speciesArrayList = new ArrayList<>();
 
@@ -342,7 +341,7 @@ public class GameManager {
         return speciesArrayList;
     }
 
-    public boolean isStringNumeric(String string) {
+    private boolean isStringNumeric(String string) {
 
         if (string == null) {
             return false;
@@ -359,7 +358,7 @@ public class GameManager {
         return true;
     }
 
-    public void saveIDsJogadores() {
+    private void saveIDsJogadores() {
         iDsJogadores = new int[jogadores.size()];
 
         int i = 0;
@@ -370,14 +369,14 @@ public class GameManager {
         Arrays.sort(iDsJogadores);
     }
 
-    public void updateCurrentPlayer() {
+    private void updateCurrentPlayer() {
         indiceJogadorAtual++;
         if (indiceJogadorAtual >= iDsJogadores.length) {
             indiceJogadorAtual = 0;
         }
     }
 
-    public void movePlayer(int nrSquares) {
+    private void movePlayer(int nrSquares) {
         int nrCasaAtual = mapa.findNrCasaContaining(getIDJogadorAtual());
 
         mapa.removeJogadorFromCasa(getIDJogadorAtual(), nrCasaAtual);
@@ -395,11 +394,11 @@ public class GameManager {
         mapa.addPlayerToCasa(getIDJogadorAtual(), casaDestino);
     }
 
-    public int getIDJogadorAtual() {
+    private int getIDJogadorAtual() {
         return iDsJogadores[indiceJogadorAtual];
     }
 
-    public boolean todosSemEnergia() {
+    private boolean todosSemEnergia() {
         for (Jogador jogador : jogadores.values()) {
             if (jogador.getEnergia() >= 2){
                 return false;

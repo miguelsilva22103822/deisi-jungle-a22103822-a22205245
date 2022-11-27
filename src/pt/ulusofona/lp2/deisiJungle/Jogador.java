@@ -6,7 +6,7 @@ import java.util.Arrays;
 class Jogador {
     private final int id;
     private final String nome;
-    private String idEspecie;
+    private final String idEspecie;
     private Especie especie;
     private int energia;
 
@@ -14,14 +14,14 @@ class Jogador {
         this.id = id;
         this.nome = nome;
         this.idEspecie = idEspecie;
-    }
 
-    public void updateEspecie(Especie especie) {
-        this.especie = especie;
-    }
-
-    public void setEspecie(String idEspecie) {
-        this.idEspecie = idEspecie;
+        switch (this.idEspecie) {
+            case "E" -> especie = new Elefante();
+            case "L" -> especie = new Leao();
+            case "T" -> especie = new Tartaruga();
+            case "P" -> especie = new Passaro();
+            case "Z" -> especie = new Tarzan();
+        }
     }
 
     public int getID() {
