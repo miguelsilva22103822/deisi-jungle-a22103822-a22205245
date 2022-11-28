@@ -131,4 +131,28 @@ public class TestGameManager {
 
 
     }
+
+    @Test
+    public void testMoveCurrentPlayer2() {
+        GameManager gameManager = new GameManager();
+
+        String[] jogador1 = {"1", "João", "E"};
+        String[] jogador2 = {"3", "Manuel", "T"};
+        String[] jogador3 = {"5", "Pedro", "Z"};
+        String[] jogador4 = {"2", "Maria", "P"};
+
+        String[] alimento1 = {"b", "1" };
+        String[] alimento2 = {"a", "4" };
+        String[] alimento3 = {"c", "2" };
+        String[] alimento4 = {"e", "6" };
+        String[] alimento5 = {"m", "3" };
+
+        String[][] jogadores = {jogador1, jogador2, jogador3};
+        String[][] alimentos = {alimento1, alimento2, alimento3, alimento4, alimento5};
+
+        gameManager.createInitialJungle(20, jogadores, alimentos);
+
+        System.out.println(gameManager.moveCurrentPlayer(8, true).message());
+
+    }
 }
