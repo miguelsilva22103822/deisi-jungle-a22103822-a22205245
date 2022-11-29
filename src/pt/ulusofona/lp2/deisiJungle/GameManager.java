@@ -176,6 +176,7 @@ public class GameManager {
             //return jogadores.get(mapa.getCasa(mapa.getNrCasas()).jogadorIDMenor()).getInfo();
         }
 
+        /*
         if (todosSemEnergia()){
             for (int i = mapa.getNrCasas() - 1; i >= 1 ; i--){
                 if (mapa.nrJogadoresInCasa(i) > 0 ) {
@@ -183,6 +184,7 @@ public class GameManager {
                 }
             }
         }
+        */
         return null;
     }
 
