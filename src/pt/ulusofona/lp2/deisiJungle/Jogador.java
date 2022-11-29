@@ -75,7 +75,7 @@ class Jogador {
             return true;
         }
 
-        if (energia > nrPositions * especie.getConsumoEnergia()) {
+        if (energia >= nrPositions * especie.getConsumoEnergia()) {
             return true;
         }
 
