@@ -53,6 +53,7 @@ public class GameManager {
     }
 
     public InitializationError createInitialJungle(int jungleSize, String[][] playersInfo, String[][] foodsInfo) {
+
         if(!validarPlayersInfo(playersInfo)) {
             return new InitializationError("playersInfo inválido");
         }
@@ -145,9 +146,7 @@ public class GameManager {
         if (!bypassValidations) {
             if (nrSquares < -6 || nrSquares > 6) {
                 updateCurrentPlayer();
-                return new MovementResult(MovementResultCode.INVALID_MOVEMENT,
-                        "nrSquares ultrapassa intervalo válido.");
-
+                return new MovementResult(MovementResultCode.INVALID_MOVEMENT, null);
             }
         }
         /*
@@ -334,6 +333,10 @@ public class GameManager {
 
         for (String[] food : foodInfo) {
             if (!(idAlimentos.contains(food[0]))) {
+                return false;
+            }
+
+            if(isStringNumeric(food[1])){
                 return false;
             }
 

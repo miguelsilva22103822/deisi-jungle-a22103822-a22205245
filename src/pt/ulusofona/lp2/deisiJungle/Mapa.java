@@ -86,7 +86,7 @@ class Mapa {
     }
 
     public int getCalculoEnergia (int nrCasa, int energia , String dieta, int quantidadeComeu, int numJogada){
-        return casas.get(nrCasa).getEnergiaCalculada(energia, dieta, quantidadeComeu, numJogada);
+        return casas.get(cIndex(nrCasa)).getEnergiaCalculada(energia, dieta, quantidadeComeu, numJogada);
     }
 
 }

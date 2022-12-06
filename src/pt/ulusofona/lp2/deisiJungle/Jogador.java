@@ -46,7 +46,7 @@ class Jogador {
     public String[] getInfoEnergy(int nrPositions) {
         String[] info = new String[2];
 
-        info[0] = String.valueOf(nrPositions * especie.getConsumoEnergia());
+        info[0] = String.valueOf(Math.abs(nrPositions) * especie.getConsumoEnergia());
         info[1] = String.valueOf(especie.getEnergiaDescanso());
 
         return info;
