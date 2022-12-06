@@ -88,7 +88,7 @@ class Jogador {
             energia += especie.getEnergiaDescanso();
         }
         else {
-            energia -= nrPositions * especie.getConsumoEnergia();
+            energia -= Math.abs(nrPositions) * especie.getConsumoEnergia();
         }
     }
 
