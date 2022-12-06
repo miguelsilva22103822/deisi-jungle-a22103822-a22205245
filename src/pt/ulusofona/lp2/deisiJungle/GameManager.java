@@ -146,7 +146,7 @@ public class GameManager {
         if (!bypassValidations) {
             if (nrSquares < -6 || nrSquares > 6) {
                 updateCurrentPlayer();
-                return new MovementResult(MovementResultCode.INVALID_MOVEMENT, "null");
+                return new MovementResult(MovementResultCode.INVALID_MOVEMENT, null);
             }
         }
         /*
