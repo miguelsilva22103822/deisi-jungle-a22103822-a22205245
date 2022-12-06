@@ -17,4 +17,26 @@ class Agua extends Alimento {
     public String getToolTip() {
         return toolTip;
     }
+
+    @Override
+    public int calcularEnergia(int energia, String dieta,int quantidadeComeu, int numJogada) {
+
+        if (dieta.equals("h")){
+            return energia + 15;
+        }
+
+        if (dieta.equals("o")){
+            return (int)(energia + (0.2 * energia));
+        }
+
+        if (dieta.equals("c")){
+            return energia + 15;
+        }
+
+        return -1;
+    }
+
+    @Override
+    public void estragarCarne(int numJogada) {}
+
 }

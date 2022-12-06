@@ -10,6 +10,11 @@ class Elefante extends Especie {
         super("E", "Elefante", "elephant.png");
     }
 
+    @Override
+    public String getDieta() {
+        return "h";
+    }
+
     public int getEnergiaInicial() {
         return energiaInicial;
     }

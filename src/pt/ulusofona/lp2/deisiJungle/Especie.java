@@ -37,6 +37,7 @@ abstract class Especie {
         return info;
     }
 
+    abstract public String getDieta();
 
     abstract public int getEnergiaInicial();
 

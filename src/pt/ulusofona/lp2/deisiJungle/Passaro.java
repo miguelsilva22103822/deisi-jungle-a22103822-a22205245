@@ -10,6 +10,11 @@ class Passaro extends Especie {
         super("P", "Pássaro", "bird.png");
     }
 
+    @Override
+    public String getDieta() {
+        return "o";
+    }
+
     public int getEnergiaInicial() {
         return energiaInicial;
     }

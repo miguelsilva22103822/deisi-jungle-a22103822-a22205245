@@ -11,6 +11,7 @@ class Casa {
 
     public Casa() {
         this.iDsJogadores = new ArrayList<>();
+
     }
 
     public boolean addJogador(int id) {
@@ -40,6 +41,10 @@ class Casa {
         }
 
         return true;
+    }
+
+    public int getEnergiaCalculada(int energia , String dieta, int quantidadeComeu, int numJogada) {
+        return alimento.calcularEnergia(energia, dieta, quantidadeComeu, numJogada);
     }
 
     public String getIDAlimento() {
@@ -83,10 +88,18 @@ class Casa {
         if (isMeta) {
             info[0] = "finish.png";
             info[1] = "Meta";
-        } else {
+
+        } else if ( alimento != null ) {
+
+            info[0] = alimento.getImagem();
+            info[1] = alimento.getNome();
+
+        }
+        else {
             info[0] = "blank.png";
             info[1] = "Vazio";
         }
+
         info[2] = iDsJogadoresString.toString();
 
         return info;
@@ -157,4 +170,5 @@ class Casa {
     public void sortIDs() {
         Collections.sort(iDsJogadores);
     }
+
 }

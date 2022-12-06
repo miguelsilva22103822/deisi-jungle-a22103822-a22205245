@@ -36,5 +36,8 @@ abstract class Alimento {
 
     abstract public String getToolTip();
 
+    abstract public int calcularEnergia(int energia , String dieta, int quantidadeComeu, int numJogada);
+
+    abstract public void estragarCarne (int numJogada);
 
 }

@@ -1,5 +1,6 @@
 package pt.ulusofona.lp2.deisiJungle;
 
+import javax.sound.midi.MidiFileFormat;
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
@@ -12,6 +13,7 @@ public class GameManager {
     private HashMap<Integer, Jogador> jogadores;
     private int[] iDsJogadores;
     private int indiceJogadorAtual;
+    private int numJogadas;
 
     public GameManager() {
         this.jogadores = new HashMap<>();
@@ -27,6 +29,7 @@ public class GameManager {
     }
 
     //funções obrigatórias--------------------------------------------------------------
+
     public String[][] getSpecies() {
 
         String[] elefante = new Elefante().getInfo();
@@ -147,7 +150,6 @@ public class GameManager {
 
             }
         }
-
         /*
         if (!jogadores.get(getIDJogadorAtual()).movementIsValid(nrSquares)) {
             updateCurrentPlayer();
@@ -160,12 +162,32 @@ public class GameManager {
             return new MovementResult(MovementResultCode.NO_ENERGY, "Jogador não tem energia suficiente.");
         }
 
+        int nrCasaAtual = mapa.findNrCasaContaining(getIDJogadorAtual());
 
-        movePlayerAndUpdateEnergy(nrSquares);
+        mapa.removeJogadorFromCasa(getIDJogadorAtual(), nrCasaAtual);
+
+        int casaDestino = nrCasaAtual + nrSquares;
+
+        if (casaDestino > mapa.getNrCasas()) {
+            casaDestino = mapa.getNrCasas();
+        }
+
+        if (casaDestino < 0) {
+            casaDestino = 1;
+        }
+
+        jogadores.get(getIDJogadorAtual()).updateEnergyMovement(nrSquares);
+
+        mapa.addPlayerToCasa(getIDJogadorAtual(), casaDestino);
+
+        if (mapa.getIdAlimentoCasa(casaDestino) != null) {
+            jogadores.get(getIDJogadorAtual()).setEnergia(mapa.getCalculoEnergia(
+                    casaDestino,jogadores.get(casaDestino).getEnergia(),jogadores.get(casaDestino).getDieta(),
+                    jogadores.get(casaDestino).getQuantidadeComeu(),numJogadas));
+        }
 
         updateCurrentPlayer();
         return new MovementResult(MovementResultCode.VALID_MOVEMENT, "Jogador movido.");
-
 
     }
 
@@ -251,6 +273,7 @@ public class GameManager {
     }
 
     //funções auxiliares------------------------------------------------------------------
+
     private boolean validarPlayersInfo(String[][] playersInfo) {
 
         if(playersInfo.length < 2 || playersInfo.length > 4) {
@@ -385,31 +408,6 @@ public class GameManager {
         if (indiceJogadorAtual >= iDsJogadores.length) {
             indiceJogadorAtual = 0;
         }
-    }
-
-    private void movePlayerAndUpdateEnergy(int nrSquares) {
-        int nrCasaAtual = mapa.findNrCasaContaining(getIDJogadorAtual());
-
-        mapa.removeJogadorFromCasa(getIDJogadorAtual(), nrCasaAtual);
-
-        int casaDestino = nrCasaAtual + nrSquares;
-
-        if (casaDestino > mapa.getNrCasas()) {
-            casaDestino = mapa.getNrCasas();
-        }
-
-        if (casaDestino < 0) {
-            casaDestino = 1;
-        }
-
-        jogadores.get(getIDJogadorAtual()).updateEnergyMovement(nrSquares);
-
-        if (mapa.getIdAlimentoCasa(casaDestino) != null) {
-            jogadores.get(getIDJogadorAtual()).eat(mapa.getIdAlimentoCasa(casaDestino));
-        }
-
-
-        mapa.addPlayerToCasa(getIDJogadorAtual(), casaDestino);
     }
 
     private int getIDJogadorAtual() {

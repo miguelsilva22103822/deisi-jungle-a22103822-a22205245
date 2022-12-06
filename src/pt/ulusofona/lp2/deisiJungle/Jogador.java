@@ -9,6 +9,7 @@ class Jogador {
     private final String idEspecie;
     private Especie especie;
     private int energia;
+    private int quantidadeComeu;
 
     public Jogador(int id, String nome, String idEspecie) {
         this.id = id;
@@ -99,8 +100,15 @@ class Jogador {
         return idEspecie;
     }
 
-    public void eat(String iDAlimento) {
-        //dependendo da especie tem efeitos diferentes
-        //provavelmente a parte mais complicada desta fase do projeto
+    public void setEnergia(int energia) {
+        this.energia = energia;
+    }
+
+    public String getDieta () {
+        return especie.getDieta();
+    }
+
+    public int getQuantidadeComeu() {
+        return quantidadeComeu;
     }
 }

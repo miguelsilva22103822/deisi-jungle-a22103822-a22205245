@@ -10,6 +10,11 @@ class Tarzan extends Especie {
         super("Z", "Tarzan","tarzan.png");
     }
 
+    @Override
+    public String getDieta() {
+        return "o";
+    }
+
     public int getEnergiaInicial() {
         return energiaInicial;
     }

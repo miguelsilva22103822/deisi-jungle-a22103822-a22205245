@@ -10,6 +10,11 @@ class Tartaruga extends Especie {
         super("T", "Tartaruga", "turtle.png");
     }
 
+    @Override
+    public String getDieta() {
+        return "o";
+    }
+
     public int getEnergiaInicial() {
         return energiaInicial;
     }

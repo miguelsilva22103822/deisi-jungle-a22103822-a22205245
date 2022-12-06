@@ -10,6 +10,11 @@ class Leao extends Especie {
         super("L", "Leão", "lion.png");
     }
 
+    @Override
+    public String getDieta() {
+        return "c";
+    }
+
     public int getEnergiaInicial() {
         return energiaInicial;
     }
@@ -25,4 +30,6 @@ class Leao extends Especie {
     public String getVelocidade() {
         return velocidade;
     }
+
+    
 }
