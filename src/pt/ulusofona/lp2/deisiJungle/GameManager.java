@@ -146,7 +146,7 @@ public class GameManager {
         if (!bypassValidations) {
             if (nrSquares < -6 || nrSquares > 6) {
                 updateCurrentPlayer();
-                return null;
+                return new MovementResult(MovementResultCode.INVALID_MOVEMENT, "null");
             }
         }
         /*
@@ -340,7 +340,7 @@ public class GameManager {
                 return false;
             }
 
-            if (Integer.parseInt(food[1]) >= jungleSize || Integer.parseInt(food[1]) <= 0) {
+            if (Integer.parseInt(food[1]) >= jungleSize || Integer.parseInt(food[1]) <= 1) {
                 return false;
             }
         }
