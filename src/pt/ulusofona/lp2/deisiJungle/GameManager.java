@@ -97,6 +97,7 @@ public class GameManager {
     }
 
     public String[] getSquareInfo(int squareNr) {
+
         if (mapa == null) {
             return null;
         }
@@ -109,6 +110,7 @@ public class GameManager {
     }
 
     public String[] getPlayerInfo(int playerId) {
+
         if (!(jogadores.containsKey(playerId))) {
             return null;
         }
@@ -117,6 +119,7 @@ public class GameManager {
     }
 
     public String[] getCurrentPlayerInfo() {
+
         int iDJogadorAtual = iDsJogadores[indiceJogadorAtual];
 
         return jogadores.get(iDJogadorAtual).getInfo();
@@ -143,6 +146,7 @@ public class GameManager {
     }
 
     public MovementResult moveCurrentPlayer(int nrSquares, boolean bypassValidations) {
+
         if (!bypassValidations) {
             if (nrSquares < -6 || nrSquares > 6) {
                 updateCurrentPlayer();
@@ -208,6 +212,7 @@ public class GameManager {
     }
 
     public ArrayList<String> getGameResults() {
+
         ArrayList <String> listaResultados = new ArrayList<>();
         ArrayList <Integer> iDsOrdenados = new ArrayList<>();
 
