@@ -171,4 +171,7 @@ class Casa {
         Collections.sort(iDsJogadores);
     }
 
+    public Alimento getAlimento () {
+        return alimento;
+    }
 }

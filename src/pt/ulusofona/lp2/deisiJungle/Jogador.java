@@ -9,7 +9,7 @@ class Jogador {
     private final String idEspecie;
     private Especie especie;
     private int energia;
-    private int quantidadeComeu;
+    private int quantidadeBananasComeu;
 
     public Jogador(int id, String nome, String idEspecie) {
         this.id = id;
@@ -100,15 +100,19 @@ class Jogador {
         return idEspecie;
     }
 
-    public void setEnergia(int energia) {
-        this.energia = energia;
-    }
-
     public String getDieta () {
         return especie.getDieta();
     }
 
-    public int getQuantidadeComeu() {
-        return quantidadeComeu;
+    public void comer (Alimento alimento, int numJogada) {
+
+        energia  = alimento.calcularEnergia(energia, getDieta(), quantidadeBananasComeu, numJogada);
+
+        if (alimento.getId().equals("b")) {
+            quantidadeBananasComeu++;
+        }
+
     }
+
+
 }

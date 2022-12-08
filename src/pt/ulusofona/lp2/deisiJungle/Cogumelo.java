@@ -5,13 +5,15 @@ import java.util.Random;
 
 class Cogumelo extends Alimento {
     private final String toolTip = "Cogumelo Magico: +- <N>% energia";
+    private int numGerado;
 
     public Cogumelo() {
         super("m", "Cogumelo","mushroom.png");
-    }
 
-    public Cogumelo(String id, String nome, String imagem) {
-        super(id, nome, imagem);
+        Random numeroAleatorio = new Random();
+        int numEscolhido = numeroAleatorio.nextInt(10,50);
+
+        numGerado = numEscolhido;
     }
 
     @Override
@@ -26,14 +28,11 @@ class Cogumelo extends Alimento {
             return -1;
         }
 
-        Random numeroAleatorio = new Random();
-        int numEscolhido = numeroAleatorio.nextInt(10,49);
-
         if (numJogada % 2 == 0) {
-            return energia + (numEscolhido * energia);
+            return energia + ((numGerado / 100) * energia);
         }
 
-        return energia - (numEscolhido * energia);
+        return energia - ((numGerado / 100) * energia);
     }
 
     @Override

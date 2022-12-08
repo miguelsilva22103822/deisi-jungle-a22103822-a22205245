@@ -182,9 +182,10 @@ public class GameManager {
         mapa.addPlayerToCasa(getIDJogadorAtual(), casaDestino);
 
         if (mapa.getIdAlimentoCasa(casaDestino) != null) {
-            jogadores.get(getIDJogadorAtual()).setEnergia(mapa.getCalculoEnergia(
-                    casaDestino,jogadores.get(casaDestino).getEnergia(),jogadores.get(casaDestino).getDieta(),
-                    jogadores.get(casaDestino).getQuantidadeComeu(),numJogadas));
+            jogadores.get(getIDJogadorAtual()).comer(mapa.getAlimentoCasa(casaDestino),numJogadas);
+            
+            updateCurrentPlayer();
+            return new MovementResult(MovementResultCode.CAUGHT_FOOD,"Jogador movido e comeu");
         }
 
         updateCurrentPlayer();
