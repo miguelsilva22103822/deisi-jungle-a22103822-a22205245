@@ -148,13 +148,11 @@ public class GameManager {
                 updateCurrentPlayer();
                 return new MovementResult(MovementResultCode.INVALID_MOVEMENT, null);
             }
+            if (!jogadores.get(getIDJogadorAtual()).movementIsValid(nrSquares)) {
+                updateCurrentPlayer();
+                return new MovementResult(MovementResultCode.INVALID_MOVEMENT, null);
+            }
         }
-        /*
-        if (!jogadores.get(getIDJogadorAtual()).movementIsValid(nrSquares)) {
-            updateCurrentPlayer();
-            return new MovementResult(MovementResultCode.INVALID_MOVEMENT, "Especie não permite movimento");
-        }
-        */
 
         if (!jogadores.get(getIDJogadorAtual()).hasEnergy(nrSquares)) {
             updateCurrentPlayer();

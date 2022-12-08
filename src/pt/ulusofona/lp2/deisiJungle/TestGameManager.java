@@ -183,6 +183,6 @@ public class TestGameManager {
         System.out.println(gameManager.moveCurrentPlayer(-5,true));
         System.out.println(Arrays.deepToString(gameManager.getPlayersInfo()));
 
-
     }
+
 }
