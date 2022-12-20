@@ -13,7 +13,7 @@ public class GameManager {
     private HashMap<Integer, Jogador> jogadores;
     private int[] iDsJogadores;
     private int indiceJogadorAtual;
-    private int numJogadas;
+    private int numJogada = 1;
 
     public GameManager() {
         this.jogadores = new HashMap<>();
@@ -106,7 +106,9 @@ public class GameManager {
             return null;
         }
 
-        return mapa.getSquareInfo(squareNr);
+
+
+        return mapa.getSquareInfo(squareNr,numJogada);
     }
 
     public String[] getPlayerInfo(int playerId) {
@@ -182,7 +184,7 @@ public class GameManager {
         mapa.addPlayerToCasa(getIDJogadorAtual(), casaDestino);
 
         if (mapa.getIdAlimentoCasa(casaDestino) != null) {
-            jogadores.get(getIDJogadorAtual()).comer(mapa.getAlimentoCasa(casaDestino),numJogadas);
+            jogadores.get(getIDJogadorAtual()).comer(mapa.getAlimentoCasa(casaDestino),numJogada);
 
             updateCurrentPlayer();
 

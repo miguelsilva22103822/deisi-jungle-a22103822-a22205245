@@ -1,6 +1,5 @@
 package pt.ulusofona.lp2.deisiJungle;
 
-import java.awt.image.BufferedImage;
 import java.util.Random;
 
 class Cogumelo extends Alimento {
@@ -17,7 +16,7 @@ class Cogumelo extends Alimento {
     }
 
     @Override
-    public String getToolTip() {
+    public String getToolTip(int numJogada) {
         return "Cogumelo Magico: +- " + numGerado + "% energia";
     }
 
@@ -29,10 +28,10 @@ class Cogumelo extends Alimento {
         }
 
         if (numJogada % 2 == 0) {
-            return energia + ((numGerado / 100) * energia);
+            return (energia + ((numGerado / 100) * energia));
         }
 
-        return energia - ((numGerado / 100) * energia);
+        return (energia - ((numGerado / 100) * energia));
     }
 
     @Override

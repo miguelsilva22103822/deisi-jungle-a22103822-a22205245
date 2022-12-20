@@ -1,7 +1,5 @@
 package pt.ulusofona.lp2.deisiJungle;
 
-import java.awt.image.BufferedImage;
-
 class Carne extends Alimento {
 
     boolean carneEstragada = false;
@@ -12,8 +10,8 @@ class Carne extends Alimento {
 
 
     @Override
-    public String getToolTip() {
-        return "Carne : + 50 energia : 0 jogadas";
+    public String getToolTip(int numJogada) {
+        return "Carne : + 50 energia : " + numJogada + " jogadas";
     }
 
 

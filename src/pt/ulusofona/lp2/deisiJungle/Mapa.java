@@ -43,8 +43,8 @@ class Mapa {
         return casas.get(cIndex(nrCasa)).getIDsJogadores();
     }
 
-    public String[] getSquareInfo(int nrCasa) {
-        return casas.get(cIndex(nrCasa)).getInfo();
+    public String[] getSquareInfo(int nrCasa, int numJogada) {
+        return casas.get(cIndex(nrCasa)).getInfo(numJogada);
     }
 
     public void removeJogadorFromCasa(int idJogador, int nrCasa) {

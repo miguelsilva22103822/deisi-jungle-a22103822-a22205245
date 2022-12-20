@@ -68,7 +68,7 @@ class Casa {
         return arrayListToArray(iDsJogadores);
     }
 
-    public String[] getInfo() {
+    public String[] getInfo(int numJogada) {
 
         int[] iDsJogadores = getIDsJogadores();
         StringBuilder iDsJogadoresString = new StringBuilder();
@@ -92,7 +92,7 @@ class Casa {
         } else if ( alimento != null ) {
 
             info[0] = alimento.getImagem();
-            info[1] = alimento.getToolTip();
+            info[1] = alimento.getToolTip(numJogada);
 
         }
         else {

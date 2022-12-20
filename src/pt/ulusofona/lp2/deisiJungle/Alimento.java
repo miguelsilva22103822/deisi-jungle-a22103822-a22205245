@@ -34,10 +34,12 @@ abstract class Alimento {
         return info;
     }
 
-    abstract public String getToolTip();
+    abstract public String getToolTip(int numJogada);
 
     abstract public int calcularEnergia(int energia , String dieta, int quantidadeComeu, int numJogada);
 
     abstract public void estragarCarne (int numJogada);
+
+
 
 }

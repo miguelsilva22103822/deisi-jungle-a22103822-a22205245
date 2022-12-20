@@ -1,7 +1,5 @@
 package pt.ulusofona.lp2.deisiJungle;
 
-import java.awt.image.BufferedImage;
-
 class Agua extends Alimento {
 
     public Agua() {
@@ -10,7 +8,7 @@ class Agua extends Alimento {
 
 
     @Override
-    public String getToolTip() {
+    public String getToolTip(int numJogada) {
         return "Agua : + 15U|20% energia";
     }
 

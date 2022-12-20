@@ -1,7 +1,5 @@
 package pt.ulusofona.lp2.deisiJungle;
 
-import java.awt.image.BufferedImage;
-
 class CachoBananas extends Alimento {
 
     private int  quantidadeBananas = 3;
@@ -12,7 +10,7 @@ class CachoBananas extends Alimento {
 
 
     @Override
-    public String getToolTip() {
+    public String getToolTip(int numJogada) {
 
         return "Bananas : " + quantidadeBananas + " : + 40";
     }
