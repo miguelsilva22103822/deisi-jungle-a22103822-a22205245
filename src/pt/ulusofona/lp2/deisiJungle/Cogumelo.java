@@ -34,8 +34,4 @@ class Cogumelo extends Alimento {
 
     }
 
-    @Override
-    public void estragarCarne(int numJogada) {
-    }
-
 }

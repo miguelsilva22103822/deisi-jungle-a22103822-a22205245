@@ -36,8 +36,4 @@ class CachoBananas extends Alimento {
 
     }
 
-    @Override
-    public void estragarCarne(int numJogada) {}
-
-
 }

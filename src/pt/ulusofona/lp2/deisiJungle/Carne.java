@@ -11,17 +11,12 @@ class Carne extends Alimento {
 
     @Override
     public String getToolTip(int numJogada) {
+        if (numJogada > 12 ) {
+            return "Carne toxica";
+        }
         return "Carne : + 50 energia : " + numJogada + " jogadas";
     }
 
-
-    @Override
-    public void estragarCarne(int numJogada) {
-        if (numJogada > 12 ){
-            //toolTip = "Carne toxica";
-            carneEstragada = true;
-        }
-    }
 
     @Override
     public int calcularEnergia(int energia, String dieta, int quantidadeComeu, int numJogada) {

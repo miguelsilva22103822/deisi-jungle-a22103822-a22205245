@@ -30,7 +30,6 @@ class Agua extends Alimento {
         return -1;
     }
 
-    @Override
-    public void estragarCarne(int numJogada) {}
+
 
 }
