@@ -12,7 +12,7 @@ class CachoBananas extends Alimento {
     @Override
     public String getToolTip(int numJogada) {
 
-        return "Bananas : " + quantidadeBananas + " : + 40";
+        return "Bananas : " + quantidadeBananas + " : + 40 energia";
     }
 
     @Override

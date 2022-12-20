@@ -1,6 +1,5 @@
 package pt.ulusofona.lp2.deisiJungle;
 
-import javax.sound.midi.MidiFileFormat;
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
@@ -13,7 +12,7 @@ public class GameManager {
     private HashMap<Integer, Jogador> jogadores;
     private int[] iDsJogadores;
     private int indiceJogadorAtual;
-    private int numJogada = 1;
+    private int numJogada;
 
     public GameManager() {
         this.jogadores = new HashMap<>();
@@ -151,17 +150,17 @@ public class GameManager {
 
         if (!bypassValidations) {
             if (nrSquares < -6 || nrSquares > 6) {
-                updateCurrentPlayer();
+                updateJogada();
                 return new MovementResult(MovementResultCode.INVALID_MOVEMENT, null);
             }
             if (!jogadores.get(getIDJogadorAtual()).movementIsValid(nrSquares)) {
-                updateCurrentPlayer();
+                updateJogada();
                 return new MovementResult(MovementResultCode.INVALID_MOVEMENT, null);
             }
         }
 
         if (!jogadores.get(getIDJogadorAtual()).hasEnergy(nrSquares)) {
-            updateCurrentPlayer();
+            updateJogada();
             return new MovementResult(MovementResultCode.NO_ENERGY, "Jogador não tem energia suficiente.");
         }
 
@@ -186,13 +185,13 @@ public class GameManager {
         if (mapa.getIdAlimentoCasa(casaDestino) != null) {
             jogadores.get(getIDJogadorAtual()).comer(mapa.getAlimentoCasa(casaDestino),numJogada);
 
-            updateCurrentPlayer();
+            updateJogada();
 
             return new MovementResult(MovementResultCode.CAUGHT_FOOD,"Apanhou " +
                     mapa.getAlimentoCasa(casaDestino).getNome());
         }
 
-        updateCurrentPlayer();
+        updateJogada();
         return new MovementResult(MovementResultCode.VALID_MOVEMENT, null);
 
     }
@@ -414,11 +413,12 @@ public class GameManager {
         Arrays.sort(iDsJogadores);
     }
 
-    private void updateCurrentPlayer() {
+    private void updateJogada () {
         indiceJogadorAtual++;
         if (indiceJogadorAtual >= iDsJogadores.length) {
             indiceJogadorAtual = 0;
         }
+        numJogada++;
     }
 
     private int getIDJogadorAtual() {
