@@ -9,9 +9,6 @@ class Erva extends Alimento {
         super("e", "Erva", "grass.png");
     }
 
-    public Erva(String id, String nome, String imagem) {
-        super(id, nome, imagem);
-    }
 
     @Override
     public String getToolTip() {
