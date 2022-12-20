@@ -40,6 +40,4 @@ abstract class Alimento {
 
     abstract public void estragarCarne (int numJogada);
 
-
-
 }

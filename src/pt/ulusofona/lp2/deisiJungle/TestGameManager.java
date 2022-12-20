@@ -161,7 +161,7 @@ public class TestGameManager {
         String[] alimento2 = {"a", "4" };
         String[] alimento3 = {"c", "2" };
         String[] alimento4 = {"e", "6" };
-        String[] alimento5 = {"m", "3" };
+        String[] alimento5 = {"m", "5" };
 
         String[][] jogadores = {jogador1, jogador2, jogador3, jogador4};
         String[][] alimentos = {alimento1, alimento2, alimento3, alimento4, alimento5};
@@ -171,7 +171,7 @@ public class TestGameManager {
         gameManager.createInitialJungle(20, jogadores, alimentos);
 
         System.out.println(Arrays.deepToString(gameManager.getPlayersInfo()));
-        gameManager.moveCurrentPlayer(2,true);
+        gameManager.moveCurrentPlayer(4,true);
 
         System.out.println(Arrays.deepToString(gameManager.getPlayersInfo()));
     }

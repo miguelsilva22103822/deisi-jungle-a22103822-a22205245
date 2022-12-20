@@ -105,8 +105,7 @@ class Jogador {
     }
 
     public void comer (Alimento alimento, int numJogada) {
-
-        this.energia  = alimento.calcularEnergia(energia, getDieta(), quantidadeBananasComeu, numJogada);
+        this.energia = alimento.calcularEnergia(energia, getDieta(), quantidadeBananasComeu, numJogada);
 
         if (alimento.getId().equals("b")) {
             quantidadeBananasComeu++;
