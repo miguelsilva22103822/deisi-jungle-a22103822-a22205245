@@ -183,13 +183,15 @@ public class GameManager {
 
         if (mapa.getIdAlimentoCasa(casaDestino) != null) {
             jogadores.get(getIDJogadorAtual()).comer(mapa.getAlimentoCasa(casaDestino),numJogadas);
-            
+
             updateCurrentPlayer();
-            return new MovementResult(MovementResultCode.CAUGHT_FOOD,"Jogador movido e comeu");
+
+            return new MovementResult(MovementResultCode.CAUGHT_FOOD,"Apanhou" +
+                    mapa.getAlimentoCasa(casaDestino).getNome());
         }
 
         updateCurrentPlayer();
-        return new MovementResult(MovementResultCode.VALID_MOVEMENT, "Jogador movido.");
+        return new MovementResult(MovementResultCode.VALID_MOVEMENT, null);
 
     }
 

@@ -7,12 +7,9 @@ class CachoBananas extends Alimento {
     private int  quantidadeBananas = 3;
 
     public CachoBananas() {
-        super("b", "CachoBananas", "bananas.png");
+        super("b", "Bananas", "bananas.png");
     }
 
-    public CachoBananas(String id, String nome, String imagem) {
-        super(id, nome, imagem);
-    }
 
     @Override
     public String getToolTip() {
