@@ -13,7 +13,7 @@ class Carne extends Alimento {
 
     @Override
     public String getToolTip() {
-        return "Carne : +- 50 energia : 0 jogadas";
+        return "Carne : + 50 energia : 0 jogadas";
     }
 
 

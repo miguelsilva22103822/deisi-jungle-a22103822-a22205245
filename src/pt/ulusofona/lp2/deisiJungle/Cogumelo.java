@@ -4,11 +4,11 @@ import java.awt.image.BufferedImage;
 import java.util.Random;
 
 class Cogumelo extends Alimento {
-    private final String toolTip = "Cogumelo Magico: +- <N>% energia";
+
     private int numGerado;
 
     public Cogumelo() {
-        super("m", "Cogumelo","mushroom.png");
+        super("m", "Cogumelo Magico","mushroom.png");
 
         Random numeroAleatorio = new Random();
         int numEscolhido = numeroAleatorio.nextInt(10,50);

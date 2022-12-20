@@ -14,7 +14,7 @@ class CachoBananas extends Alimento {
     @Override
     public String getToolTip() {
 
-        return "Bananas : " + quantidadeBananas + " : + 40 energia";
+        return "Bananas : " + quantidadeBananas + " : + 40";
     }
 
     @Override
