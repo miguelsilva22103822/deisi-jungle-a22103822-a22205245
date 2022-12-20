@@ -26,7 +26,7 @@ class Cogumelo extends Alimento {
             return -1;
         }
 
-        if (numJogada % 2 == 0) {
+        if (numJogada % 2 != 0) {
 
             return (int) Math.round(energia + (numGerado / 100.0) * energia);
         }
