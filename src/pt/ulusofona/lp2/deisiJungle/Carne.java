@@ -3,7 +3,7 @@ package pt.ulusofona.lp2.deisiJungle;
 import java.awt.image.BufferedImage;
 
 class Carne extends Alimento {
-    private String toolTip = "Carne : +- 50 energia : <N> jogadas";
+
     boolean carneEstragada = false;
 
     public Carne() {
@@ -13,14 +13,14 @@ class Carne extends Alimento {
 
     @Override
     public String getToolTip() {
-        return toolTip;
+        return "Carne : +- 50 energia : 0 jogadas";
     }
 
 
     @Override
     public void estragarCarne(int numJogada) {
         if (numJogada > 12 ){
-            toolTip = "Carne toxica";
+            //toolTip = "Carne toxica";
             carneEstragada = true;
         }
     }

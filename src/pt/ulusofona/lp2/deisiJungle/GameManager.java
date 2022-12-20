@@ -186,7 +186,7 @@ public class GameManager {
 
             updateCurrentPlayer();
 
-            return new MovementResult(MovementResultCode.CAUGHT_FOOD,"Apanhou" +
+            return new MovementResult(MovementResultCode.CAUGHT_FOOD,"Apanhou " +
                     mapa.getAlimentoCasa(casaDestino).getNome());
         }
 

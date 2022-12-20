@@ -3,7 +3,6 @@ package pt.ulusofona.lp2.deisiJungle;
 import java.awt.image.BufferedImage;
 
 class Erva extends Alimento {
-    private final String toolTip = "Erva : +- 20 energia";
 
     public Erva() {
         super("e", "Erva", "grass.png");
@@ -12,7 +11,7 @@ class Erva extends Alimento {
 
     @Override
     public String getToolTip() {
-        return toolTip;
+        return "Erva : +- 20 energia";
     }
 
     @Override
