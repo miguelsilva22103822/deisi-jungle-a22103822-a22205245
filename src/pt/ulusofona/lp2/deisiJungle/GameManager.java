@@ -182,8 +182,8 @@ public class GameManager {
 
         mapa.addPlayerToCasa(getIDJogadorAtual(), casaDestino);
 
-        if (mapa.getIdAlimentoCasa(casaDestino) != null && !(jogadores.get(getIDJogadorAtual()).getDieta().equals("h"))
-                && mapa.getAlimentoCasa(casaDestino).eCarne()) {
+        if (mapa.getIdAlimentoCasa(casaDestino) != null && !(jogadores.get(getIDJogadorAtual()).getDieta().equals("h")
+                && mapa.getAlimentoCasa(casaDestino).eCarne())) {
             jogadores.get(getIDJogadorAtual()).comer(mapa.getAlimentoCasa(casaDestino),numJogada);
 
             updateJogada();

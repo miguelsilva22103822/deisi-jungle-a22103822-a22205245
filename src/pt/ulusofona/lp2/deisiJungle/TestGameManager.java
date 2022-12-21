@@ -203,6 +203,7 @@ public class TestGameManager {
         System.out.println(Arrays.deepToString(gameManager.getPlayersInfo()));
 
         System.out.println(gameManager.moveCurrentPlayer(1, true));
+        System.out.println(gameManager.moveCurrentPlayer(1, true));
 
     }
 }
