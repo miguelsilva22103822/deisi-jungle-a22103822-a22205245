@@ -10,6 +10,11 @@ class Carne extends Alimento {
 
 
     @Override
+    public int getQuantidadeBananas() {
+        return 0;
+    }
+
+    @Override
     public String getToolTip(int numJogada) {
         if (numJogada > 12 ) {
             return "Carne toxica";

@@ -10,6 +10,11 @@ class CachoBananas extends Alimento {
 
 
     @Override
+    public int getQuantidadeBananas() {
+        return quantidadeBananas;
+    }
+
+    @Override
     public String getToolTip(int numJogada) {
 
         return "Bananas : " + quantidadeBananas + " : + 40 energia";

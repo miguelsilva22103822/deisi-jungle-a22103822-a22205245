@@ -10,6 +10,8 @@ class Jogador {
     private Especie especie;
     private int energia;
     private int quantidadeBananasComeu;
+    private int quantidadeComeu;
+    private int distanciaPercorrida;
 
     public Jogador(int id, String nome, String idEspecie) {
         this.id = id;
@@ -90,6 +92,8 @@ class Jogador {
         else {
             energia -= Math.abs(nrPositions) * especie.getConsumoEnergia();
         }
+
+        distanciaPercorrida += nrPositions;
     }
 
     public String getNome() {
@@ -105,13 +109,21 @@ class Jogador {
     }
 
     public void comer (Alimento alimento, int numJogada) {
-        this.energia = alimento.calcularEnergia(energia, getDieta(), quantidadeBananasComeu, numJogada);
 
-        if (alimento.getId().equals("b")) {
+        this.energia = alimento.calcularEnergia(energia, getDieta(), quantidadeBananasComeu, numJogada);
+        quantidadeComeu++;
+
+        if (alimento.getId().equals("b") && alimento.getQuantidadeBananas() != 0) {
             quantidadeBananasComeu++;
         }
 
     }
 
+    public int getQuantidadeComeu () {
+        return quantidadeComeu;
+    }
 
+    public int getDistanciaPercorrida() {
+        return distanciaPercorrida;
+    }
 }

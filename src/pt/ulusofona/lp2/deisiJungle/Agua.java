@@ -8,6 +8,11 @@ class Agua extends Alimento {
 
 
     @Override
+    public int getQuantidadeBananas() {
+        return 0;
+    }
+
+    @Override
     public String getToolTip(int numJogada) {
         return "Agua : + 15U|20% energia";
     }

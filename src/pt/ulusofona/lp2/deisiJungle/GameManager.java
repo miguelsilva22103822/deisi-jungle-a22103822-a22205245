@@ -182,7 +182,8 @@ public class GameManager {
 
         mapa.addPlayerToCasa(getIDJogadorAtual(), casaDestino);
 
-        if (mapa.getIdAlimentoCasa(casaDestino) != null) {
+        if (mapa.getIdAlimentoCasa(casaDestino) != null && !(jogadores.get(getIDJogadorAtual()).getDieta().equals("h"))
+                && mapa.getAlimentoCasa(casaDestino).eCarne()) {
             jogadores.get(getIDJogadorAtual()).comer(mapa.getAlimentoCasa(casaDestino),numJogada);
 
             updateJogada();
@@ -233,7 +234,9 @@ public class GameManager {
             Jogador jogador = jogadores.get(iDsOrdenados.get(i));
             String playerResult = "#" + (i+1) + " " + jogador.getNome() + ", "
                     + especies.get(jogador.getIdEspecie()).getNome() + ", "
-                    + mapa.findNrCasaContaining(jogador.getID());
+                    + mapa.findNrCasaContaining(jogador.getID()) + ", "
+                    +jogador.getDistanciaPercorrida() + ", "
+                    +jogador.getQuantidadeComeu();
 
             listaResultados.add(playerResult);
         }

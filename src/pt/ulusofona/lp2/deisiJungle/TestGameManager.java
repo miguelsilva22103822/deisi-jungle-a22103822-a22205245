@@ -175,4 +175,34 @@ public class TestGameManager {
 
         System.out.println(Arrays.deepToString(gameManager.getPlayersInfo()));
     }
+
+
+    @Test
+    public void testECarne () {
+
+        GameManager gameManager = new GameManager();
+
+
+        String[] jogador1 = {"1", "João", "E"};
+        String[] jogador2 = {"3", "Manuel", "T"};
+        String[] jogador3 = {"5", "Pedro", "Z"};
+        String[] jogador4 = {"2", "Maria", "P"};
+
+        String[] alimento1 = {"b", "7"};
+        String[] alimento2 = {"a", "4"};
+        String[] alimento3 = {"c", "2"};
+        String[] alimento4 = {"e", "6"};
+        String[] alimento5 = {"m", "5"};
+
+        String[][] jogadores = {jogador1, jogador2, jogador3, jogador4};
+        String[][] alimentos = {alimento1, alimento2, alimento3, alimento4, alimento5};
+
+
+        gameManager.createInitialJungle(20, jogadores, alimentos);
+
+        System.out.println(Arrays.deepToString(gameManager.getPlayersInfo()));
+
+        System.out.println(gameManager.moveCurrentPlayer(1, true));
+
+    }
 }

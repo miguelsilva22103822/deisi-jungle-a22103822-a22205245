@@ -34,6 +34,13 @@ abstract class Alimento {
         return info;
     }
 
+    public boolean eCarne () {
+        return id.equals("c");
+
+    }
+
+    abstract public int getQuantidadeBananas ();
+
     abstract public String getToolTip(int numJogada);
 
     abstract public int calcularEnergia(int energia , String dieta, int quantidadeComeu, int numJogada);
