@@ -287,4 +287,35 @@ public class TestGameManager {
 
     }
 
+    @Test
+    public void testGetGameResults() {
+        GameManager gameManager = new GameManager();
+
+        String[] jogador1 = {"1", "João", "E"};
+        String[] jogador2 = {"3", "Manuel", "T"};
+        String[] jogador3 = {"5", "Pedro", "Z"};
+        String[] jogador4 = {"2", "Maria", "P"};
+
+        String[] alimento1 = {"b", "5"};
+        String[] alimento2 = {"a", "4"};
+        String[] alimento3 = {"c", "7"};
+        String[] alimento4 = {"e", "6"};
+        String[] alimento5 = {"m", "2"};
+
+        String[][] jogadores = {jogador1, jogador2, jogador3, jogador4};
+        String[][] alimentos = {alimento1, alimento2, alimento3, alimento4, alimento5};
+
+        gameManager.createInitialJungle(50, jogadores, alimentos);
+        System.out.println(gameManager.moveCurrentPlayer(20, true));
+        gameManager.moveCurrentPlayer(1, true);
+        gameManager.moveCurrentPlayer(1, true);
+        gameManager.moveCurrentPlayer(1, true);
+        System.out.println(gameManager.moveCurrentPlayer(20, true));
+
+        System.out.println(Arrays.toString(gameManager.getWinnerInfo()));
+
+        System.out.println(gameManager.getGameResults());
+
+    }
+
 }

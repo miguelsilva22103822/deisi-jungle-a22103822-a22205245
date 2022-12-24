@@ -205,10 +205,8 @@ public class GameManager {
         int posicaoDoJogador2 = 0;
         int iDdoJogador2 = 0;
 
-
         if (mapa.nrJogadoresInCasa(mapa.getNrCasas()) > 0){
             return jogadores.get(mapa.getJogadorIDMenorInCasa(mapa.getNrCasas())).getInfo();
-            //return jogadores.get(mapa.getCasa(mapa.getNrCasas()).jogadorIDMenor()).getInfo();
         }
 
         for (int i = mapa.getNrCasas() - 1; i >= 1 ; i--){
@@ -251,23 +249,23 @@ public class GameManager {
         ArrayList <String> listaResultados = new ArrayList<>();
         ArrayList <Integer> iDsOrdenados = new ArrayList<>();
 
-        iDsOrdenados.add(Integer.parseInt(getWinnerInfo()[0]));
-
-        boolean skippedFirst = false;
+        int idWinner = -1;
+        if (getWinnerInfo() != null) {
+             idWinner = Integer.parseInt(getWinnerInfo()[0]);
+            iDsOrdenados.add(idWinner);
+        }
 
         for (int i = mapa.getNrCasas(); i >= 1 ; i--){
             if (mapa.nrJogadoresInCasa(i) > 0) {
-                
-                if (!skippedFirst) {
-                    skippedFirst = true;
-                } else {
 
-                    mapa.sortIDsCasa(i);
-                    for (int id : mapa.getPlayerIds(i)) {
+                mapa.sortIDsCasa(i);
+
+                for (int id : mapa.getPlayerIds(i)) {
+                    if (id != idWinner) {
                         iDsOrdenados.add(id);
                     }
-
                 }
+
             }
         }
 
@@ -276,8 +274,8 @@ public class GameManager {
             String playerResult = "#" + (i+1) + " " + jogador.getNome() + ", "
                     + especies.get(jogador.getIdEspecie()).getNome() + ", "
                     + mapa.findNrCasaContaining(jogador.getID()) + ", "
-                    +jogador.getDistanciaPercorrida() + ", "
-                    +jogador.getQuantidadeComeu();
+                    + jogador.getDistanciaPercorrida() + ", "
+                    + jogador.getQuantidadeComeu();
 
             listaResultados.add(playerResult);
         }
