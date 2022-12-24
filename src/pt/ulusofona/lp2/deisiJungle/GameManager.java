@@ -251,11 +251,22 @@ public class GameManager {
         ArrayList <String> listaResultados = new ArrayList<>();
         ArrayList <Integer> iDsOrdenados = new ArrayList<>();
 
+        iDsOrdenados.add(Integer.parseInt(getWinnerInfo()[0]));
+
+        boolean skippedFirst = false;
+
         for (int i = mapa.getNrCasas(); i >= 1 ; i--){
             if (mapa.nrJogadoresInCasa(i) > 0) {
-                mapa.sortIDsCasa(i);
-                for (int id : mapa.getPlayerIds(i)) {
-                    iDsOrdenados.add(id);
+                
+                if (!skippedFirst) {
+                    skippedFirst = true;
+                } else {
+
+                    mapa.sortIDsCasa(i);
+                    for (int id : mapa.getPlayerIds(i)) {
+                        iDsOrdenados.add(id);
+                    }
+
                 }
             }
         }

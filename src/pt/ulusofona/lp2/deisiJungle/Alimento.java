@@ -45,6 +45,4 @@ abstract class Alimento {
 
     abstract public int calcularEnergia(int energia , String dieta, int quantidadeComeu, int numJogada);
 
-
-
 }
