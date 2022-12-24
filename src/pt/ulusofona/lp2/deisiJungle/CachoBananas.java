@@ -38,7 +38,7 @@ class CachoBananas extends Alimento {
 
         --quantidadeBananas;
         return energia - 40;
-
     }
+
 
 }

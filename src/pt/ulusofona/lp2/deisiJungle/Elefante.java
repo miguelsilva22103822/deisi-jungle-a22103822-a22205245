@@ -30,4 +30,6 @@ class Elefante extends Especie {
     public String getVelocidade() {
         return velocidade;
     }
+
+
 }

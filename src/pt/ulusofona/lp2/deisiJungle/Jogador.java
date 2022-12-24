@@ -88,6 +88,11 @@ class Jogador {
     public void updateEnergyMovement(int nrPositions) { // pode ser negativo(nrPositions)
         if (nrPositions == 0) {
             energia += especie.getEnergiaDescanso();
+
+            if(energia > 200) {
+                energia = 200;
+            }
+
         }
         else {
             energia -= Math.abs(nrPositions) * especie.getConsumoEnergia();
@@ -115,6 +120,10 @@ class Jogador {
 
         if (alimento.getId().equals("b") && alimento.getQuantidadeBananas() != 0) {
             quantidadeBananasComeu++;
+        }
+
+        if(energia > 200) {
+            energia = 200;
         }
 
     }
