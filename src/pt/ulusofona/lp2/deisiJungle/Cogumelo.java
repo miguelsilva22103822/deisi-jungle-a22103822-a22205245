@@ -11,7 +11,7 @@ class Cogumelo extends Alimento {
 
         Random numeroAleatorio = new Random();
 
-        numGerado = numeroAleatorio.nextInt(10,50);
+        numGerado = numeroAleatorio.nextInt(10,50); //será 9 a 50? ou 9 a 51?, ou 10 a 51?
     }
 
     @Override

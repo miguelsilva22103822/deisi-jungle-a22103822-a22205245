@@ -310,7 +310,7 @@ public class TestGameManager {
         gameManager.moveCurrentPlayer(1, true);
         gameManager.moveCurrentPlayer(1, true);
         gameManager.moveCurrentPlayer(1, true);
-        System.out.println(gameManager.moveCurrentPlayer(20, true));
+        //System.out.println(gameManager.moveCurrentPlayer(20, true));
 
         System.out.println(Arrays.toString(gameManager.getWinnerInfo()));
 
