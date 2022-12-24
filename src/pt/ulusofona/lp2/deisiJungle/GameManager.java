@@ -199,20 +199,49 @@ public class GameManager {
 
     public String[] getWinnerInfo() {
 
+        boolean primeiroJogadorEncontrado = false;
+        int posicaoDoJogador1 = 0;
+        int posicaoDoJogador2 = 0;
+        int iDdoJogador2 = 0;
+
+
         if (mapa.nrJogadoresInCasa(mapa.getNrCasas()) > 0){
             return jogadores.get(mapa.getJogadorIDMenorInCasa(mapa.getNrCasas())).getInfo();
             //return jogadores.get(mapa.getCasa(mapa.getNrCasas()).jogadorIDMenor()).getInfo();
         }
 
-        /*
-        if (todosSemEnergia()){
-            for (int i = mapa.getNrCasas() - 1; i >= 1 ; i--){
-                if (mapa.nrJogadoresInCasa(i) > 0 ) {
-                    return jogadores.get(mapa.getJogadorIDMenorInCasa(i)).getInfo();
+        for (int i = mapa.getNrCasas() - 1; i >= 1 ; i--){
+            if (mapa.nrJogadoresInCasa(i) > 1) {
+                if (primeiroJogadorEncontrado) {
+                    posicaoDoJogador2 = i + 1;
+                    iDdoJogador2 = jogadores.get(mapa.getJogadorIDMenorInCasa(i)).getID();
+                    break;
+                }
+                else{
+                    return null;
+                }
+            }
+
+            if (mapa.nrJogadoresInCasa(i) == 1) {
+                if (!primeiroJogadorEncontrado){
+                    posicaoDoJogador1 = i + 1;
+                    primeiroJogadorEncontrado = true;
+                }
+                else{
+                    posicaoDoJogador2 = i + 1;
+                    iDdoJogador2 = jogadores.get(mapa.getJogadorIDMenorInCasa(i)).getID();
+                    break;
                 }
             }
         }
-        */
+
+
+        int distanciaDosJogadores = posicaoDoJogador1 - posicaoDoJogador2 ;
+
+        if (distanciaDosJogadores > (mapa.getNrCasas()/ 2)){
+            return jogadores.get(iDdoJogador2).getInfo();
+        }
+
         return null;
     }
 

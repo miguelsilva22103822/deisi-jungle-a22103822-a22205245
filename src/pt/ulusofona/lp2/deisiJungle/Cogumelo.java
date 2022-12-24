@@ -21,7 +21,7 @@ class Cogumelo extends Alimento {
 
     @Override
     public String getToolTip(int numJogada) {
-        return "Cogumelo Magico:";
+        return  "Cogumelo Magico : +-" + numGerado + " % energia";
     }
 
     @Override
