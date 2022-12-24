@@ -306,11 +306,12 @@ public class TestGameManager {
         String[][] alimentos = {alimento1, alimento2, alimento3, alimento4, alimento5};
 
         gameManager.createInitialJungle(50, jogadores, alimentos);
+        gameManager.moveCurrentPlayer(1, true);
+        System.out.println(gameManager.moveCurrentPlayer(10, true));
+        gameManager.moveCurrentPlayer(1, true);
+        gameManager.moveCurrentPlayer(1, true);
         System.out.println(gameManager.moveCurrentPlayer(20, true));
-        gameManager.moveCurrentPlayer(1, true);
-        gameManager.moveCurrentPlayer(1, true);
-        gameManager.moveCurrentPlayer(1, true);
-        //System.out.println(gameManager.moveCurrentPlayer(20, true));
+
 
         System.out.println(Arrays.toString(gameManager.getWinnerInfo()));
 

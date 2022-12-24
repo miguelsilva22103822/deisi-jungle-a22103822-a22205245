@@ -251,7 +251,7 @@ public class GameManager {
 
         int idWinner = -1;
         if (getWinnerInfo() != null) {
-             idWinner = Integer.parseInt(getWinnerInfo()[0]);
+            idWinner = Integer.parseInt(getWinnerInfo()[0]);
             iDsOrdenados.add(idWinner);
         }
 
