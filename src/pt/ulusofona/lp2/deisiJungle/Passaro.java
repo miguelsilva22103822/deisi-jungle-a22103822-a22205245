@@ -7,7 +7,7 @@ class Passaro extends Especie {
     private final String velocidade = "5..6";
 
     public Passaro() {
-        super("P", "Pássaro", "bird.png");
+        super("P", "Passaro", "bird.png");
     }
 
     @Override
