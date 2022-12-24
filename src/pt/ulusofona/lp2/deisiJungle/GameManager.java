@@ -162,7 +162,7 @@ public class GameManager {
 
         if (!jogadores.get(getIDJogadorAtual()).hasEnergy(nrSquares)) {
             updateJogada();
-            return new MovementResult(MovementResultCode.NO_ENERGY, "null");
+            return new MovementResult(MovementResultCode.NO_ENERGY, null);
         }
 
         int nrCasaAtual = mapa.findNrCasaContaining(getIDJogadorAtual());
