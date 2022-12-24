@@ -7,7 +7,7 @@ class Leao extends Especie {
     private final String velocidade = "4..6";
 
     public Leao() {
-        super("L", "Leão", "lion.png");
+        super("L", "Leao", "lion.png");
     }
 
     @Override
