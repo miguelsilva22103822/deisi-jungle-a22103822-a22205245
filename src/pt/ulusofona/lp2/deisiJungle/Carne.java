@@ -2,8 +2,6 @@ package pt.ulusofona.lp2.deisiJungle;
 
 class Carne extends Alimento {
 
-    boolean carneEstragada = false;
-
     public Carne() {
         super("c", "Carne", "meat.png");
     }
@@ -31,7 +29,7 @@ class Carne extends Alimento {
         }
 
         if (dieta.equals("o") || dieta.equals("c")){
-            if (carneEstragada) { //12 jogadas depois carne passa ser toxica, ent é /2 da energia atual
+            if (numJogada > 12 ) { //12 jogadas depois carne passa ser toxica, ent é /2 da energia atual
                 return energia / 2;
             }
             return energia + 50;

@@ -85,7 +85,7 @@ class Jogador {
         return false;
     }
 
-    public void updateEnergyMovement(int nrPositions) {
+    public void updateEnergyMovement(int nrPositions) { // pode ser negativo(nrPositions)
         if (nrPositions == 0) {
             energia += especie.getEnergiaDescanso();
         }
@@ -93,7 +93,7 @@ class Jogador {
             energia -= Math.abs(nrPositions) * especie.getConsumoEnergia();
         }
 
-        distanciaPercorrida += nrPositions;
+        distanciaPercorrida += Math.abs(nrPositions);
     }
 
     public String getNome() {
