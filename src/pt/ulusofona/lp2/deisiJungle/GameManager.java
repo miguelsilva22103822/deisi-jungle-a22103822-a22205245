@@ -3,6 +3,7 @@ package pt.ulusofona.lp2.deisiJungle;
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
+import java.io.IOException;
 import java.util.*;
 import java.util.List;
 
@@ -303,6 +304,17 @@ public class GameManager {
     }
 
     public boolean saveGame(File file) {
+
+        try {
+            if (file.createNewFile()) {
+                System.out.println("File created: " + file.getName());
+            } else {
+                System.out.println("File already exists.");
+            }
+        } catch (IOException e) {
+            return false;
+        }
+
         return true;
     }
 

@@ -3,6 +3,7 @@ package pt.ulusofona.lp2.deisiJungle;
 import org.junit.*;
 
 import java.awt.image.AreaAveragingScaleFilter;
+import java.io.File;
 import java.util.Arrays;
 
 import static org.junit.Assert.*;
@@ -274,5 +275,16 @@ public class TestGameManager {
         System.out.println((Arrays.deepToString(gameManager.getSquareInfo(2))));
     }
 
+
+    @Test
+    public void testSaveGame () {
+
+        GameManager gameManager = new GameManager();
+
+        File ficheiro = new File("Save");
+
+        gameManager.saveGame(ficheiro);
+
+    }
 
 }
