@@ -92,7 +92,7 @@ class Casa {
         } else if ( alimento != null ) {
 
             info[0] = alimento.getImagem();
-            info[1] = alimento.getNome();
+            info[1] = alimento.getToolTip(numJogada);
 
         }
         else {
