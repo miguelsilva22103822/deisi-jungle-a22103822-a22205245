@@ -304,7 +304,8 @@ public class GameManager {
     }
 
     public boolean saveGame(File file) {
-
+        return true;
+        /*
         try {
             if (file.createNewFile()) {
                 System.out.println("File created: " + file.getName());
@@ -316,6 +317,7 @@ public class GameManager {
         }
 
         return true;
+        */
     }
 
     public boolean loadGame(File file) {
@@ -326,7 +328,7 @@ public class GameManager {
 
     private boolean validarPlayersInfo(String[][] playersInfo) {
 
-        if(playersInfo.length < 2 || playersInfo.length > 4) {
+        if(playersInfo == null || playersInfo.length < 2 || playersInfo.length > 4) {
             return false;
         }
 
