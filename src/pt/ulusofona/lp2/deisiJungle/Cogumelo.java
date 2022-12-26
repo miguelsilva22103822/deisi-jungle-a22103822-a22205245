@@ -33,10 +33,10 @@ class Cogumelo extends Alimento {
 
         if (numJogada % 2 != 0) {
 
-            return (int) (energia + (numGerado / 100.0) * energia);
+            return  energia + (int) ((numGerado / 100.0) * energia);
         }
 
-        return (int) (energia - (numGerado / 100.0) * energia);
+        return energia -  (int) ((numGerado / 100.0) * energia);
 
     }
 

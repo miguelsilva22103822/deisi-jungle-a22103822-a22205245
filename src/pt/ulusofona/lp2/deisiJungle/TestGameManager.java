@@ -319,4 +319,15 @@ public class TestGameManager {
 
     }
 
+
+    @Test
+    public void testCogumelo() {
+
+        Cogumelo cogumelo = new Cogumelo();
+
+        System.out.println(cogumelo.calcularEnergia(76,"h",3,2));
+
+
+    }
+
 }
