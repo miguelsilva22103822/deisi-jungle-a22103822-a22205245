@@ -135,4 +135,16 @@ class Jogador {
     public int getDistanciaPercorrida() {
         return distanciaPercorrida;
     }
+
+    public String getSaveInfo() {
+        return "["
+                + id + ","
+                + nome + ","
+                + idEspecie + ","
+                + energia + ","
+                + quantidadeBananasComeu + ","
+                + quantidadeComeu + ","
+                + distanciaPercorrida
+                + "]";
+    }
 }

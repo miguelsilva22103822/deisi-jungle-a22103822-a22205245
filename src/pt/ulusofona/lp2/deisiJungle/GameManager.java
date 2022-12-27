@@ -3,7 +3,9 @@ package pt.ulusofona.lp2.deisiJungle;
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.*;
 import java.util.List;
 
@@ -313,23 +315,70 @@ public class GameManager {
     }
 
     public boolean saveGame(File file) {
-        return true;
-        /*
-        try {
-            if (file.createNewFile()) {
-                System.out.println("File created: " + file.getName());
-            } else {
-                System.out.println("File already exists.");
+        try
+        {
+            FileWriter fw = new FileWriter(file, false);
+
+            PrintWriter pw = new PrintWriter(fw);
+
+            StringBuilder text = new StringBuilder();
+
+            text.append("Mapa:\n");
+            text.append(mapa.getSaveInfo(numJogada));
+
+            text.append("Jogadores:\n");
+            for (Jogador jogador : jogadores.values()) {
+                text.append(jogador.getSaveInfo());
+                text.append("\n");
             }
-        } catch (IOException e) {
+
+            text.append("iDJogadorAtual:\n");
+            text.append(indiceJogadorAtual).append("\n");
+
+            text.append("numJogada:\n");
+            text.append(numJogada).append("\n");
+
+            pw.println(text);
+
+            pw.close();
+        }
+        catch(IOException e)
+        {
             return false;
         }
 
         return true;
-        */
     }
 
     public boolean loadGame(File file) {
+        try
+        {
+            Scanner scanner = new Scanner(file);
+
+            StringBuilder fileContent = new StringBuilder();
+            while (scanner.hasNextLine()) {
+                fileContent.append(scanner.nextLine()).append("\n");
+            }
+
+            String[] lines = fileContent.toString().split("\n");
+
+            boolean aLerMapa = false;
+            int indexCasa = 0;
+            boolean aLerJogadores = false;
+            for (String line : lines) {
+                if (line.equals("Mapa:")) {
+                    System.out.println(line);
+                    indexCasa = 0;
+                }
+
+            }
+
+        }
+        catch(IOException e)
+        {
+            return false;
+        }
+
         return true;
     }
 

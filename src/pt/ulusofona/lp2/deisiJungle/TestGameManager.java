@@ -281,9 +281,27 @@ public class TestGameManager {
 
         GameManager gameManager = new GameManager();
 
+        String[] jogador1 = {"6", "João", "E"};
+        String[] jogador2 = {"3", "Manuel", "T"};
+        String[] jogador3 = {"5", "Pedro", "Z"};
+        String[] jogador4 = {"1", "Maria", "P"};
+
+        String[] alimento1 = {"b", "5"};
+        String[] alimento2 = {"a", "10"};
+        String[] alimento3 = {"c", "15"};
+        String[] alimento4 = {"e", "20"};
+        String[] alimento5 = {"m", "25"};
+
+        String[][] jogadores = {jogador1, jogador2, jogador3, jogador4};
+        String[][] alimentos = {alimento1, alimento2, alimento3, alimento4, alimento5};
+
+        gameManager.createInitialJungle(30, jogadores, alimentos);
+
         File ficheiro = new File("Save");
 
         gameManager.saveGame(ficheiro);
+
+        gameManager.loadGame(ficheiro);
 
     }
 

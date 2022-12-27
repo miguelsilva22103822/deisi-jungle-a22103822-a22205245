@@ -1,6 +1,7 @@
 package pt.ulusofona.lp2.deisiJungle;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 class Mapa {
     private ArrayList<Casa> casas;
@@ -87,6 +88,16 @@ class Mapa {
 
     public Alimento getAlimentoCasa (int nrCasa) {
         return casas.get(cIndex(nrCasa)).getAlimento();
+    }
+
+    public String getSaveInfo(int numJogada) {
+        StringBuilder text = new StringBuilder();
+
+        for (Casa casa : casas) {
+            text.append(Arrays.toString(casa.getInfo(numJogada)));
+            text.append("\n");
+        }
+        return text.toString();
     }
 
 }
