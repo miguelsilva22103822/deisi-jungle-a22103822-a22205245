@@ -7,12 +7,6 @@ class FrutoSeco extends Alimento {
     }
 
 
-
-
-
-
-
-
     @Override
     public int getQuantidadeBananas() {
         return 0;
@@ -20,11 +14,25 @@ class FrutoSeco extends Alimento {
 
     @Override
     public String getToolTip(int numJogada) {
-        return null;
+        return  "Fruto Seco : + 5 energia";
     }
 
     @Override
     public int calcularEnergia(int energia, String dieta, int quantidadeComeu, int numJogada) {
-        return 0;
+
+        if (dieta.equals("h")){
+            return energia + 35;
+        }
+
+        if (dieta.equals("o")){
+            return (int)(energia + (0.1 * energia));
+        }
+
+        if (dieta.equals("c")){
+            return energia - 15;
+        }
+
+        return -1;
     }
+
 }

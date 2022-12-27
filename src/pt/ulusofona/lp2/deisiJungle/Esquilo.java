@@ -1,6 +1,10 @@
 package pt.ulusofona.lp2.deisiJungle;
 
 class Esquilo  extends Especie {
+    private final int energiaInicial = 120;
+    private final int consumoEnergia = 8;
+    private final int energiaDescanso = 15;
+    private final String velocidade = "2..6";
 
     public Esquilo() {
         super("Q", "Esquilo", "esquilo.png");
@@ -8,33 +12,24 @@ class Esquilo  extends Especie {
 
 
 
-
-
-
-
-
     @Override
     public String getDieta() {
-        return null;
+        return "h";
     }
 
-    @Override
     public int getEnergiaInicial() {
-        return 0;
+        return energiaInicial;
     }
 
-    @Override
     public int getConsumoEnergia() {
-        return 0;
+        return consumoEnergia;
     }
 
-    @Override
     public int getEnergiaDescanso() {
-        return 0;
+        return energiaDescanso;
     }
 
-    @Override
     public String getVelocidade() {
-        return null;
+        return velocidade;
     }
 }
