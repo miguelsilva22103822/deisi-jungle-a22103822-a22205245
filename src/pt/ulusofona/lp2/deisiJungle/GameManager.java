@@ -362,24 +362,73 @@ public class GameManager {
 
             String[] lines = fileContent.toString().split("\n");
 
+            ArrayList<String> casas = new ArrayList<>();
+            ArrayList<String> jogadores = new ArrayList<>();
+            int idJogadorAtual = 0;
+            int numJogada = 0;
+
             boolean aLerMapa = false;
-            int indexCasa = 0;
             boolean aLerJogadores = false;
+            boolean aLerIdJogadorAtual = false;
+            boolean aLerNumJogada = false;
+
             for (String line : lines) {
                 if (line.equals("Mapa:")) {
-                    System.out.println(line);
-                    indexCasa = 0;
+                    aLerMapa = true;
+                    aLerJogadores = false;
+                    aLerIdJogadorAtual = false;
+                    aLerNumJogada = false;
+                    continue;
                 }
 
+                if (line.equals("Jogadores:")) {
+                    aLerMapa = false;
+                    aLerJogadores = true;
+                    aLerIdJogadorAtual = false;
+                    aLerNumJogada = false;
+                    continue;
+                }
+
+                if (line.equals("iDJogadorAtual:")) {
+                    aLerMapa = false;
+                    aLerJogadores = false;
+                    aLerIdJogadorAtual = true;
+                    aLerNumJogada = false;
+                    continue;
+                }
+
+                if (line.equals("numJogada:")) {
+                    aLerMapa = false;
+                    aLerJogadores = false;
+                    aLerIdJogadorAtual = false;
+                    aLerNumJogada = true;
+                    continue;
+                }
+
+                if (aLerMapa) {
+                    casas.add(line);
+                }
+
+                if (aLerJogadores) {
+                    jogadores.add(line);
+                }
+
+                if (aLerIdJogadorAtual) {
+                    idJogadorAtual = Integer.parseInt(line);
+                }
+
+                if (aLerNumJogada) {
+                    numJogada = Integer.parseInt(line);
+                }
             }
 
+            return loadInfoGame(casas, jogadores, idJogadorAtual, numJogada);
         }
         catch(IOException e)
         {
             return false;
         }
 
-        return true;
     }
 
     //funções auxiliares------------------------------------------------------------------
@@ -536,6 +585,15 @@ public class GameManager {
             }
         }
         return true;
+    }
+
+    private boolean loadInfoGame(ArrayList<String> casas, ArrayList<String> jogadores,
+                                 int indiceJogadorAtual, int numJogada) {
+
+        mapa.loadGame(casas); //acho que já está bom
+
+        return true;
+
     }
 
 }

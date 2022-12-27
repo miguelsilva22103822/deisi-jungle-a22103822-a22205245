@@ -5,7 +5,7 @@ import java.util.Arrays;
 
 class Mapa {
     private ArrayList<Casa> casas;
-    private final int tamanhoMax;
+    private int tamanhoMax;
 
     public Mapa(int nrCasas) {
         this.casas = new ArrayList<>();
@@ -94,10 +94,43 @@ class Mapa {
         StringBuilder text = new StringBuilder();
 
         for (Casa casa : casas) {
-            text.append(Arrays.toString(casa.getInfo(numJogada)));
+            text.append(Arrays.toString(casa.getSaveInfo()));
             text.append("\n");
         }
         return text.toString();
     }
 
+    public void loadGame(ArrayList<String> casas) {
+        this.casas = new ArrayList<>();
+
+
+
+        for (int i = 0; i < casas.size(); i++) {
+            ArrayList<Integer> iDsJogadores = new ArrayList<>();
+            Alimento alimento = null;
+
+            String[] infoCasas = Auxiliar.separarString(casas.get(i));
+            String nomeAlimento = infoCasas[0];
+
+            switch (nomeAlimento) {
+                case "Agua" -> alimento = new Agua();
+                case "Bananas" -> alimento = new CachoBananas();
+                case "Carne" -> alimento = new Carne();
+                case "Cogumelo Magico" -> alimento = new Cogumelo();
+                case "Erva" -> alimento = new Erva();
+            }
+
+            if (!infoCasas[1].equals(" ")) {
+                for (int o = 1; o < infoCasas.length; o++) {
+                    iDsJogadores.add(Integer.valueOf(infoCasas[o].trim()));
+                }
+            }
+
+            this.casas.add(new Casa(iDsJogadores, alimento));
+        }
+
+        this.tamanhoMax = casas.size();
+
+        this.casas.get(cIndex(casas.size())).setAsMeta();
+    }
 }

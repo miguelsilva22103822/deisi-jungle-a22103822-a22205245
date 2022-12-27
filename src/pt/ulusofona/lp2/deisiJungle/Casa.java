@@ -11,7 +11,12 @@ class Casa {
 
     public Casa() {
         this.iDsJogadores = new ArrayList<>();
+        alimento = null;
+    }
 
+    public Casa(ArrayList<Integer> iDsJogadores, Alimento alimento) {
+        this.iDsJogadores = iDsJogadores;
+        this.alimento = alimento;
     }
 
     public boolean addJogador(int id) {
@@ -173,5 +178,34 @@ class Casa {
 
     public Alimento getAlimento () {
         return alimento;
+    }
+
+    public String[] getSaveInfo() {
+        int[] iDsJogadores = getIDsJogadores();
+        StringBuilder iDsJogadoresString = new StringBuilder();
+
+        //pôr os ids dos jogadores numa string, separados por virgulas
+        for(int i = 0; i < iDsJogadores.length; i++) {
+            if (i == iDsJogadores.length - 1) {
+                iDsJogadoresString.append(iDsJogadores[i]);
+            }
+            else {
+                iDsJogadoresString.append(iDsJogadores[i]).append(",");
+            }
+        }
+
+        String[] info = new String[2];
+
+        if (isMeta) {
+            info[0] = "Meta";
+        } else if (alimento != null) {
+            info[0] = alimento.getNome();
+        } else {
+            info[0] = "Vazio";
+        }
+
+        info[1] = iDsJogadoresString.toString();
+
+        return info;
     }
 }

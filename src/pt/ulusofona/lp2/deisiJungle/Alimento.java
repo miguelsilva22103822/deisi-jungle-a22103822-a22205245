@@ -34,12 +34,12 @@ abstract class Alimento {
         return info;
     }
 
-    public boolean eCarne () {
+    public boolean eCarne() {
         return id.equals("c");
 
     }
 
-    abstract public int getQuantidadeBananas ();
+    abstract public int getQuantidadeBananas();
 
     abstract public String getToolTip(int numJogada);
 

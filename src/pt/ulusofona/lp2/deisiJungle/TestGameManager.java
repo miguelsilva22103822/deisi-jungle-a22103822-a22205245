@@ -275,7 +275,6 @@ public class TestGameManager {
         System.out.println((Arrays.deepToString(gameManager.getSquareInfo(2))));
     }
 
-
     @Test
     public void testSaveGame () {
 
@@ -337,15 +336,12 @@ public class TestGameManager {
 
     }
 
-
     @Test
     public void testCogumelo() {
 
         Cogumelo cogumelo = new Cogumelo();
 
         System.out.println(cogumelo.calcularEnergia(76,"h",3,2));
-
-
     }
 
 }
