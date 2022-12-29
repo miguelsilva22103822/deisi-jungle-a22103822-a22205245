@@ -296,14 +296,21 @@ public class TestGameManager {
 
         gameManager.createInitialJungle(30, jogadores, alimentos);
 
+        gameManager.moveCurrentPlayer(2, true);
+
+        String[] test = gameManager.getCurrentPlayerInfo();
+
         File ficheiro = new File("Save");
 
-        System.out.println(gameManager.saveGame(ficheiro));
+        gameManager.saveGame(ficheiro);
 
         gameManager = new GameManager();
 
         gameManager.loadGame(ficheiro);
 
+        String[] test2 = gameManager.getCurrentPlayerInfo();
+
+        assertEquals(test, test2);
     }
 
     @Test

@@ -555,11 +555,13 @@ public class GameManager {
             );
 
         }
-        
+
         saveIDsJogadores();
 
-        return true;
+        this.indiceJogadorAtual = indiceJogadorAtual;
+        this.numJogada = numJogada;
 
+        return true;
     }
 
     public ArrayList<String> readCasas(String[] lines) {
