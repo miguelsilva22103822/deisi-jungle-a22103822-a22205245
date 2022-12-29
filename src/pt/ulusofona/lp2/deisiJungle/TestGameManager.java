@@ -302,7 +302,7 @@ public class TestGameManager {
 
         gameManager = new GameManager();
 
-        //gameManager.loadGame(ficheiro);
+        gameManager.loadGame(ficheiro);
 
     }
 

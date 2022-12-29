@@ -555,6 +555,8 @@ public class GameManager {
             );
 
         }
+        
+        saveIDsJogadores();
 
         return true;
 
