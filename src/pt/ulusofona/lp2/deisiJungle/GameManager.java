@@ -483,13 +483,13 @@ public class GameManager {
         return speciesArrayList;
     }
 
-    private boolean isStringNumeric(String string) {
+    private boolean isStringNumeric(String string) {//Ver se o String só tem numeros
 
         if (string == null) {
             return false;
         }
 
-        for (int i = 0; i < string.length(); i++) {
+        for (int i = 0; i < string.length(); i++) { // se String tiver letras retorna falso
 
             if (string.charAt(i) > '9' || string.charAt(i) < '0') {
                 return false;
@@ -521,15 +521,6 @@ public class GameManager {
 
     private int getIDJogadorAtual() {
         return iDsJogadores[indiceJogadorAtual];
-    }
-
-    private boolean todosSemEnergia() {
-        for (Jogador jogador : jogadores.values()) {
-            if (jogador.getEnergia() >= 2){
-                return false;
-            }
-        }
-        return true;
     }
 
     private boolean loadInfoGame(ArrayList<String> casas, ArrayList<String> jogadores,
@@ -564,7 +555,7 @@ public class GameManager {
         return true;
     }
 
-    public ArrayList<String> readCasas(String[] lines) {
+    private ArrayList<String> readCasas(String[] lines) {
         ArrayList<String> casas = new ArrayList<>();
 
         boolean aLerMapa = false;
@@ -587,7 +578,7 @@ public class GameManager {
         return casas;
     }
 
-    public ArrayList<String> readJogadores(String[] lines) {
+    private ArrayList<String> readJogadores(String[] lines) {
         ArrayList<String> jogadores = new ArrayList<>();
 
         boolean aLerJogadores = false;
@@ -611,7 +602,7 @@ public class GameManager {
         return jogadores;
     }
 
-    public int readIdJogadorAtual(String[] lines) {
+    private int readIdJogadorAtual(String[] lines) {
         int idJogadorAtual = -1;
 
         boolean aLerIdJogadorAtual = false;
@@ -635,7 +626,7 @@ public class GameManager {
         return idJogadorAtual;
     }
 
-    public int readNumJogada(String[] lines) {
+    private int readNumJogada(String[] lines) {
         int numJogada = -1;
 
         boolean aLerNumJogada = false;
