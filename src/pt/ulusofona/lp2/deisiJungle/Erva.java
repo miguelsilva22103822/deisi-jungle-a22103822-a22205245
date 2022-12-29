@@ -6,7 +6,6 @@ class Erva extends Alimento {
         super("e", "Erva", "grass.png");
     }
 
-
     @Override
     public int getQuantidadeBananas() {
         return 0;
@@ -35,5 +34,9 @@ class Erva extends Alimento {
         return -1;
     }
 
+    @Override
+    public String[] getSaveInfo() {
+        return new String[] {"Erva"};
+    }
 
 }

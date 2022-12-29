@@ -208,4 +208,12 @@ class Casa {
 
         return info;
     }
+
+    public String[] getAlimentoSaveInfo() {
+        if (alimento == null) {
+            return null;
+        }
+
+        return alimento.getSaveInfo();
+    }
 }

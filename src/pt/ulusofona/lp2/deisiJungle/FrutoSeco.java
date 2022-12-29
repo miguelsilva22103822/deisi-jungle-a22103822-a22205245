@@ -35,4 +35,9 @@ class FrutoSeco extends Alimento {
         return -1;
     }
 
+    @Override
+    public String[] getSaveInfo() {
+        return new String[] {"Fruto Seco"};
+    }
+
 }

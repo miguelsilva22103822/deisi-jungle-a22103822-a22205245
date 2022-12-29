@@ -362,65 +362,10 @@ public class GameManager {
 
             String[] lines = fileContent.toString().split("\n");
 
-            ArrayList<String> casas = new ArrayList<>();
-            ArrayList<String> jogadores = new ArrayList<>();
-            int idJogadorAtual = 0;
-            int numJogada = 0;
-
-            boolean aLerMapa = false;
-            boolean aLerJogadores = false;
-            boolean aLerIdJogadorAtual = false;
-            boolean aLerNumJogada = false;
-
-            for (String line : lines) {
-                if (line.equals("Mapa:")) {
-                    aLerMapa = true;
-                    aLerJogadores = false;
-                    aLerIdJogadorAtual = false;
-                    aLerNumJogada = false;
-                    continue;
-                }
-
-                if (line.equals("Jogadores:")) {
-                    aLerMapa = false;
-                    aLerJogadores = true;
-                    aLerIdJogadorAtual = false;
-                    aLerNumJogada = false;
-                    continue;
-                }
-
-                if (line.equals("iDJogadorAtual:")) {
-                    aLerMapa = false;
-                    aLerJogadores = false;
-                    aLerIdJogadorAtual = true;
-                    aLerNumJogada = false;
-                    continue;
-                }
-
-                if (line.equals("numJogada:")) {
-                    aLerMapa = false;
-                    aLerJogadores = false;
-                    aLerIdJogadorAtual = false;
-                    aLerNumJogada = true;
-                    continue;
-                }
-
-                if (aLerMapa) {
-                    casas.add(line);
-                }
-
-                if (aLerJogadores) {
-                    jogadores.add(line);
-                }
-
-                if (aLerIdJogadorAtual) {
-                    idJogadorAtual = Integer.parseInt(line);
-                }
-
-                if (aLerNumJogada) {
-                    numJogada = Integer.parseInt(line);
-                }
-            }
+            ArrayList<String> casas = readCasas(lines);
+            ArrayList<String> jogadores = readJogadores(lines);
+            int idJogadorAtual = readIdJogadorAtual(lines);
+            int numJogada = readNumJogada(lines);
 
             return loadInfoGame(casas, jogadores, idJogadorAtual, numJogada);
         }
@@ -590,10 +535,120 @@ public class GameManager {
     private boolean loadInfoGame(ArrayList<String> casas, ArrayList<String> jogadores,
                                  int indiceJogadorAtual, int numJogada) {
 
+        mapa = new Mapa(casas.size());
         mapa.loadGame(casas); //acho que já está bom
+
+        this.jogadores = new HashMap<>();
+        for (String jogadorInfo : jogadores) {
+            String[] jogador = StringUtil.separarString(jogadorInfo);
+
+            this.jogadores.put(Integer.parseInt(jogador[0]),
+                    new Jogador(
+                            Integer.parseInt(jogador[0]),
+                            jogador[1],
+                            jogador[2],
+                            Integer.parseInt(jogador[3]),
+                            Integer.parseInt(jogador[4]),
+                            Integer.parseInt(jogador[5]),
+                            Integer.parseInt(jogador[6])
+                    )
+            );
+
+        }
 
         return true;
 
     }
 
+    public ArrayList<String> readCasas(String[] lines) {
+        ArrayList<String> casas = new ArrayList<>();
+
+        boolean aLerMapa = false;
+
+        for (String line : lines) {
+            if (line.equals("Mapa:")) {
+                aLerMapa = true;
+                continue;
+            }
+
+            if (line.equals("Jogadores:")) {
+                break;
+            }
+
+            if (aLerMapa) {
+                casas.add(line);
+            }
+        }
+
+        return casas;
+    }
+
+    public ArrayList<String> readJogadores(String[] lines) {
+        ArrayList<String> jogadores = new ArrayList<>();
+
+        boolean aLerJogadores = false;
+
+        for (String line : lines) {
+
+            if (line.equals("Jogadores:")) {
+                aLerJogadores = true;
+                continue;
+            }
+
+            if (line.equals("iDJogadorAtual:")) {
+                break;
+            }
+
+            if (aLerJogadores) {
+                jogadores.add(line);
+            }
+        }
+
+        return jogadores;
+    }
+
+    public int readIdJogadorAtual(String[] lines) {
+        int idJogadorAtual = -1;
+
+        boolean aLerIdJogadorAtual = false;
+
+        for (String line : lines) {
+
+            if (line.equals("iDJogadorAtual:")) {
+                aLerIdJogadorAtual = true;
+                continue;
+            }
+
+            if (line.equals("numJogada:")) {
+                break;
+            }
+
+            if (aLerIdJogadorAtual) {
+                idJogadorAtual = Integer.parseInt(line);
+            }
+        }
+
+        return idJogadorAtual;
+    }
+
+    public int readNumJogada(String[] lines) {
+        int numJogada = -1;
+
+        boolean aLerNumJogada = false;
+
+        for (String line : lines) {
+
+            if (line.equals("numJogada:")) {
+                aLerNumJogada = true;
+                continue;
+            }
+
+            if (aLerNumJogada) {
+                numJogada = Integer.parseInt(line);
+                break;
+            }
+        }
+
+        return numJogada;
+    }
 }

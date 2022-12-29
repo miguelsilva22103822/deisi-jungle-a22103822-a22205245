@@ -34,4 +34,9 @@ class Agua extends Alimento {
 
         return -1;
     }
+
+    @Override
+    public String[] getSaveInfo() {
+        return new String[] {"Agua"};
+    }
 }

@@ -29,6 +29,25 @@ class Jogador {
         this.energia = especie.getEnergiaInicial();
     }
 
+    public Jogador(int id, String nome, String idEspecie, int energia, int quantidadeBananasComeu, int quantidadeComeu, int distanciaPercorrida) {
+        this.id = id;
+        this.nome = nome;
+        this.idEspecie = idEspecie;
+
+        switch (this.idEspecie) {
+            case "E" -> especie = new Elefante();
+            case "L" -> especie = new Leao();
+            case "T" -> especie = new Tartaruga();
+            case "P" -> especie = new Passaro();
+            case "Z" -> especie = new Tarzan();
+        }
+
+        this.energia = energia;
+        this.quantidadeBananasComeu = quantidadeBananasComeu;
+        this.quantidadeComeu = quantidadeComeu;
+        this.distanciaPercorrida = distanciaPercorrida;
+    }
+
     public int getID() {
         return id;
     }

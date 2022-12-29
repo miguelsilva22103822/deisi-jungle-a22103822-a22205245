@@ -298,9 +298,11 @@ public class TestGameManager {
 
         File ficheiro = new File("Save");
 
-        gameManager.saveGame(ficheiro);
+        System.out.println(gameManager.saveGame(ficheiro));
 
-        gameManager.loadGame(ficheiro);
+        gameManager = new GameManager();
+
+        //gameManager.loadGame(ficheiro);
 
     }
 

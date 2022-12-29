@@ -40,5 +40,10 @@ class Cogumelo extends Alimento {
 
     }
 
+    @Override
+    public String[] getSaveInfo() {
+        return new String[] {"Cogumelo Magico", String.valueOf(numGerado)};
+    }
+
 
 }

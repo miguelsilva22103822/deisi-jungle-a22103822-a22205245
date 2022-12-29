@@ -39,5 +39,9 @@ class Carne extends Alimento {
 
     }
 
+    @Override
+    public String[] getSaveInfo() {
+        return new String[] {"Carne"};
+    }
 
 }

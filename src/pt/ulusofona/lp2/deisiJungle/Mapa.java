@@ -109,7 +109,7 @@ class Mapa {
             ArrayList<Integer> iDsJogadores = new ArrayList<>();
             Alimento alimento = null;
 
-            String[] infoCasas = Auxiliar.separarString(casas.get(i));
+            String[] infoCasas = StringUtil.separarString(casas.get(i));
             String nomeAlimento = infoCasas[0];
 
             switch (nomeAlimento) {
@@ -120,7 +120,7 @@ class Mapa {
                 case "Erva" -> alimento = new Erva();
             }
 
-            if (!infoCasas[1].equals(" ")) {
+            if (infoCasas.length > 1 && !infoCasas[1].equals(" ")) {
                 for (int o = 1; o < infoCasas.length; o++) {
                     iDsJogadores.add(Integer.valueOf(infoCasas[o].trim()));
                 }
@@ -132,5 +132,9 @@ class Mapa {
         this.tamanhoMax = casas.size();
 
         this.casas.get(cIndex(casas.size())).setAsMeta();
+    }
+
+    public String[] getAlimentoSaveInfo(int nrCasa) {
+        return this.casas.get(cIndex(nrCasa)).getAlimentoSaveInfo();
     }
 }

@@ -40,5 +40,9 @@ class CachoBananas extends Alimento {
         return energia - 40;
     }
 
+    @Override
+    public String[] getSaveInfo() {
+        return new String[] {"Bananas", String.valueOf(quantidadeBananas)};
+    }
 
 }
