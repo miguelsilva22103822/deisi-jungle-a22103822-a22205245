@@ -2,13 +2,13 @@ package pt.ulusofona.lp2.deisiJungle;
 
 import org.junit.*;
 
-import java.awt.image.AreaAveragingScaleFilter;
 import java.io.File;
 import java.util.Arrays;
 
 import static org.junit.Assert.*;
 
 public class TestGameManager {
+
     @Test
     public void testGetPlayerIds() {
         GameManager gameManager = new GameManager();
@@ -38,7 +38,8 @@ public class TestGameManager {
 
         String[][] jogadores = {jogador1, jogador2, jogador3, jogador4};
 
-        //assertFalse(gameManager.createInitialJungle(15, 4, jogadores));
+        assertEquals("playersInfo inválido",
+                gameManager.createInitialJungle(15, jogadores).getMessage());
     }
 
     @Test
@@ -59,20 +60,21 @@ public class TestGameManager {
         String[][] jogadores = {jogador1, jogador2, jogador3, jogador4};
         String[][] alimentos = {alimento1, alimento2, alimento3, alimento4, alimento5};
 
-        gameManager.createInitialJungle(27, jogadores, alimentos);
+        assertEquals("foodsInfo inválido",
+                gameManager.createInitialJungle(27, jogadores, alimentos).getMessage());
+        //inválido porque tem banana na casa 1
     }
 
     @Test
-    public void testgetPlayersInfo() {
+    public void testgetPlayersInfoMoveBackwards() {
 
         GameManager gameManager = new GameManager();
 
         String[] jogador1 = {"1", "João", "E"};
         String[] jogador2 = {"3", "Manuel", "T"};
         String[] jogador3 = {"5", "Pedro", "Z"};
-        String[] jogador4 = {"2", "Maria", "P"};
 
-        String[] alimento1 = {"b", "1" };
+        String[] alimento1 = {"b", "7" };
         String[] alimento2 = {"a", "4" };
         String[] alimento3 = {"c", "2" };
         String[] alimento4 = {"e", "6" };
@@ -83,11 +85,17 @@ public class TestGameManager {
 
         gameManager.createInitialJungle(20, jogadores, null);
 
-        System.out.println(gameManager.moveCurrentPlayer(5,true));
-        System.out.println(Arrays.deepToString(gameManager.getPlayersInfo()));
+        assertEquals(new MovementResult(MovementResultCode.VALID_MOVEMENT, null),
+                gameManager.moveCurrentPlayer(5,true));
 
-        System.out.println(gameManager.moveCurrentPlayer(-5,true));
-        System.out.println(Arrays.deepToString(gameManager.getPlayersInfo()));
+        assertEquals("[[1, João, E, 160, 1..6], [3, Manuel, T, 150, 1..3], [5, Pedro, Z, 70, 1..6]]",
+                Arrays.deepToString(gameManager.getPlayersInfo()));
+
+        assertEquals(new MovementResult(MovementResultCode.VALID_MOVEMENT, null),
+                gameManager.moveCurrentPlayer(-5,true));
+
+        assertEquals("[[1, João, E, 160, 1..6], [3, Manuel, T, 145, 1..3], [5, Pedro, Z, 70, 1..6]]",
+                Arrays.deepToString(gameManager.getPlayersInfo()));
 
     }
 
@@ -346,11 +354,40 @@ public class TestGameManager {
     }
 
     @Test
-    public void testCogumelo() {
+    public void testEnergiaNegativa() {
+        GameManager game = new GameManager();
 
-        Cogumelo cogumelo = new Cogumelo();
+        String[] jogador1 = {"1", "João", "P"};
+        String[] jogador2 = {"3", "Manuel", "T"};
 
-        System.out.println(cogumelo.calcularEnergia(76,"h",3,2));
+        String[] alimento1 = {"b", "18"};
+
+
+        String[][] jogadores = {jogador1, jogador2};
+        String[][] alimentos = {alimento1};
+
+        game.createInitialJungle(45, jogadores, alimentos);
+
+        game.moveCurrentPlayer(6, true);
+        game.moveCurrentPlayer(0, true);
+        System.out.println(Arrays.deepToString(game.getPlayersInfo()));
+
+        game.moveCurrentPlayer(6, true);
+        game.moveCurrentPlayer(0, true);
+        System.out.println(Arrays.deepToString(game.getPlayersInfo()));
+
+        game.moveCurrentPlayer(6, true); //não tem energia
+        game.moveCurrentPlayer(0, true);
+        System.out.println(Arrays.deepToString(game.getPlayersInfo()));
+
+        game.moveCurrentPlayer(4, true);
+        game.moveCurrentPlayer(0, true);
+        System.out.println(Arrays.deepToString(game.getPlayersInfo()));
+
+        System.out.println(game.moveCurrentPlayer(1, true).code());
+        game.moveCurrentPlayer(0, true);
+        System.out.println(Arrays.deepToString(game.getPlayersInfo()));
+
     }
 
 }
