@@ -48,10 +48,6 @@ class Casa {
         return true;
     }
 
-    public int getEnergiaCalculada(int energia , String dieta, int quantidadeComeu, int numJogada) {
-        return alimento.calcularEnergia(energia, dieta, quantidadeComeu, numJogada);
-    }
-
     public String getIDAlimento() {
         if (alimento == null) {
             return null;
@@ -112,10 +108,6 @@ class Casa {
 
     public void setAsMeta() {
         this.isMeta = true;
-    }
-
-    public boolean isMeta() {
-        return isMeta;
     }
 
     public boolean containsJogador(int playerID) {

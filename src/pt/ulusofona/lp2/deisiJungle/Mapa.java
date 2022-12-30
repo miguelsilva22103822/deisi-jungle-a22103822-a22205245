@@ -90,7 +90,7 @@ class Mapa {
         return casas.get(cIndex(nrCasa)).getAlimento();
     }
 
-    public String getSaveInfo(int numJogada) {
+    public String getSaveInfo() {
         StringBuilder text = new StringBuilder();
 
         for (Casa casa : casas) {
@@ -132,9 +132,5 @@ class Mapa {
         this.tamanhoMax = casas.size();
 
         this.casas.get(cIndex(casas.size())).setAsMeta();
-    }
-
-    public String[] getAlimentoSaveInfo(int nrCasa) {
-        return this.casas.get(cIndex(nrCasa)).getAlimentoSaveInfo();
     }
 }
