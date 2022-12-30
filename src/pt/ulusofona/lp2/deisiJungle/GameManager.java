@@ -324,7 +324,7 @@ public class GameManager {
             StringBuilder text = new StringBuilder();
 
             text.append("Mapa:\n");
-            text.append(mapa.getSaveInfo(numJogada));
+            text.append(mapa.getSaveInfo());
 
             text.append("Jogadores:\n");
             for (Jogador jogador : jogadores.values()) {
