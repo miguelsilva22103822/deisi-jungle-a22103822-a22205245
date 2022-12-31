@@ -145,6 +145,10 @@ class Jogador {
             energia = 200;
         }
 
+        if (energia < 0) {
+            energia = 0;
+        }
+
     }
 
     public int getQuantidadeComeu () {

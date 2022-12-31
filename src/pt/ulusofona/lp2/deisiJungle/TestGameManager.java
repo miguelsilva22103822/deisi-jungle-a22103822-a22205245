@@ -360,34 +360,34 @@ public class TestGameManager {
         String[] jogador1 = {"1", "João", "P"};
         String[] jogador2 = {"3", "Manuel", "T"};
 
-        String[] alimento1 = {"b", "18"};
+        String[] alimento1 = {"b", "7"};
+        String[] alimento2 = {"b", "28"};
 
 
         String[][] jogadores = {jogador1, jogador2};
-        String[][] alimentos = {alimento1};
+        String[][] alimentos = {alimento1, alimento2};
 
         game.createInitialJungle(45, jogadores, alimentos);
 
-        game.moveCurrentPlayer(6, true);
+        System.out.println(game.moveCurrentPlayer(6, true));
         game.moveCurrentPlayer(0, true);
+
+
+        System.out.println(game.moveCurrentPlayer(6, true));
+        game.moveCurrentPlayer(0, true);
+
+        System.out.println(game.moveCurrentPlayer(6, true));
+        game.moveCurrentPlayer(0, true);
+
+        System.out.println(game.moveCurrentPlayer(6, true));
+        game.moveCurrentPlayer(0, true);
+
+        System.out.println(game.moveCurrentPlayer(3, true));
+        game.moveCurrentPlayer(0, true);
+
         System.out.println(Arrays.deepToString(game.getPlayersInfo()));
 
-        game.moveCurrentPlayer(6, true);
-        game.moveCurrentPlayer(0, true);
-        System.out.println(Arrays.deepToString(game.getPlayersInfo()));
 
-        game.moveCurrentPlayer(6, true); //não tem energia
-        game.moveCurrentPlayer(0, true);
-        System.out.println(Arrays.deepToString(game.getPlayersInfo()));
-
-        game.moveCurrentPlayer(4, true);
-        game.moveCurrentPlayer(0, true);
-        System.out.println(Arrays.deepToString(game.getPlayersInfo()));
-
-        System.out.println(game.moveCurrentPlayer(1, true).code());
-        game.moveCurrentPlayer(0, true);
-        System.out.println(Arrays.deepToString(game.getPlayersInfo()));
 
     }
-
 }
