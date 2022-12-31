@@ -58,10 +58,6 @@ class Casa {
 
     public int[] getIDsJogadores() {
 
-        if (iDsJogadores.size() > tamanhoMax) {
-            return new int[0];
-        }
-
         if (iDsJogadores.size() == 0) {
             return new int[0];
         }
