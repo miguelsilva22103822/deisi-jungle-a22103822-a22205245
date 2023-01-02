@@ -172,7 +172,7 @@ public class GameManager {
             casaDestino = mapa.getNrCasas();
         }
 
-        if (casaDestino < 0) {
+        if (casaDestino < 1) {
             casaDestino = 1;
         }
 
