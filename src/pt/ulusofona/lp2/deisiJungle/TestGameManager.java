@@ -741,7 +741,6 @@ public class TestGameManager {
 
         gameManager.getPlayersInfo();
 
-
         String[] jogador1 = {"1", "João", "P"};
         String[] jogador2 = {"3", "Manuel", "T"};
 
@@ -773,6 +772,151 @@ public class TestGameManager {
 
         //função getCurrentPlayerEnegyInfo linha:  133
 
+    }
+
+    @Test
+    public void testInvalidPlayersCreateInitialJungle() {
+
+        GameManager game = new GameManager();
+
+        game.getAuthorsPanel();
+
+        String[] p1 = {"2", "Maria", "B"}; //especie invalida
+        String[] p2 = {"5", "Pedro", "E"};
+
+        String[] a1 = {"e", "7"};
+        String[] a2 = {"b", "2"};
+
+        String[][] players1 = {p1, p2};
+        String[][] foods1 = {a1, a2};
+
+        assertEquals("playersInfo inválido",
+                game.createInitialJungle(30, players1, foods1).getMessage());
+
+        String[] p3 = {"abc", "Maria", "L"}; //id nao numerico
+        String[] p4 = {"5", "Pedro", "E"};
+
+        String[] a3 = {"e", "7"};
+        String[] a4 = {"b", "2"};
+
+        String[][] players2 = {p3, p4};
+        String[][] foods2 = {a3, a4};
+
+        assertEquals("playersInfo inválido",
+                game.createInitialJungle(30, players2, foods2).getMessage());
+
+        String[] p5 = {"2", null, "L"}; //nome null ou vazio
+        String[] p6 = {"5", "Pedro", "E"};
+
+        String[] a5 = {"e", "7"};
+        String[] a6 = {"b", "2"};
+
+        String[][] players3 = {p5, p6};
+        String[][] foods3 = {a5, a6};
+
+        assertEquals("playersInfo inválido",
+                game.createInitialJungle(30, players3, foods3).getMessage());
+
+        String[] p7 = {"2", "Maria", "L"}; //varios jogadores com o mesmo id
+        String[] p8 = {"2", "Pedro", "E"};
+
+        String[] a7 = {"e", "7"};
+        String[] a8 = {"b", "2"};
+
+        String[][] players4 = {p7, p8};
+        String[][] foods4 = {a7, a8};
+
+        assertEquals("playersInfo inválido",
+                game.createInitialJungle(30, players4, foods4).getMessage());
+
+    }
+
+    @Test
+    public void testInvalidFoodsCreateInitialJungle() {
+
+        GameManager game = new GameManager();
+
+        String[] p1 = {"2", "Maria", "L"};
+        String[] p2 = {"5", "Pedro", "E"};
+
+        String[] a1 = {"e", "7"};
+        String[] a2 = {"b", "31"}; //posicao fora do mapa
+
+        String[][] players1 = {p1, p2};
+        String[][] foods1 = {a1, a2};
+
+        assertEquals("foodsInfo inválido",
+                game.createInitialJungle(30, players1, foods1).getMessage());
+
+        String[] p3 = {"2", "Maria", "L"};
+        String[] p4 = {"5", "Pedro", "E"};
+
+        String[] a3 = {"e", "7"};
+        String[] a4 = {"d", "2"}; //id alimento nao existe
+
+        String[][] players2 = {p3, p4};
+        String[][] foods2 = {a3, a4};
+
+        assertEquals("foodsInfo inválido",
+                game.createInitialJungle(30, players2, foods2).getMessage());
+
+        String[] p5 = {"2", "Maria", "L"};
+        String[] p6 = {"5", "Pedro", "E"};
+
+        String[] a5 = {"e", "7"};
+        String[] a6 = {"b", "a"}; //posicao nao numerica
+
+        String[][] players3 = {p5, p6};
+        String[][] foods3 = {a5, a6};
+
+        assertEquals("foodsInfo inválido",
+                game.createInitialJungle(30, players3, foods3).getMessage());
+
+    }
+
+    @Test
+    public void testGameManagerExtragetWinnerInfoAndGetGameResults() {
+        GameManager game = new GameManager();
+
+        assertNull(game.getCurrentPlayerEnergyInfo(2)); //tem que dar null porque ainda nao ha jogadores
+
+        String[] jogador1 = {"1", "João", "E"};
+        String[] jogador2 = {"3", "Manuel", "E"};
+
+        String[] alimento1 = {"b", "7"};
+        String[] alimento2 = {"b", "2"};
+
+        String[][] jogadores = {jogador1, jogador2};
+
+        game.createInitialJungle(30, jogadores);
+
+        assertEquals("[8, 10]", Arrays.toString(game.getCurrentPlayerEnergyInfo(2)));
+
+        game.moveCurrentPlayer(6, false);
+        game.moveCurrentPlayer(5, false);
+
+        game.moveCurrentPlayer(6, false);
+        game.moveCurrentPlayer(5, false);
+
+        game.moveCurrentPlayer(6, false);
+        game.moveCurrentPlayer(5, false);
+
+        game.moveCurrentPlayer(6, false);
+        game.moveCurrentPlayer(5, false);
+
+        game.moveCurrentPlayer(6, false);
+        game.moveCurrentPlayer(5, false);
+
+        assertEquals("[1, João, E, 60, 1..6]", Arrays.toString(game.getWinnerInfo()));
+
+        assertEquals("[#1 João, Elefante, 30, 30, 0, #2 Manuel, Elefante, 26, 25, 0]",
+                game.getGameResults().toString());
+
+    }
+
+    @Test
+    public void testMain() {
+        Main main = new Main(); //bruh
     }
 
 }

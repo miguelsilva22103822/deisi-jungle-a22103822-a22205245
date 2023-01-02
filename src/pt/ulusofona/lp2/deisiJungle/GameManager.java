@@ -130,6 +130,9 @@ public class GameManager {
     }
 
     public String[] getCurrentPlayerEnergyInfo(int nrPositions) {
+        if (iDsJogadores == null) {
+            return null;
+        }
         return jogadores.get(iDsJogadores[indiceJogadorAtual]).getInfoEnergy(nrPositions);
     }
 
@@ -414,7 +417,7 @@ public class GameManager {
             return false;
         }
 
-        //id's têm que ser todos diferentes
+        //‘id’'s têm que ser todos diferentes
         for (int i = 0; i < ids.size(); i++) {
             for (int j = 0; j < ids.size(); j++) {
                 if (i != j) {
@@ -457,9 +460,7 @@ public class GameManager {
 
         ArrayList<String> foodArrayList = new ArrayList<>();
 
-        if (foods == null || foods.length == 0) {
-            return null;
-        }
+        //foods nunca é null porque é chamado com getFoodsTypes() como parametro
 
         for (int i = 0; i < foods.length; i++) {
             foodArrayList.add(foods[i][0]);
@@ -472,9 +473,7 @@ public class GameManager {
 
         ArrayList<String> speciesArrayList = new ArrayList<>();
 
-        if (species == null || species.length == 0) {
-            return null;
-        }
+        //species nunca é null porque é chamado com getSpecies() como parametro
 
         for (int i = 0; i < species.length; i++) {
             speciesArrayList.add(species[i][0]);
@@ -527,7 +526,7 @@ public class GameManager {
                                  int indiceJogadorAtual, int numJogada) {
 
         mapa = new Mapa(casas.size());
-        mapa.loadGame(casas); //acho que já está bom
+        mapa.loadGame(casas); //penso que já está bom
 
         this.jogadores = new HashMap<>();
         for (String jogadorInfo : jogadores) {
