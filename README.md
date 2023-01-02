@@ -1,5 +1,7 @@
 ![](diagrama.png?raw=true "Diagrama UML")
 
+Link para o vídeo : https://youtu.be/cnf5OerLXkI
+
 A classe gameManager tem como funcionalidade controlar o jogo,
 vimos que faria sentido ter um objeto que representasse o terreno do jogo:
 
