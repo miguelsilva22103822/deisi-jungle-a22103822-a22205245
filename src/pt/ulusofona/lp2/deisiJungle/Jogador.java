@@ -24,6 +24,7 @@ class Jogador {
             case "T" -> especie = new Tartaruga();
             case "P" -> especie = new Passaro();
             case "Z" -> especie = new Tarzan();
+            case "Q" -> especie = new Esquilo();
         }
 
         this.energia = especie.getEnergiaInicial();

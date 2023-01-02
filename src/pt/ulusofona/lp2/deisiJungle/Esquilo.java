@@ -3,7 +3,7 @@ package pt.ulusofona.lp2.deisiJungle;
 class Esquilo  extends Especie {
     private final int energiaInicial = 120;
     private final int consumoEnergia = 8;
-    private final int energiaDescanso = 15;
+    private final int energiaDescanso = 40;
     private final String velocidade = "2..6";
 
     public Esquilo() {

@@ -31,8 +31,9 @@ public class GameManager {
         String[] tartaruga = new Tartaruga().getInfo();
         String[] passaro = new Passaro().getInfo();
         String[] tarzan = new Tarzan().getInfo();
+        String[] esquilo = new Esquilo().getInfo();
 
-        return new String[][]{elefante, leao, tartaruga, passaro, tarzan};
+        return new String[][]{elefante, leao, tartaruga, passaro, tarzan, esquilo};
     }
 
     public String[][] getFoodTypes() {
