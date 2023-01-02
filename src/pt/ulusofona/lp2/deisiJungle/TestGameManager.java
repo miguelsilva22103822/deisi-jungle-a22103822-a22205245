@@ -689,7 +689,7 @@ public class TestGameManager {
     }
 
     @Test
-    public void testGameManagerAuxiliarJogadores() { //------------FALTAM TESTES---------
+    public void testGameManagerAuxiliarJogadores() {
         GameManager gameManager = new GameManager();
 
         String[] jogador1 = {"1", "João", "P"};
@@ -706,13 +706,10 @@ public class TestGameManager {
         gameManager.createInitialJungle(20, null, alimentos);
 
         gameManager.createInitialJungle(20, jogadores, alimentos);
-
-        //falta na função validarPlayerIndfo linhas : 401,405,422
-
     }
 
     @Test
-    public void testGameManagerAuxiliarAlimentos() {  //------------FALTAM TESTES---------
+    public void testGameManagerAuxiliarAlimentos() {
 
         GameManager gameManager = new GameManager();
 
@@ -729,13 +726,10 @@ public class TestGameManager {
         gameManager.createInitialJungle(20, jogadores, null);
 
         gameManager.createInitialJungle(20, jogadores, alimentos);
-
-        //falta na função validarFoodsInfo linhas : 441,445,461(foodToArrayList), 476(speciesToArrayList),
-        // 495(isNumeric...)
     }
 
     @Test
-    public void testGameManager() {  //------------FALTAM TESTES---------
+    public void testGameManager() {
 
         GameManager gameManager = new GameManager();
 
@@ -769,9 +763,6 @@ public class TestGameManager {
         assertEquals("[]", Arrays.toString(gameManager.getPlayerIds(25)));
 
         gameManager.createInitialJungle(2, jogadores, alimentos);
-
-        //função getCurrentPlayerEnegyInfo linha:  133
-
     }
 
     @Test
