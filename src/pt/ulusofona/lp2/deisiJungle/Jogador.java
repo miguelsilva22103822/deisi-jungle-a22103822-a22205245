@@ -169,4 +169,8 @@ class Jogador {
                 + distanciaPercorrida
                 + "]";
     }
+
+    public Especie getEspecie() {
+        return especie;
+    }
 }

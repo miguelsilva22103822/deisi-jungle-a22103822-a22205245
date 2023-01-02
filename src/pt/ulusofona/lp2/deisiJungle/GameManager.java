@@ -10,7 +10,6 @@ import java.util.*;
 import java.util.List;
 
 public class GameManager {
-    private HashMap<String, Especie> especies;
     private Mapa mapa;
     private HashMap<Integer, Jogador> jogadores;
     private int[] iDsJogadores;
@@ -19,13 +18,6 @@ public class GameManager {
 
     public GameManager() {
         this.jogadores = new HashMap<>();
-        this.especies = new HashMap<>();
-
-        this.especies.put(new Elefante().getId(), new Elefante());
-        this.especies.put(new Leao().getId(), new Leao());
-        this.especies.put(new Tartaruga().getId(), new Tartaruga());
-        this.especies.put(new Passaro().getId(), new Passaro());
-        this.especies.put(new Tarzan().getId(), new Tarzan());
 
         indiceJogadorAtual = 0;
     }
@@ -277,7 +269,7 @@ public class GameManager {
         for (int i = 0; i < iDsOrdenados.size(); i++) {
             Jogador jogador = jogadores.get(iDsOrdenados.get(i));
             String playerResult = "#" + (i+1) + " " + jogador.getNome() + ", "
-                    + especies.get(jogador.getIdEspecie()).getNome() + ", "
+                    + jogador.getEspecie().getNome() + ", "
                     + mapa.findNrCasaContaining(jogador.getID()) + ", "
                     + jogador.getDistanciaPercorrida() + ", "
                     + jogador.getQuantidadeComeu();
