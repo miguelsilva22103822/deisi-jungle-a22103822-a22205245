@@ -197,7 +197,7 @@ class Casa {
         return info;
     }
 
-    public String[] getAlimentoSaveInfo() {
+    public String[] getAlimentoSaveInfo() { //esta função n é usada , penso q podemos tirar
         if (alimento == null) {
             return null;
         }

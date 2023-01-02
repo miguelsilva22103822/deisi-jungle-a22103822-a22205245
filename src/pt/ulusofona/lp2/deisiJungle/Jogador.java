@@ -29,7 +29,8 @@ class Jogador {
         this.energia = especie.getEnergiaInicial();
     }
 
-    public Jogador(int id, String nome, String idEspecie, int energia, int quantidadeBananasComeu, int quantidadeComeu, int distanciaPercorrida) {
+    public Jogador(int id, String nome, String idEspecie, int energia, int quantidadeBananasComeu,
+                   int quantidadeComeu, int distanciaPercorrida) {
         this.id = id;
         this.nome = nome;
         this.idEspecie = idEspecie;
@@ -88,7 +89,6 @@ class Jogador {
                 || nrPositions > Character.getNumericValue(especie.getVelocidade().charAt(3))) {
             return false;
         }
-
         return true;
     }
 
@@ -100,7 +100,6 @@ class Jogador {
         if (energia >= nrPositions * especie.getConsumoEnergia()) {
             return true;
         }
-
         return false;
     }
 

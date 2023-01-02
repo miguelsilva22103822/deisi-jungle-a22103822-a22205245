@@ -3,6 +3,7 @@ package pt.ulusofona.lp2.deisiJungle;
 import org.junit.*;
 
 import java.io.File;
+import java.net.PortUnreachableException;
 import java.util.Arrays;
 import java.util.Map;
 
@@ -318,7 +319,8 @@ public class TestGameManager {
 
         String[] test2 = gameManager.getCurrentPlayerInfo();
 
-        assertEquals(test, test2);
+        assertArrayEquals(test, test2);
+
     }
 
     @Test
@@ -378,6 +380,7 @@ public class TestGameManager {
 
         game.createInitialJungle(45, jogadores, alimentos);
 
+
         Assert.assertEquals("MovementResult[code=CAUGHT_FOOD, message=Apanhou Bananas]",
                 String.valueOf(game.moveCurrentPlayer(6, true)));
         game.moveCurrentPlayer(0, true);
@@ -397,6 +400,13 @@ public class TestGameManager {
         Assert.assertEquals("MovementResult[code=NO_ENERGY, message=null]",
                 String.valueOf(game.moveCurrentPlayer(6, true)));
         game.moveCurrentPlayer(0, true);
+
+        Assert.assertEquals("MovementResult[code=INVALID_MOVEMENT, message=null]",
+                String.valueOf(game.moveCurrentPlayer(-7, false)));
+
+        Assert.assertEquals("MovementResult[code=INVALID_MOVEMENT, message=null]",
+                String.valueOf(game.moveCurrentPlayer(6, false)));
+
 
         game.moveCurrentPlayer(3, true);
         Assert.assertEquals("[[1, João, P, 0, 5..6], [3, Manuel, T, 175, 1..3]]",
@@ -476,32 +486,26 @@ public class TestGameManager {
 
     @Test
     public void testCasa() {
-        String idAlimento = " ";
-        int tamanhoMax = 4;
 
-        GameManager game = new GameManager();
         Casa casa = new Casa();
-
-
         GameManager gameManager = new GameManager();
 
         String[] jogador1 = {"1", "João", "E"};
         String[] jogador2 = {"3", "Manuel", "T"};
-        String[] jogador3 = {"5", "Pedro", "Z"};
-        String[] jogador4 = {"2", "Maria", "P"};
 
-        String[] alimento1 = {"b", "7"};
-        String[] alimento2 = {"a", "4"};
-        String[] alimento3 = {"c", "2"};
-        String[] alimento4 = {"e", "6"};
-        String[] alimento5 = {"m", "5"};
+        String[][] jogadores = {jogador1, jogador2};
 
-        String[][] jogadores = {jogador1, jogador2, jogador3, jogador4};
-        String[][] alimentos = {alimento1, alimento2, alimento3, alimento4, alimento5};
-
-        gameManager.createInitialJungle(20, jogadores, alimentos);
+        gameManager.createInitialJungle(20, jogadores);
 
         assertEquals("[]", Arrays.toString(casa.getIDsJogadores()));
+
+        assertEquals(-1, casa.jogadorIDMenor());
+
+        assertNull(casa.getAlimentoSaveInfo()); // função não usada
+
+        casa.setAsMeta();
+        gameManager.moveCurrentPlayer(20, true);
+        assertEquals("[finish.png, Meta, ]", Arrays.toString(casa.getInfo(1)));
 
         assertFalse(casa.addAlimento("k"));
 
@@ -515,6 +519,11 @@ public class TestGameManager {
         casa.addJogador(4);
         assertFalse(casa.addJogador(7));
 
+        assertFalse(casa.removeJogador(0));
+
+        assertNull(casa.arrayListToArray(null));
+
+        assertEquals("[Bananas, 3]", Arrays.toString(casa.getAlimentoSaveInfo())); // função não usada
     }
 
     @Test
@@ -602,6 +611,167 @@ public class TestGameManager {
 
     @Test
     public void testJogador() {
+
+        Jogador jogador = new Jogador(1, "Joao","L");
+        Jogador jogador1 = new Jogador(2, "Maria","Z");
+        Jogador jogador2 = new Jogador(1, "Helena","L", 180,0,
+                0,0);
+        Jogador jogador3 = new Jogador(2, "Miguel","T", 200, 0,0,0);
+
+        assertEquals("[1, Joao, L, 80, 4..6]", Arrays.toString(jogador.getInfo()));
+
+        assertEquals("[2, Maria, Z, 70, 1..6]", Arrays.toString(jogador1.getInfo()));
+
+        assertEquals("[2, 10]", Arrays.toString(jogador2.getInfoEnergy(1)));
+
+        assertEquals(180,jogador2.getEnergia());
+
+        assertTrue(jogador.movementIsValid(0));
+
+        assertFalse(jogador.movementIsValid(15));
+
+        assertTrue(jogador1.movementIsValid(1));
+
+        assertTrue(jogador.hasEnergy(0));
+
+        assertTrue(jogador1.hasEnergy(10));
+
+        assertFalse(jogador1.hasEnergy(100));
+
+        jogador2.updateEnergyMovement(0);
+
+        assertEquals(190, jogador2.getEnergia());
+
+        assertEquals(0, jogador2.getDistanciaPercorrida());
+
+        jogador3.updateEnergyMovement(1);
+
+        assertEquals(199, jogador3.getEnergia());
+
+        assertEquals("Joao", jogador.getNome());
+
+        assertEquals("L", jogador.getIdEspecie());
+
+        assertEquals("c", jogador.getDieta());
+
+        assertEquals(0, jogador2.getQuantidadeComeu());
+
+        assertEquals("[1,Helena,L,190,0,0,0]", jogador2.getSaveInfo());
+
+        jogador3.comer(new Agua(),2);
+
+        assertEquals(200, jogador3.getEnergia());
+    }
+
+    @Test
+    public void testGetWinnerInfo() {
+
+        GameManager gameManager = new GameManager();
+
+        String[] jogador1 = {"1", "João", "E"};
+        String[] jogador2 = {"3", "Manuel", "T"};
+
+        String[][] jogadores = {jogador1, jogador2};
+
+        gameManager.createInitialJungle(20, jogadores, null);
+
+        gameManager.moveCurrentPlayer(0,true);
+        gameManager.moveCurrentPlayer(5,true);
+        gameManager.moveCurrentPlayer(0,true);
+        gameManager.moveCurrentPlayer(5,true);
+        gameManager.moveCurrentPlayer(0,true);
+        gameManager.moveCurrentPlayer(5,true);
+
+        gameManager.getWinnerInfo();
+
+        Assert.assertEquals("[1, João, E, 200, 1..6]", Arrays.toString(gameManager.getWinnerInfo()));
+
+    }
+
+    @Test
+    public void testGameManagerAuxiliarJogadores() { //------------FALTAM TESTES---------
+        GameManager gameManager = new GameManager();
+
+        String[] jogador1 = {"1", "João", "P"};
+        String[] jogador2 = {"3", "Manuel", "T"};
+        String[] jogador3 = {null, null, null};
+
+        String[] alimento1 = {"b", "7"};
+        String[] alimento2 = {"b", "2"};
+
+
+        String[][] jogadores = {jogador1, jogador2, jogador3};
+        String[][] alimentos = {alimento1, alimento2};
+
+        gameManager.createInitialJungle(20, null, alimentos);
+
+        gameManager.createInitialJungle(20, jogadores, alimentos);
+
+        //falta na função validarPlayerIndfo linhas : 401,405,422
+
+    }
+
+    @Test
+    public void testGameManagerAuxiliarAlimentos() {  //------------FALTAM TESTES---------
+
+        GameManager gameManager = new GameManager();
+
+        String[] jogador1 = {"1", "João", "P"};
+        String[] jogador2 = {"3", "Manuel", "T"};
+
+        String[] alimento1 = {"b", "7"};
+        String[] alimento2 = {"c", "0"};
+        String[] alimento3 = {"", null};
+
+        String[][] jogadores = {jogador1, jogador2};
+        String[][] alimentos = {alimento1, alimento2, alimento3};
+
+        gameManager.createInitialJungle(20, jogadores, null);
+
+        gameManager.createInitialJungle(20, jogadores, alimentos);
+
+        //falta na função validarFoodsInfo linhas : 441,445,461(foodToArrayList), 476(speciesToArrayList),
+        // 495(isNumeric...)
+    }
+
+    @Test
+    public void testGameManager() {  //------------FALTAM TESTES---------
+
+        GameManager gameManager = new GameManager();
+
+        gameManager.getPlayersInfo();
+
+
+        String[] jogador1 = {"1", "João", "P"};
+        String[] jogador2 = {"3", "Manuel", "T"};
+
+        String[] alimento1 = {"b", "7"};
+        String[] alimento2 = {"b", "2"};
+
+
+        String[][] jogadores = {jogador1, jogador2};
+        String[][] alimentos = {alimento1, alimento2};
+
+        assertEquals("[]", Arrays.toString(gameManager.getPlayerIds(0)));
+
+        assertEquals("[]", Arrays.toString(gameManager.getPlayerIds(10)));
+
+        assertNull(gameManager.getSquareInfo(0));
+
+        gameManager.createInitialJungle(20, jogadores, alimentos);
+        gameManager.moveCurrentPlayer(1,true);
+
+        assertNull(gameManager.getPlayerInfo(0));
+
+        assertEquals("[1, João, P, 106, 5..6]", Arrays.toString(gameManager.getPlayerInfo(1)));
+
+        assertNull(gameManager.getSquareInfo(0));
+
+        assertEquals("[]", Arrays.toString(gameManager.getPlayerIds(25)));
+
+        gameManager.createInitialJungle(2, jogadores, alimentos);
+
+        //função getCurrentPlayerEnegyInfo linha:  133
 
     }
 
