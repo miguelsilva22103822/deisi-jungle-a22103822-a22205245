@@ -567,11 +567,11 @@ public class TestGameManager {
 
         Assert.assertEquals("h", esquilo.getDieta());
 
-        Assert.assertEquals(120,esquilo.getEnergiaInicial());
+        Assert.assertEquals(120, esquilo.getEnergiaInicial());
 
         Assert.assertEquals(8, esquilo.getConsumoEnergia());
 
-        Assert.assertEquals(15,esquilo.getEnergiaDescanso());
+        Assert.assertEquals(40, esquilo.getEnergiaDescanso());
 
         Assert.assertEquals("2..6", esquilo.getVelocidade());
     }
