@@ -12,6 +12,7 @@ class Jogador {
     private int quantidadeBananasComeu;
     private int quantidadeComeu;
     private int distanciaPercorrida;
+    private int casaAtual = 0;
 
     public Jogador(int id, String nome, String idEspecie) {
         this.id = id;
@@ -157,6 +158,14 @@ class Jogador {
 
     public int getDistanciaPercorrida() {
         return distanciaPercorrida;
+    }
+
+    public void setCasaAtual(int nrCasa) {
+        casaAtual = nrCasa;
+    }
+
+    public int getCasaAtual() {
+        return casaAtual;
     }
 
     public String getSaveInfo() {

@@ -65,7 +65,7 @@ fun getPlayerInfo(manager: GameManager, args: List<String>): String? {
 
     val player = players[0]
 
-    return "${player.id} | ${player.nome} | ${player.especie.nome} | ${player.energia} | bruh"
+    return "${player.id} | ${player.nome} | ${player.especie.nome} | ${player.energia} | ${player.casaAtual}"
 }
 
 fun getPlayersBySpecie(manager: GameManager, args: List<String>): String? {
@@ -107,7 +107,7 @@ fun main() {
 
     val routerFn = router()
     val commandGetFn = routerFn.invoke(CommandType.GET)
-    val result = commandGetFn.invoke(manager, listOf("PLAYER_INFO", "Pedro"))
+    val result = commandGetFn.invoke(manager, listOf("PLAYER_INFO", "Maria"))
 
     println(result)
 }

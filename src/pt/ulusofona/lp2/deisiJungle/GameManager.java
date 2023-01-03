@@ -146,6 +146,8 @@ public class GameManager {
 
     public MovementResult moveCurrentPlayer(int nrSquares, boolean bypassValidations) {
 
+        Jogador jogadorAtual = jogadores.get(getIDJogadorAtual());
+
         if (!bypassValidations) {
             if (nrSquares < -6 || nrSquares > 6) {
                 updateJogada();
@@ -157,7 +159,7 @@ public class GameManager {
             }
         }
 
-        if (!jogadores.get(getIDJogadorAtual()).hasEnergy(nrSquares)) {
+        if (!jogadorAtual.hasEnergy(nrSquares)) {
             updateJogada();
             return new MovementResult(MovementResultCode.NO_ENERGY, null);
         }
@@ -176,13 +178,14 @@ public class GameManager {
             casaDestino = 1;
         }
 
-        jogadores.get(getIDJogadorAtual()).updateEnergyMovement(nrSquares);
+        jogadorAtual.updateEnergyMovement(nrSquares);
 
         mapa.addPlayerToCasa(getIDJogadorAtual(), casaDestino);
+        jogadorAtual.setCasaAtual(casaDestino);
 
-        if (mapa.getIdAlimentoCasa(casaDestino) != null && !(jogadores.get(getIDJogadorAtual()).getDieta().equals("h")
+        if (mapa.getIdAlimentoCasa(casaDestino) != null && !(jogadorAtual.getDieta().equals("h")
                 && mapa.getAlimentoCasa(casaDestino).eCarne())) {
-            jogadores.get(getIDJogadorAtual()).comer(mapa.getAlimentoCasa(casaDestino),numJogada);
+            jogadorAtual.comer(mapa.getAlimentoCasa(casaDestino),numJogada);
 
             updateJogada();
 
