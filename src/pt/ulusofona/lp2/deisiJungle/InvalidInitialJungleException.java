@@ -1,11 +1,11 @@
 package pt.ulusofona.lp2.deisiJungle;
 
-public class InvalidInitialBoardException extends Exception {
+public class InvalidInitialJungleException extends Exception {
     private final String erro;
     private final boolean invalidPlayer;
     private final boolean isInvalidFood;
 
-    public InvalidInitialBoardException(String erro, boolean invalidPlayer, boolean invalidFood) {
+    public InvalidInitialJungleException(String erro, boolean invalidPlayer, boolean invalidFood) {
         this.erro = erro;
         this.invalidPlayer = invalidPlayer;
         this.isInvalidFood = invalidFood;

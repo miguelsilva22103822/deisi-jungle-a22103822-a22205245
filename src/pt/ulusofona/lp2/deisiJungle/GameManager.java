@@ -48,18 +48,18 @@ public class GameManager {
     }
 
     public void createInitialJungle(int jungleSize, String[][] playersInfo, String[][] foodsInfo)
-            throws InvalidInitialBoardException {
+            throws InvalidInitialJungleException {
 
         if(!validarPlayersInfo(playersInfo)) {
-             throw new InvalidInitialBoardException("playersInfo inválido", true, false);
+             throw new InvalidInitialJungleException("playersInfo inválido", true, false);
         }
 
         if (jungleSize < (2 * playersInfo.length)) {
-            throw new InvalidInitialBoardException("O mapa tem menos de duas posições por jogador", true, false);
+            throw new InvalidInitialJungleException("O mapa tem menos de duas posições por jogador", true, false);
         }
 
         if (!validarfoodsInfo(foodsInfo, jungleSize)) {
-            throw new InvalidInitialBoardException("foodsInfo inválido", false, true);
+            throw new InvalidInitialJungleException("foodsInfo inválido", false, true);
         }
 
         mapa = new Mapa(jungleSize);
@@ -74,7 +74,7 @@ public class GameManager {
         saveIDsJogadores();
     }
 
-    public void createInitialJungle(int jungleSize, String[][] playersInfo) throws InvalidInitialBoardException {
+    public void createInitialJungle(int jungleSize, String[][] playersInfo) throws InvalidInitialJungleException {
         createInitialJungle(jungleSize, playersInfo, null);
     }
 
