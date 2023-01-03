@@ -4,7 +4,6 @@ enum class CommandType {
     GET, POST
 }
 
-
 fun getPlayerInfo(manager: GameManager, args: List<String>): String? {
     return "ola"
 }
@@ -42,16 +41,4 @@ fun xpto(comando : CommandType) : (GameManager, List<String>) -> String? {
 
 fun router() : (CommandType) -> (GameManager, List<String>) -> String? {
     return :: xpto
-}
-
-
-
-
-
-
-
-fun test {
-    val routerFn = router()
-    val commandGetFn = routerFn.invoke(CommandType.GET)
-    val result = commandGetFn.invoke(manager, listOf("PLAYER_INFO", "Pedro"))
 }
