@@ -26,7 +26,7 @@ fun post(manager : GameManager, args : List<String>) : String? {
     return null
 }
 
-fun xpto(comando : CommandType) : (GameManager, List<String>) -> String? {
+fun routeCommandType(comando : CommandType) : (GameManager, List<String>) -> String? {
 
     if (comando == CommandType.GET) {
         return :: get
@@ -40,5 +40,5 @@ fun xpto(comando : CommandType) : (GameManager, List<String>) -> String? {
 }
 
 fun router() : (CommandType) -> (GameManager, List<String>) -> String? {
-    return :: xpto
+    return :: routeCommandType
 }

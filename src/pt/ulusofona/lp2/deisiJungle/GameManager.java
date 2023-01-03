@@ -47,18 +47,19 @@ public class GameManager {
         return new String[][]{cachoBanana, agua, cogumelo, erva, carne};
     }
 
-    public InitializationError createInitialJungle(int jungleSize, String[][] playersInfo, String[][] foodsInfo) {
+    public void createInitialJungle(int jungleSize, String[][] playersInfo, String[][] foodsInfo)
+            throws InvalidInitialBoardException {
 
         if(!validarPlayersInfo(playersInfo)) {
-            return new InitializationError("playersInfo inválido");
+             throw new InvalidInitialBoardException("playersInfo inválido", true, false);
         }
 
         if (jungleSize < (2 * playersInfo.length)) {
-            return new InitializationError("O mapa tem menos de duas posições por jogador");
+            throw new InvalidInitialBoardException("O mapa tem menos de duas posições por jogador", true, false);
         }
 
         if (!validarfoodsInfo(foodsInfo, jungleSize)) {
-            return new InitializationError("foodsInfo inválido");
+            throw new InvalidInitialBoardException("foodsInfo inválido", false, true);
         }
 
         mapa = new Mapa(jungleSize);
@@ -71,12 +72,10 @@ public class GameManager {
         }
 
         saveIDsJogadores();
-
-        return null;
     }
 
-    public InitializationError createInitialJungle(int jungleSize, String[][] playersInfo) {
-        return createInitialJungle(jungleSize, playersInfo, null);
+    public void createInitialJungle(int jungleSize, String[][] playersInfo) throws InvalidInitialBoardException {
+        createInitialJungle(jungleSize, playersInfo, null);
     }
 
     public int[] getPlayerIds(int squareNr) {
