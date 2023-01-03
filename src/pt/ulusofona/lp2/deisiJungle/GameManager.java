@@ -637,4 +637,11 @@ public class GameManager {
 
         return numJogada;
     }
+
+    //funções auxiliares para parte 3--------------------------------------------------------------
+
+    public List<Jogador> getJogadores() {
+        return new ArrayList<>(jogadores.values());
+    }
+
 }

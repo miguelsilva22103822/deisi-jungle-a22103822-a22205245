@@ -1,5 +1,5 @@
 package pt.ulusofona.lp2.deisiJungle;
-/*
+
 import org.junit.*;
 
 import java.io.File;
@@ -11,6 +11,7 @@ import static org.junit.Assert.*;
 
 public class TestGameManager {
 
+    /*
     @Test
     public void testGetPlayerIds() {
         GameManager gameManager = new GameManager();
@@ -909,7 +910,5 @@ public class TestGameManager {
     public void testMain() {
         Main main = new Main(); //bruh
     }
-
+    */
 }
-
- */
