@@ -176,8 +176,8 @@ class Jogador {
                 + energia + ","
                 + quantidadeBananasComeu + ","
                 + quantidadeComeu + ","
-                + distanciaPercorrida
-                + casaAtual + ","
+                + distanciaPercorrida + ","
+                + casaAtual
                 + "]";
     }
 

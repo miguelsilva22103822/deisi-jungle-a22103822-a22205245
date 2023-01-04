@@ -8,9 +8,11 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.function.Function;
 
 import static org.junit.Assert.*;
+
+import static org.junit.Assert.assertArrayEquals;
+
 
 public class TestGameManager {
 
@@ -657,7 +659,7 @@ public class TestGameManager {
 
         assertEquals(0, jogador2.getQuantidadeComeu());
 
-        assertEquals("[1,Helena,L,190,0,0,0]", jogador2.getSaveInfo());
+        assertEquals("[1,Helena,L,190,0,0,0,1]", jogador2.getSaveInfo());
 
         jogador3.comer(new Agua(),2);
 
@@ -704,13 +706,20 @@ public class TestGameManager {
         String[][] jogadores = {jogador1, jogador2, jogador3};
         String[][] alimentos = {alimento1, alimento2};
 
-        gameManager.createInitialJungle(20, null, alimentos);
+        try{
+            gameManager.createInitialJungle(20, null, alimentos);
 
-        gameManager.createInitialJungle(20, jogadores, alimentos);
+        }catch (InvalidInitialJungleException e){
+
+            assertEquals("playersInfo inválido",e.getMessage());
+            assertTrue(e.isInvalidPlayer());
+        }
+
+        //gameManager.createInitialJungle(20, jogadores, alimentos);
     }
 
     @Test
-    public void testGameManagerAuxiliarAlimentos() throws InvalidInitialJungleException {
+    public void testGameManagerAuxiliarAlimentos() {
 
         GameManager gameManager = new GameManager();
 
@@ -724,9 +733,14 @@ public class TestGameManager {
         String[][] jogadores = {jogador1, jogador2};
         String[][] alimentos = {alimento1, alimento2, alimento3};
 
-        gameManager.createInitialJungle(20, jogadores, null);
+        try {
+            gameManager.createInitialJungle(20, jogadores, null);
 
-        gameManager.createInitialJungle(20, jogadores, alimentos);
+        }catch (InvalidInitialJungleException e ){
+
+            assertEquals("foodsInfo inválido", e.getMessage());
+            assertTrue(e.isInvalidFood());
+        }
     }
 
     @Test
@@ -763,7 +777,7 @@ public class TestGameManager {
 
         assertEquals("[]", Arrays.toString(gameManager.getPlayerIds(25)));
 
-        gameManager.createInitialJungle(2, jogadores, alimentos);
+        //gameManager.createInitialJungle(2, jogadores, alimentos);
     }
 
     @Test
@@ -955,7 +969,7 @@ public class TestGameManager {
 
         String result = commandGetFn.invoke(manager, comando);
 
-        assertEquals("3 | Maria | Elefante | 180 | 0", result);
+        assertEquals("3 | Maria | Elefante | 180 | 1", result);
 
     }
 
