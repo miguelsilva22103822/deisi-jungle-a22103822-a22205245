@@ -1,0 +1,41 @@
+Mapa:
+[Vazio, 6,3,5]
+[Vazio, ]
+[Vazio, 1]
+[Vazio, ]
+[Bananas, ]
+[Vazio, ]
+[Vazio, ]
+[Vazio, ]
+[Vazio, ]
+[Agua, ]
+[Vazio, ]
+[Vazio, ]
+[Vazio, ]
+[Vazio, ]
+[Carne, ]
+[Vazio, ]
+[Vazio, ]
+[Vazio, ]
+[Vazio, ]
+[Erva, ]
+[Vazio, ]
+[Vazio, ]
+[Vazio, ]
+[Vazio, ]
+[Cogumelo Magico, ]
+[Vazio, ]
+[Vazio, ]
+[Vazio, ]
+[Vazio, ]
+[Meta, ]
+Jogadores:
+[1,Maria,P,62,0,0,2,3]
+[3,Manuel,T,150,0,0,0,1]
+[5,Pedro,Z,70,0,0,0,1]
+[6,João,E,180,0,0,0,1]
+iDJogadorAtual:
+1
+numJogada:
+1
+

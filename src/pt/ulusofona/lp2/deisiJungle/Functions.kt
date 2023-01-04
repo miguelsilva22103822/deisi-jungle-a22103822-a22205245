@@ -82,8 +82,8 @@ fun getPlayersBySpecie(manager: GameManager, args: List<String>): String? {
 
     return especies.map { it.nome }
         .sorted()
+        .reversed()
         .joinToString(separator = ",")
-
 }
 
 fun getMostTraveled(manager: GameManager, args: List<String>): String? {
