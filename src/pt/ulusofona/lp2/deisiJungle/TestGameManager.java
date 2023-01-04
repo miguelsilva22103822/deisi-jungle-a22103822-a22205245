@@ -948,7 +948,6 @@ public class TestGameManager {
         Function1<CommandType, Function2<GameManager, List<String>, String>> routerFn = FunctionsKt.router();
         Function2<GameManager, List<String>, String> commandGetFn = routerFn.invoke(CommandType.GET);
 
-
         List<String> comando = new ArrayList<>();
         comando.add("PLAYER_INFO");
         comando.add("Maria");
@@ -956,6 +955,7 @@ public class TestGameManager {
         String result = commandGetFn.invoke(manager, comando);
 
         assertEquals("3 | Maria | Elefante | 180 | 0", result);
+
     }
 
 }
