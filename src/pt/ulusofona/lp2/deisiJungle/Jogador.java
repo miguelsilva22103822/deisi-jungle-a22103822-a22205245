@@ -12,7 +12,7 @@ class Jogador {
     private int quantidadeBananasComeu;
     private int quantidadeComeu;
     private int distanciaPercorrida;
-    private int casaAtual = 0;
+    private int casaAtual = 1;
 
     public Jogador(int id, String nome, String idEspecie) {
         this.id = id;
@@ -32,7 +32,7 @@ class Jogador {
     }
 
     public Jogador(int id, String nome, String idEspecie, int energia, int quantidadeBananasComeu,
-                   int quantidadeComeu, int distanciaPercorrida) {
+                   int quantidadeComeu, int distanciaPercorrida, int casaAtual) {
         this.id = id;
         this.nome = nome;
         this.idEspecie = idEspecie;
@@ -177,6 +177,7 @@ class Jogador {
                 + quantidadeBananasComeu + ","
                 + quantidadeComeu + ","
                 + distanciaPercorrida
+                + casaAtual + ","
                 + "]";
     }
 

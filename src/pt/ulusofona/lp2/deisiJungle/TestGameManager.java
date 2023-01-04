@@ -615,8 +615,9 @@ public class TestGameManager {
         Jogador jogador = new Jogador(1, "Joao","L");
         Jogador jogador1 = new Jogador(2, "Maria","Z");
         Jogador jogador2 = new Jogador(1, "Helena","L", 180,0,
-                0,0);
-        Jogador jogador3 = new Jogador(2, "Miguel","T", 200, 0,0,0);
+                0,0, 0);
+        Jogador jogador3 = new Jogador(2, "Miguel","T", 200, 0,
+                0,0, 0);
 
         assertEquals("[1, Joao, L, 80, 4..6]", Arrays.toString(jogador.getInfo()));
 

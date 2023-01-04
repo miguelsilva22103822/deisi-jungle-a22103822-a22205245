@@ -138,13 +138,10 @@ fun main() {
 
     manager.createInitialJungle(30, players, foods)
 
-    manager.moveCurrentPlayer(4, true)
-    manager.moveCurrentPlayer(2, true)
-    manager.moveCurrentPlayer(9, true)
 
     val routerFn = router()
     val commandGetFn = routerFn.invoke(CommandType.GET)
-    val result = commandGetFn.invoke(manager, listOf("MOST_TRAVELED"))
+    val result = commandGetFn.invoke(manager, listOf("PLAYER_INFO", "Pedro"))
 
     println(result)
 }
