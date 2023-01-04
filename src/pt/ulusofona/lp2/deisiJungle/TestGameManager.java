@@ -1,9 +1,14 @@
 package pt.ulusofona.lp2.deisiJungle;
 
+import kotlin.jvm.functions.Function1;
+import kotlin.jvm.functions.Function2;
 import org.junit.*;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import java.util.function.Function;
 
 import static org.junit.Assert.*;
 
@@ -921,6 +926,36 @@ public class TestGameManager {
     @Test
     public void testMain() {
         Main main = new Main(); //bruh
+    }
+
+    @Test
+    public void testFunctionGetPlayerInfo() throws InvalidInitialJungleException {
+
+        GameManager manager = new GameManager();
+
+        String[] jogador1 = {"1", "João", "E"};
+        String[] jogador2 = {"3", "Maria", "E"};
+
+        String[] alimento1 = {"b", "7"};
+        String[] alimento2 = {"b", "2"};
+
+        String[][] jogadores = {jogador1, jogador2};
+
+        String[][] alimentos = {alimento1, alimento2};
+
+        manager.createInitialJungle(30, jogadores, alimentos);
+
+        Function1<CommandType, Function2<GameManager, List<String>, String>> routerFn = FunctionsKt.router();
+        Function2<GameManager, List<String>, String> commandGetFn = routerFn.invoke(CommandType.GET);
+
+
+        List<String> comando = new ArrayList<>();
+        comando.add("PLAYER_INFO");
+        comando.add("Maria");
+
+        String result = commandGetFn.invoke(manager, comando);
+
+        assertEquals("3 | Maria | Elefante | 180 | 0", result);
     }
 
 }
