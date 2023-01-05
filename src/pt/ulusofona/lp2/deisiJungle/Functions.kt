@@ -151,7 +151,21 @@ fun getConsumedFoods(manager: GameManager, args: List<String>): String? {
 }
 
 fun postMove(manager: GameManager, args: List<String>): String? {
-    return null
+
+    if(args.size != 2) {
+        return null
+    }
+
+
+    val movementResult = manager.moveCurrentPlayer(args[1].toInt(),true)
+
+    when(movementResult.code) {
+        MovementResultCode.CAUGHT_FOOD -> return "Apanhou comida"
+        MovementResultCode.INVALID_MOVEMENT -> return "Movimento invalido" //martelado
+        MovementResultCode.NO_ENERGY -> return "Sem energia"
+        MovementResultCode.VALID_MOVEMENT -> return "OK"
+    }
+
 }
 
 
