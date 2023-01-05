@@ -534,7 +534,7 @@ public class GameManager {
                             jogador[2],
                             Integer.parseInt(jogador[3]),
                             Integer.parseInt(jogador[4]),
-                            Integer.parseInt(jogador[5]),
+                            new ArrayList<>(),
                             Integer.parseInt(jogador[6]),
                             Integer.parseInt(jogador[7])
                     )

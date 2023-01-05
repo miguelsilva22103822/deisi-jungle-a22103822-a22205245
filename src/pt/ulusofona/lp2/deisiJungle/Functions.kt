@@ -109,11 +109,43 @@ fun getMostTraveled(manager: GameManager, args: List<String>): String? {
 }
 
 fun getTopEnergeticOmnivores(manager: GameManager, args: List<String>): String? {
-    return null
+    if(args.size != 2){
+        return null
+    }
+
+    val playersOmnivoros = manager.jogadores.filter { it.dieta == "o" }
+        .sortedWith { n1,n2 -> n2.energia - n1.energia }
+        .take(args[1].toInt())
+
+
+    return playersOmnivoros
+        .joinToString(separator = "\n") { "${it.nome}:${it.energia}"}
+
 }
 
 fun getConsumedFoods(manager: GameManager, args: List<String>): String? {
-    return null
+    if(args.size != 2) {
+        return null
+    }
+
+    if (manager.jogadores.isEmpty()) {
+        return null
+    }
+
+    val players = manager.jogadores.filter { it.nome == args[1] }
+
+    if(players.size != 1) {
+        return null
+    }
+
+    val playerFood = players[0]
+
+    if (playerFood.alimentosIngeridos.isEmpty()) {
+        return null
+    }
+
+    return playerFood.alimentosIngeridos.joinToString (separator = "\n") { it.nome }
+
 }
 
 fun postMove(manager: GameManager, args: List<String>): String? {
@@ -126,8 +158,8 @@ fun main() {
     val manager = GameManager()
 
     val players = arrayOf(
-        arrayOf("1", "Pedro", "L"),
-        arrayOf("2", "Maria", "E"),
+        arrayOf("1", "Pedro", "T"),
+        arrayOf("2", "Maria", "P"),
         arrayOf("3", "Ana", "E")
     )
 
@@ -136,12 +168,19 @@ fun main() {
         arrayOf("e", "2")
     )
 
+
     manager.createInitialJungle(30, players, foods)
+
+    manager.moveCurrentPlayer(1,true)
+    manager.moveCurrentPlayer(1,true)
+    manager.moveCurrentPlayer(1,true)
+
+    manager.moveCurrentPlayer(3,true)
 
 
     val routerFn = router()
     val commandGetFn = routerFn.invoke(CommandType.GET)
-    val result = commandGetFn.invoke(manager, listOf("PLAYER_INFO", "Pedro"))
+    val result = commandGetFn.invoke(manager, listOf("CONSUMED_FOODS", "Pedro"))
 
     println(result)
 }

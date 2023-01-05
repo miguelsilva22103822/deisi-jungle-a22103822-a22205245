@@ -1,6 +1,7 @@
 package pt.ulusofona.lp2.deisiJungle;
 
 import javax.swing.*;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 class Jogador {
@@ -10,7 +11,7 @@ class Jogador {
     private Especie especie;
     private int energia;
     private int quantidadeBananasComeu;
-    private int quantidadeComeu;
+    private ArrayList<Alimento> alimentosIngeridos;
     private int distanciaPercorrida;
     private int casaAtual = 1;
 
@@ -18,6 +19,7 @@ class Jogador {
         this.id = id;
         this.nome = nome;
         this.idEspecie = idEspecie;
+        this.alimentosIngeridos = new ArrayList<>();
 
         switch (this.idEspecie) {
             case "E" -> especie = new Elefante();
@@ -32,10 +34,11 @@ class Jogador {
     }
 
     public Jogador(int id, String nome, String idEspecie, int energia, int quantidadeBananasComeu,
-                   int quantidadeComeu, int distanciaPercorrida, int casaAtual) {
+                   ArrayList<Alimento> alimentosIngeridos, int distanciaPercorrida, int casaAtual) {
         this.id = id;
         this.nome = nome;
         this.idEspecie = idEspecie;
+        this.alimentosIngeridos = alimentosIngeridos;
 
         switch (this.idEspecie) {
             case "E" -> especie = new Elefante();
@@ -47,7 +50,6 @@ class Jogador {
 
         this.energia = energia;
         this.quantidadeBananasComeu = quantidadeBananasComeu;
-        this.quantidadeComeu = quantidadeComeu;
         this.distanciaPercorrida = distanciaPercorrida;
     }
 
@@ -136,7 +138,7 @@ class Jogador {
     public void comer (Alimento alimento, int numJogada) {
 
         this.energia = alimento.calcularEnergia(energia, getDieta(), quantidadeBananasComeu, numJogada);
-        quantidadeComeu++;
+        alimentosIngeridos.add(alimento);
 
         if (alimento.getId().equals("b") && alimento.getQuantidadeBananas() != 0) {
             quantidadeBananasComeu++;
@@ -153,7 +155,11 @@ class Jogador {
     }
 
     public int getQuantidadeComeu () {
-        return quantidadeComeu;
+        return alimentosIngeridos.size();
+    }
+
+    public ArrayList<Alimento> getAlimentosIngeridos() {
+        return alimentosIngeridos;
     }
 
     public int getDistanciaPercorrida() {
@@ -175,7 +181,7 @@ class Jogador {
                 + idEspecie + ","
                 + energia + ","
                 + quantidadeBananasComeu + ","
-                + quantidadeComeu + ","
+                + alimentosIngeridos.size() + ","
                 + distanciaPercorrida + ","
                 + casaAtual
                 + "]";
