@@ -126,17 +126,17 @@ fun getTopEnergeticOmnivores(manager: GameManager, args: List<String>): String? 
 
 fun getConsumedFoods(manager: GameManager, args: List<String>): String? {
     if(args.size != 2) {
-        return null
+        return ""
     }
 
     if (manager.jogadores.isEmpty()) {
-        return null
+        return ""
     }
 
     val players = manager.jogadores.filter { it.nome == args[1] }
 
     if(players.size != 1) {
-        return null
+        return ""
     }
 
     val playerFood = players[0]
