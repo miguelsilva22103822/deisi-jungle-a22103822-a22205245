@@ -2,6 +2,7 @@ package pt.ulusofona.lp2.deisiJungle;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.AreaAveragingScaleFilter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -15,9 +16,11 @@ public class GameManager {
     private int[] iDsJogadores;
     private int indiceJogadorAtual;
     private int numJogada;
+    private ArrayList<Alimento> alimentosIngeridos;
 
     public GameManager() {
         this.jogadores = new HashMap<>();
+        this.alimentosIngeridos = new ArrayList<>();
 
         indiceJogadorAtual = 0;
     }
@@ -189,8 +192,11 @@ public class GameManager {
 
             updateJogada();
 
+            alimentosIngeridos.add(mapa.getAlimentoCasa(casaDestino));
+
             return new MovementResult(MovementResultCode.CAUGHT_FOOD,"Apanhou " +
                     mapa.getAlimentoCasa(casaDestino).getNome());
+
         }
 
         updateJogada();
@@ -648,4 +654,7 @@ public class GameManager {
         return new ArrayList<>(jogadores.values());
     }
 
+    public ArrayList<Alimento> getAlimentosIngeridos() {
+        return alimentosIngeridos;
+    }
 }

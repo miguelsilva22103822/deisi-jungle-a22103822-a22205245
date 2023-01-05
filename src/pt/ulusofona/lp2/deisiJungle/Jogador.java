@@ -1,5 +1,7 @@
 package pt.ulusofona.lp2.deisiJungle;
 
+import java.util.ArrayList;
+
 class Jogador {
     private final int id;
     private final String nome;
@@ -183,4 +185,6 @@ class Jogador {
     public Especie getEspecie() {
         return especie;
     }
+
+
 }

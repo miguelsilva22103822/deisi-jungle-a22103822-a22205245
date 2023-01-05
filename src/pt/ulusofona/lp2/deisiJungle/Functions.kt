@@ -125,33 +125,15 @@ fun getTopEnergeticOmnivores(manager: GameManager, args: List<String>): String? 
 }
 
 fun getConsumedFoods(manager: GameManager, args: List<String>): String? {
+    // um array para guardar os alimentos que sempre um jogador move
 
-    /*
-    if(args.size != 2) {
-        return ""
-    }
-
-    if (manager.jogadores.isEmpty()) {
-        return ""
-    }
-
-    val players = manager.jogadores.filter { it.nome == args[1] }
-
-    if(players.size != 1) {
-        return ""
-    }
-
-    val playerFood = players[0]
-
-    if (playerFood.alimentosIngeridos.isEmpty()) {
-        return ""
-    }
-
-    return playerFood.alimentosIngeridos
+    val foodConsumed = manager.alimentosIngeridos
+        .distinct()
         .sortedBy { it.nome }
-        .joinToString (separator = "\n") { it.nome }
-     */
-    return null
+        .joinToString(separator = "\n") {it.nome}
+
+    return foodConsumed
+
 }
 
 fun postMove(manager: GameManager, args: List<String>): String? {
@@ -200,7 +182,7 @@ fun main() {
 
     val routerFn = router()
     val commandGetFn = routerFn.invoke(CommandType.GET)
-    val result = commandGetFn.invoke(manager, listOf("CONSUMED_FOODS", "Pedro"))
+    val result = commandGetFn.invoke(manager, listOf("CONSUMED_FOODS"))
 
     println(result)
 }
