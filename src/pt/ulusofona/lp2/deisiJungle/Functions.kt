@@ -128,9 +128,10 @@ fun getConsumedFoods(manager: GameManager, args: List<String>): String? {
     // um array para guardar os alimentos que sempre um jogador move
 
     val foodConsumed = manager.alimentosIngeridos
+        .map { it.nome }
         .distinct()
-        .sortedBy { it.nome }
-        .joinToString(separator = "\n") {it.nome}
+        .sorted()
+        .joinToString(separator = "\n")
 
     return foodConsumed
 
@@ -141,7 +142,6 @@ fun postMove(manager: GameManager, args: List<String>): String? {
     if(args.size != 2) {
         return null
     }
-
 
     val movementResult = manager.moveCurrentPlayer(args[1].toInt(),true)
 
