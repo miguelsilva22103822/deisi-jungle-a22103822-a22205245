@@ -1,9 +1,5 @@
 package pt.ulusofona.lp2.deisiJungle;
 
-import javax.swing.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-
 class Jogador {
     private final int id;
     private final String nome;
@@ -11,7 +7,7 @@ class Jogador {
     private Especie especie;
     private int energia;
     private int quantidadeBananasComeu;
-    private ArrayList<Alimento> alimentosIngeridos;
+    private int alimentosIngeridos;
     private int distanciaPercorrida;
     private int casaAtual = 1;
 
@@ -19,7 +15,7 @@ class Jogador {
         this.id = id;
         this.nome = nome;
         this.idEspecie = idEspecie;
-        this.alimentosIngeridos = new ArrayList<>();
+        this.alimentosIngeridos = 0;
 
         switch (this.idEspecie) {
             case "E" -> especie = new Elefante();
@@ -34,7 +30,7 @@ class Jogador {
     }
 
     public Jogador(int id, String nome, String idEspecie, int energia, int quantidadeBananasComeu,
-                   ArrayList<Alimento> alimentosIngeridos, int distanciaPercorrida, int casaAtual) {
+                   int alimentosIngeridos, int distanciaPercorrida, int casaAtual) {
         this.id = id;
         this.nome = nome;
         this.idEspecie = idEspecie;
@@ -51,6 +47,7 @@ class Jogador {
         this.energia = energia;
         this.quantidadeBananasComeu = quantidadeBananasComeu;
         this.distanciaPercorrida = distanciaPercorrida;
+        this.casaAtual = casaAtual;
     }
 
     public int getID() {
@@ -138,7 +135,7 @@ class Jogador {
     public void comer (Alimento alimento, int numJogada) {
 
         this.energia = alimento.calcularEnergia(energia, getDieta(), quantidadeBananasComeu, numJogada);
-        alimentosIngeridos.add(alimento);
+        alimentosIngeridos++;
 
         if (alimento.getId().equals("b") && alimento.getQuantidadeBananas() != 0) {
             quantidadeBananasComeu++;
@@ -155,10 +152,6 @@ class Jogador {
     }
 
     public int getQuantidadeComeu () {
-        return alimentosIngeridos.size();
-    }
-
-    public ArrayList<Alimento> getAlimentosIngeridos() {
         return alimentosIngeridos;
     }
 
@@ -181,7 +174,7 @@ class Jogador {
                 + idEspecie + ","
                 + energia + ","
                 + quantidadeBananasComeu + ","
-                + alimentosIngeridos.size() + ","
+                + alimentosIngeridos + ","
                 + distanciaPercorrida + ","
                 + casaAtual
                 + "]";

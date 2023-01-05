@@ -125,6 +125,8 @@ fun getTopEnergeticOmnivores(manager: GameManager, args: List<String>): String? 
 }
 
 fun getConsumedFoods(manager: GameManager, args: List<String>): String? {
+
+    /*
     if(args.size != 2) {
         return ""
     }
@@ -148,6 +150,8 @@ fun getConsumedFoods(manager: GameManager, args: List<String>): String? {
     return playerFood.alimentosIngeridos
         .sortedBy { it.nome }
         .joinToString (separator = "\n") { it.nome }
+     */
+    return null
 }
 
 fun postMove(manager: GameManager, args: List<String>): String? {
