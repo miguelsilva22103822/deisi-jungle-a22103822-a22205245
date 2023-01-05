@@ -109,6 +109,7 @@ fun getMostTraveled(manager: GameManager, args: List<String>): String? {
 }
 
 fun getTopEnergeticOmnivores(manager: GameManager, args: List<String>): String? {
+
     if(args.size != 2){
         return null
     }
@@ -141,7 +142,7 @@ fun getConsumedFoods(manager: GameManager, args: List<String>): String? {
     val playerFood = players[0]
 
     if (playerFood.alimentosIngeridos.isEmpty()) {
-        return null
+        return ""
     }
 
     return playerFood.alimentosIngeridos
