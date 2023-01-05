@@ -144,8 +144,9 @@ fun getConsumedFoods(manager: GameManager, args: List<String>): String? {
         return null
     }
 
-    return playerFood.alimentosIngeridos.joinToString (separator = "\n") { it.nome }
-
+    return playerFood.alimentosIngeridos
+        .sortedBy { it.nome }
+        .joinToString (separator = "\n") { it.nome }
 }
 
 fun postMove(manager: GameManager, args: List<String>): String? {
