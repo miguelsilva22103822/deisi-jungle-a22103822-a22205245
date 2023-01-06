@@ -144,7 +144,7 @@ fun postMove(manager: GameManager, args: List<String>): String? {
 
     val casaDestino = manager.casaDoJogadorAtual + args[1].toInt()
 
-    if(casaDestino < 1 || casaDestino > manager.nrCasas){
+    if(casaDestino < 1 || casaDestino > manager.nrCasas){ //isto deve passar a ser feito na função move
         return "Movimento invalido"
     }
 
