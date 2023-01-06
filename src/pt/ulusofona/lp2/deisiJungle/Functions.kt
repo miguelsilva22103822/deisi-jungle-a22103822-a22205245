@@ -153,7 +153,7 @@ fun postMove(manager: GameManager, args: List<String>): String? {
 
     when(movementResult.code) {
         MovementResultCode.CAUGHT_FOOD -> return "Apanhou comida"
-        MovementResultCode.INVALID_MOVEMENT -> return "Movimento invalido" //martelado
+        MovementResultCode.INVALID_MOVEMENT -> return "Movimento invalido"
         MovementResultCode.NO_ENERGY -> return "Sem energia"
         MovementResultCode.VALID_MOVEMENT -> return "OK"
     }
