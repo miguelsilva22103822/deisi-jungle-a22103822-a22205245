@@ -657,4 +657,15 @@ public class GameManager {
     public ArrayList<Alimento> getAlimentosIngeridos() {
         return alimentosIngeridos;
     }
+
+    public int getCasaDoJogadorAtual() {
+        int iDJogadorAtual = iDsJogadores[indiceJogadorAtual];
+
+        return jogadores.get(iDJogadorAtual).getCasaAtual();
+    }
+
+    public int getNrCasas() {
+        return mapa.getNrCasas();
+    }
+
 }

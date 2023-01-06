@@ -134,7 +134,6 @@ fun getConsumedFoods(manager: GameManager, args: List<String>): String? {
         .joinToString(separator = "\n")
 
     return foodConsumed
-
 }
 
 fun postMove(manager: GameManager, args: List<String>): String? {
@@ -143,7 +142,14 @@ fun postMove(manager: GameManager, args: List<String>): String? {
         return null
     }
 
+    val casaDestino = manager.casaDoJogadorAtual + args[1].toInt()
+
+    if(casaDestino < 1 || casaDestino > manager.nrCasas){
+        return "Movimento invalido"
+    }
+
     val movementResult = manager.moveCurrentPlayer(args[1].toInt(),true)
+
 
     when(movementResult.code) {
         MovementResultCode.CAUGHT_FOOD -> return "Apanhou comida"
@@ -153,7 +159,6 @@ fun postMove(manager: GameManager, args: List<String>): String? {
     }
 
 }
-
 
 fun main() {
 
