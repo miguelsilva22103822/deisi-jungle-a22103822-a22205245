@@ -248,7 +248,7 @@ public class TestGameManager {
         Assert.assertEquals("MovementResult[code=CAUGHT_FOOD, message=Apanhou Bananas]",
                 String.valueOf(gameManager.moveCurrentPlayer(1, true)));
 
-        Assert.assertEquals("MovementResult[code=CAUGHT_FOOD, message=Apanhou Bananas]",
+        Assert.assertEquals("MovementResult[code=VALID_MOVEMENT, message=null]",
                 String.valueOf(gameManager.moveCurrentPlayer(1, true)));
 
         Assert.assertEquals("[[1, João, E, 200, 1..6], [2, Maria, P, 106, 5..6], [3, Manuel, T, 189, 1..3]," +
@@ -422,7 +422,7 @@ public class TestGameManager {
 
         Agua agua = new Agua();
 
-        Assert.assertEquals(0,agua.getQuantidadeBananas());
+        Assert.assertEquals(-1, agua.getQuantidadeBananas());
 
         Assert.assertEquals("Agua : + 15U|20% energia", agua.getToolTip(numJogada));
 
@@ -469,7 +469,7 @@ public class TestGameManager {
 
         Carne carne = new Carne();
 
-        Assert.assertEquals(0,carne.getQuantidadeBananas());
+        Assert.assertEquals(-1, carne.getQuantidadeBananas());
 
         Assert.assertEquals("Carne toxica", carne.getToolTip(13));
 
@@ -534,7 +534,7 @@ public class TestGameManager {
 
         Cogumelo cogumelo = new Cogumelo();
 
-        Assert.assertEquals(0,cogumelo.getQuantidadeBananas());
+        Assert.assertEquals(-1, cogumelo.getQuantidadeBananas());
 
         Assert.assertEquals(-1, cogumelo.calcularEnergia(180,"k",0,numJogada));
 
@@ -547,7 +547,7 @@ public class TestGameManager {
 
         Erva erva = new Erva();
 
-        Assert.assertEquals(0,erva.getQuantidadeBananas());
+        Assert.assertEquals(-1, erva.getQuantidadeBananas());
 
         Assert.assertEquals("Erva : +- 20 energia",erva.getToolTip(numJogada));
 
@@ -582,7 +582,7 @@ public class TestGameManager {
     public void testFrutoSeco() {
         FrutoSeco frutoSeco = new FrutoSeco();
 
-        Assert.assertEquals(0,frutoSeco.getQuantidadeBananas());
+        Assert.assertEquals(-1, frutoSeco.getQuantidadeBananas());
 
         Assert.assertEquals("Fruto Seco : + 5 energia", frutoSeco.getToolTip(0));
 

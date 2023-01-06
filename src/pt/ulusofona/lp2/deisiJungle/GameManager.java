@@ -169,16 +169,17 @@ public class GameManager {
 
         int nrCasaAtual = mapa.findNrCasaContaining(getIDJogadorAtual());
 
-        mapa.removeJogadorFromCasa(getIDJogadorAtual(), nrCasaAtual);
-
         int casaDestino = nrCasaAtual + nrSquares;
+
+        if (casaDestino < 1) {
+            updateJogada();
+            return new MovementResult(MovementResultCode.INVALID_MOVEMENT, null);
+        }
+
+        mapa.removeJogadorFromCasa(getIDJogadorAtual(), nrCasaAtual);
 
         if (casaDestino > mapa.getNrCasas()) {
             casaDestino = mapa.getNrCasas();
-        }
-
-        if (casaDestino < 1) {
-            casaDestino = 1;
         }
 
         jogadorAtual.updateEnergyMovement(nrSquares);
