@@ -8,7 +8,7 @@ class Erva extends Alimento {
 
     @Override
     public int getQuantidadeBananas() {
-        return 0;
+        return -1;
     }
 
     @Override
