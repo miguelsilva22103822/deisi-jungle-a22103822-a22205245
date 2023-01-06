@@ -944,7 +944,7 @@ public class TestGameManager {
     }
 
     @Test
-    public void testFunctionGetPlayerInfo() throws InvalidInitialJungleException {
+    public void testFunctionsGetPlayerInfo1() throws InvalidInitialJungleException {
 
         GameManager manager = new GameManager();
 
@@ -970,6 +970,171 @@ public class TestGameManager {
         String result = commandGetFn.invoke(manager, comando);
 
         assertEquals("3 | Maria | Elefante | 180 | 1", result);
+
+    }
+
+    @Test
+    public void testFunctionsGetPlayerInfo2() throws InvalidInitialJungleException {
+
+        GameManager manager = new GameManager();
+
+        String[] jogador1 = {"1", "João", "E"};
+        String[] jogador2 = {"3", "Maria", "E"};
+
+        String[] alimento1 = {"b", "7"};
+        String[] alimento2 = {"b", "2"};
+
+        String[][] jogadores = {jogador1, jogador2};
+
+        String[][] alimentos = {alimento1, alimento2};
+
+        manager.createInitialJungle(30, jogadores, alimentos);
+
+        Function1<CommandType, Function2<GameManager, List<String>, String>> routerFn = FunctionsKt.router();
+        Function2<GameManager, List<String>, String> commandGetFn = routerFn.invoke(CommandType.GET);
+
+        List<String> comando = new ArrayList<>();
+        comando.add("PLAYER_INFO");
+        comando.add("kajdsfh"); //para dar non existent player
+
+        String result = commandGetFn.invoke(manager, comando);
+
+        assertEquals("Inexistent player", result);
+
+    }
+
+    @Test
+    public void testFunctionsGetPlayersBySpecie1() throws InvalidInitialJungleException {
+
+        GameManager manager = new GameManager();
+
+        String[] jogador1 = {"1", "João", "P"};
+        String[] jogador2 = {"3", "Maria", "E"};
+        String[] jogador3 = {"5", "Pedro", "E"};
+        String[] jogador4 = {"8", "Daniel", "L"};
+
+        String[] alimento1 = {"e", "7"};
+        String[] alimento2 = {"b", "2"};
+
+        String[][] jogadores = {jogador1, jogador2, jogador3, jogador4};
+
+        String[][] alimentos = {alimento1, alimento2};
+
+        manager.createInitialJungle(30, jogadores, alimentos);
+
+        Function1<CommandType, Function2<GameManager, List<String>, String>> routerFn = FunctionsKt.router();
+        Function2<GameManager, List<String>, String> commandGetFn = routerFn.invoke(CommandType.GET);
+
+        List<String> comando = new ArrayList<>();
+        comando.add("PLAYERS_BY_SPECIE");
+        comando.add("E");
+
+        String result = commandGetFn.invoke(manager, comando);
+
+        assertEquals("Pedro,Maria", result);
+
+    }
+
+    @Test
+    public void testFunctionsGetPlayersBySpecie2() throws InvalidInitialJungleException {
+
+        GameManager manager = new GameManager();
+
+        String[] jogador1 = {"1", "João", "P"};
+        String[] jogador2 = {"3", "Maria", "E"};
+        String[] jogador3 = {"5", "Pedro", "E"};
+        String[] jogador4 = {"8", "Daniel", "L"};
+
+        String[] alimento1 = {"e", "7"};
+        String[] alimento2 = {"b", "2"};
+
+        String[][] jogadores = {jogador1, jogador2, jogador3, jogador4};
+
+        String[][] alimentos = {alimento1, alimento2};
+
+        manager.createInitialJungle(30, jogadores, alimentos);
+
+        Function1<CommandType, Function2<GameManager, List<String>, String>> routerFn = FunctionsKt.router();
+        Function2<GameManager, List<String>, String> commandGetFn = routerFn.invoke(CommandType.GET);
+
+        List<String> comando = new ArrayList<>();
+        comando.add("PLAYERS_BY_SPECIE");
+        comando.add("Z");
+
+        String result = commandGetFn.invoke(manager, comando);
+
+        assertEquals("", result);
+
+    }
+
+    @Test
+    public void testFunctionsGetMostTraveled() throws InvalidInitialJungleException {
+
+        GameManager manager = new GameManager();
+
+        String[] jogador1 = {"1", "João", "P"};
+        String[] jogador2 = {"3", "Maria", "E"};
+        String[] jogador3 = {"5", "Pedro", "E"};
+        String[] jogador4 = {"8", "Daniel", "L"};
+
+        String[] alimento1 = {"e", "7"};
+        String[] alimento2 = {"b", "2"};
+
+        String[][] jogadores = {jogador1, jogador2, jogador3, jogador4};
+
+        String[][] alimentos = {alimento1, alimento2};
+
+        manager.createInitialJungle(30, jogadores, alimentos);
+
+        manager.moveCurrentPlayer(3, true);
+        manager.moveCurrentPlayer(5, true);
+        manager.moveCurrentPlayer(8, true);
+
+        Function1<CommandType, Function2<GameManager, List<String>, String>> routerFn = FunctionsKt.router();
+        Function2<GameManager, List<String>, String> commandGetFn = routerFn.invoke(CommandType.GET);
+
+        List<String> comando = new ArrayList<>();
+        comando.add("MOST_TRAVELED");
+
+        String result = commandGetFn.invoke(manager, comando);
+
+        assertEquals("Pedro:E:8\n" + "Maria:E:5\n" + "João:P:3\n" + "Daniel:L:0\n" + "Total:16", result);
+
+    }
+
+    @Test
+    public void testFunctionsGetTopEnergeticOmnivores() throws InvalidInitialJungleException {
+
+        GameManager manager = new GameManager();
+
+        String[] jogador1 = {"1", "João", "P"};
+        String[] jogador2 = {"3", "Maria", "E"};
+        String[] jogador3 = {"5", "Pedro", "E"};
+        String[] jogador4 = {"8", "Daniel", "Z"};
+
+        String[] alimento1 = {"e", "7"};
+        String[] alimento2 = {"b", "2"};
+
+        String[][] jogadores = {jogador1, jogador2, jogador3, jogador4};
+
+        String[][] alimentos = {alimento1, alimento2};
+
+        manager.createInitialJungle(30, jogadores, alimentos);
+
+        manager.moveCurrentPlayer(3, true);
+        manager.moveCurrentPlayer(5, true);
+        manager.moveCurrentPlayer(8, true);
+
+        Function1<CommandType, Function2<GameManager, List<String>, String>> routerFn = FunctionsKt.router();
+        Function2<GameManager, List<String>, String> commandGetFn = routerFn.invoke(CommandType.GET);
+
+        List<String> comando = new ArrayList<>();
+        comando.add("TOP_ENERGETIC_OMNIVORES");
+        comando.add("2");
+
+        String result = commandGetFn.invoke(manager, comando);
+
+        assertEquals("Daniel:70\n" + "João:58", result);
 
     }
 
