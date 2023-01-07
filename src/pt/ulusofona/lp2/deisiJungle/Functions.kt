@@ -151,17 +151,18 @@ fun postMove(manager: GameManager, args: List<String>): String? {
     val movementResult = manager.moveCurrentPlayer(args[1].toInt(),true)
 
 
-    when(movementResult.code) {
-        MovementResultCode.CAUGHT_FOOD -> return "Apanhou comida"
-        MovementResultCode.INVALID_MOVEMENT -> return "Movimento invalido"
-        MovementResultCode.NO_ENERGY -> return "Sem energia"
-        MovementResultCode.VALID_MOVEMENT -> return "OK"
+    return when(movementResult.code) {
+        MovementResultCode.VALID_MOVEMENT -> "OK"
+        MovementResultCode.CAUGHT_FOOD -> "Apanhou comida"
+        MovementResultCode.INVALID_MOVEMENT -> "Movimento invalido"
+        MovementResultCode.NO_ENERGY -> "Sem energia"
+        null -> "asd"
     }
 
 }
 
 fun main() {
-
+    /*
     val manager = GameManager()
 
     val players = arrayOf(
@@ -186,8 +187,9 @@ fun main() {
 
 
     val routerFn = router()
-    val commandGetFn = routerFn.invoke(CommandType.GET)
+    val commandGetFn = routerFn.invoke(CommandType.POST)
     val result = commandGetFn.invoke(manager, listOf("CONSUMED_FOODS"))
 
     println(result)
+    */
 }

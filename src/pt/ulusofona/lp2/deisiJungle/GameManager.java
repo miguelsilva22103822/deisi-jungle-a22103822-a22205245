@@ -193,10 +193,9 @@ public class GameManager {
 
             jogadorAtual.comer(mapa.getAlimentoCasa(casaDestino),numJogada);
 
-            updateJogada();
-
             alimentosIngeridos.add(mapa.getAlimentoCasa(casaDestino));
 
+            updateJogada();
             return new MovementResult(MovementResultCode.CAUGHT_FOOD,"Apanhou " +
                     mapa.getAlimentoCasa(casaDestino).getNome());
 

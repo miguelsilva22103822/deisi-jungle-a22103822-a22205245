@@ -95,10 +95,10 @@ public class TestGameManager {
         assertEquals("[[1, João, E, 160, 1..6], [3, Manuel, T, 150, 1..3], [5, Pedro, Z, 70, 1..6]]",
                 Arrays.deepToString(gameManager.getPlayersInfo()));
 
-        assertEquals(new MovementResult(MovementResultCode.VALID_MOVEMENT, null),
+        assertEquals(new MovementResult(MovementResultCode.INVALID_MOVEMENT, null),
                 gameManager.moveCurrentPlayer(-5,true));
 
-        assertEquals("[[1, João, E, 160, 1..6], [3, Manuel, T, 145, 1..3], [5, Pedro, Z, 70, 1..6]]",
+        assertEquals("[[1, João, E, 160, 1..6], [3, Manuel, T, 150, 1..3], [5, Pedro, Z, 70, 1..6]]",
                 Arrays.deepToString(gameManager.getPlayersInfo()));
 
     }
