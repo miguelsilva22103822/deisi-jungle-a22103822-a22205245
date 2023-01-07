@@ -513,7 +513,7 @@ public class GameManager {
         Arrays.sort(iDsJogadores);
     }
 
-    private void updateJogada () {
+    public void updateJogada () {
         indiceJogadorAtual++;
         if (indiceJogadorAtual >= iDsJogadores.length) {
             indiceJogadorAtual = 0;

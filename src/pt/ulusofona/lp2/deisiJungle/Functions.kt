@@ -145,6 +145,7 @@ fun postMove(manager: GameManager, args: List<String>): String? {
     val casaDestino = manager.casaDoJogadorAtual + args[1].toInt()
 
     if(casaDestino < 1 || casaDestino > manager.nrCasas) {
+        manager.updateJogada()
         return "Movimento invalido"
     }
 
@@ -162,7 +163,7 @@ fun postMove(manager: GameManager, args: List<String>): String? {
 }
 
 fun main() {
-    /*
+
     val manager = GameManager()
 
     val players = arrayOf(
@@ -179,17 +180,11 @@ fun main() {
 
     manager.createInitialJungle(30, players, foods)
 
-    manager.moveCurrentPlayer(1,true)
-    manager.moveCurrentPlayer(1,true)
-    manager.moveCurrentPlayer(1,true)
-
-    manager.moveCurrentPlayer(3,true)
-
 
     val routerFn = router()
     val commandGetFn = routerFn.invoke(CommandType.POST)
-    val result = commandGetFn.invoke(manager, listOf("CONSUMED_FOODS"))
+    val result = commandGetFn.invoke(manager, listOf("MOVE", "-1"))
 
     println(result)
-    */
+
 }
