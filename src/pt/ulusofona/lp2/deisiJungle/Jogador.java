@@ -1,7 +1,5 @@
 package pt.ulusofona.lp2.deisiJungle;
 
-import java.util.ArrayList;
-
 class Jogador {
     private final int id;
     private final String nome;
@@ -33,19 +31,10 @@ class Jogador {
 
     public Jogador(int id, String nome, String idEspecie, int energia, int quantidadeBananasComeu,
                    int alimentosIngeridos, int distanciaPercorrida, int casaAtual) {
-        this.id = id;
-        this.nome = nome;
-        this.idEspecie = idEspecie;
+
+        this(id, nome, idEspecie);
+
         this.alimentosIngeridos = alimentosIngeridos;
-
-        switch (this.idEspecie) {
-            case "E" -> especie = new Elefante();
-            case "L" -> especie = new Leao();
-            case "T" -> especie = new Tartaruga();
-            case "P" -> especie = new Passaro();
-            case "Z" -> especie = new Tarzan();
-        }
-
         this.energia = energia;
         this.quantidadeBananasComeu = quantidadeBananasComeu;
         this.distanciaPercorrida = distanciaPercorrida;

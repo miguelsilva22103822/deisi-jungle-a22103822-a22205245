@@ -162,7 +162,7 @@ public class GameManager {
             }
         }
 
-        if (!jogadorAtual.hasEnergy(nrSquares)) {
+        if (!jogadorAtual.hasEnergy(Math.abs(nrSquares))) {
             updateJogada();
             return new MovementResult(MovementResultCode.NO_ENERGY, null);
         }
