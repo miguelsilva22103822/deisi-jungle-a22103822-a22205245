@@ -1,15 +1,12 @@
 package pt.ulusofona.lp2.deisiJungle;
 
 class Carne extends Alimento {
+    private final int energiaParaMetade = 2;
+    private final int energiaMenorDeNrJogada = 50;
+
 
     public Carne() {
         super("c", "Carne", "meat.png");
-    }
-
-
-    @Override
-    public int getQuantidadeBananas() {
-        return -1;
     }
 
     @Override
@@ -30,9 +27,9 @@ class Carne extends Alimento {
 
         if (dieta.equals("o") || dieta.equals("c")){
             if (numJogada > 12 ) { //12 jogadas depois carne passa ser toxica, ent é /2 da energia atual
-                return energia / 2;
+                return energia / energiaParaMetade;
             }
-            return energia + 50;
+            return energia + energiaMenorDeNrJogada;
         }
 
         return -1;

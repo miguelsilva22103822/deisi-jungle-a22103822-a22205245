@@ -188,7 +188,7 @@ public class GameManager {
         jogadorAtual.setCasaAtual(casaDestino);
 
         if (mapa.getIdAlimentoCasa(casaDestino) != null
-                && !(jogadorAtual.getDieta().equals("h") && mapa.getAlimentoCasa(casaDestino).eCarne())
+                && !(mapa.getAlimentoCasa(casaDestino).eHerbivoro() && mapa.getAlimentoCasa(casaDestino).eCarne())
                 && mapa.getAlimentoCasa(casaDestino).getQuantidadeBananas() != 0) {
 
             jogadorAtual.comer(mapa.getAlimentoCasa(casaDestino),numJogada);

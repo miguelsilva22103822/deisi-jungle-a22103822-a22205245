@@ -2,14 +2,13 @@ package pt.ulusofona.lp2.deisiJungle;
 
 class FrutoSeco extends Alimento {
 
+    private final int energiaHerbivoro = 35;
+    private final double energiaOmnivoro = 0.1;
+    private final int energiaCarnivoro = 15;
+
+
     public FrutoSeco() {
         super("f", "Fruto Seco", "frutoSeco.png");
-    }
-
-
-    @Override
-    public int getQuantidadeBananas() {
-        return -1;
     }
 
     @Override
@@ -21,15 +20,15 @@ class FrutoSeco extends Alimento {
     public int calcularEnergia(int energia, String dieta, int quantidadeComeu, int numJogada) {
 
         if (dieta.equals("h")){
-            return energia + 35;
+            return energia + energiaHerbivoro;
         }
 
         if (dieta.equals("o")){
-            return (int)(energia + (0.1 * energia));
+            return (int)(energia + (energiaOmnivoro * energia));
         }
 
         if (dieta.equals("c")){
-            return energia - 15;
+            return energia - energiaCarnivoro;
         }
 
         return -1;

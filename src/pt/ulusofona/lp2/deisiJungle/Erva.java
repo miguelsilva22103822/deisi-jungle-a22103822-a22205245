@@ -2,13 +2,10 @@ package pt.ulusofona.lp2.deisiJungle;
 
 class Erva extends Alimento {
 
+    private final int energiaErva = 20;
+
     public Erva() {
         super("e", "Erva", "grass.png");
-    }
-
-    @Override
-    public int getQuantidadeBananas() {
-        return -1;
     }
 
     @Override
@@ -19,16 +16,12 @@ class Erva extends Alimento {
     @Override
     public int calcularEnergia(int energia , String dieta,int quantidadeComeu, int numJogada) {
 
-        if (dieta.equals("h")){
-            return energia + 20;
-        }
-
-        if (dieta.equals("o")){
-            return energia + 20;
+        if (dieta.equals("h") || dieta.equals("o")){
+            return energia + energiaErva;
         }
 
         if (dieta.equals("c")){
-            return energia - 20;
+            return energia - energiaErva;
         }
 
         return -1;

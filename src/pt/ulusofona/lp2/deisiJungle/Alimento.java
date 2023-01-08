@@ -36,10 +36,19 @@ abstract class Alimento {
 
     public boolean eCarne() {
         return id.equals("c");
-
     }
 
-    abstract public int getQuantidadeBananas();
+    public boolean eHerbivoro() {
+        return id.equals("h");
+    }
+
+    public boolean eBanana() {
+        return id.equals("b");
+    }
+
+    public int getQuantidadeBananas() {
+        return -1;
+    }
 
     abstract public String getToolTip(int numJogada);
 

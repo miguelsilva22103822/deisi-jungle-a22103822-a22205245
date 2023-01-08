@@ -1,15 +1,12 @@
 package pt.ulusofona.lp2.deisiJungle;
 
 class Agua extends Alimento {
+    private final int energiaHerbivoroECcarnivoro = 15;
+    private final double energiaOmnivoro = 0.2;
+
 
     public Agua() {
         super("a","Agua","water.png");
-    }
-
-
-    @Override
-    public int getQuantidadeBananas() {
-        return -1;
     }
 
     @Override
@@ -20,16 +17,12 @@ class Agua extends Alimento {
     @Override
     public int calcularEnergia(int energia, String dieta,int quantidadeComeu, int numJogada) {
 
-        if (dieta.equals("h")){
-            return energia + 15;
+        if (dieta.equals("h") || dieta.equals("c")){
+            return energia + energiaHerbivoroECcarnivoro;
         }
 
         if (dieta.equals("o")){
-            return (int)(energia + (0.2 * energia));
-        }
-
-        if (dieta.equals("c")){
-            return energia + 15;
+            return (int)(energia + (energiaOmnivoro * energia));
         }
 
         return -1;

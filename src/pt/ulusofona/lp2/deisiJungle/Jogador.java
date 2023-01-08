@@ -92,6 +92,7 @@ class Jogador {
                 || nrPositions > Character.getNumericValue(especie.getVelocidade().charAt(3))) {
             return false;
         }
+
         return true;
     }
 
@@ -139,7 +140,7 @@ class Jogador {
         this.energia = alimento.calcularEnergia(energia, getDieta(), quantidadeBananasComeu, numJogada);
         alimentosIngeridos++;
 
-        if (alimento.getId().equals("b") && alimento.getQuantidadeBananas() != 0) {
+        if (alimento.eBanana() && alimento.getQuantidadeBananas() != 0) {
             quantidadeBananasComeu++;
         }
 

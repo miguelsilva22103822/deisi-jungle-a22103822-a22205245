@@ -1,7 +1,7 @@
 package pt.ulusofona.lp2.deisiJungle;
 
 class Elefante extends Especie {
-    private final int energiaInicial = 180;
+   private final int energiaInicial = 180;
     private final int consumoEnergia = 4;
     private final int energiaDescanso = 10;
     private final String velocidade = "1..6";
@@ -9,7 +9,6 @@ class Elefante extends Especie {
     public Elefante() {
         super("E", "Elefante", "elephant.png");
     }
-
     @Override
     public String getDieta() {
         return "h";

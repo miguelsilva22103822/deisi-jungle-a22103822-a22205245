@@ -1,8 +1,9 @@
 package pt.ulusofona.lp2.deisiJungle;
 
 class CachoBananas extends Alimento {
-
     private int  quantidadeBananas = 3;
+    private final int energiaBanana = 40;
+
 
     public CachoBananas() {
         super("b", "Bananas", "bananas.png");
@@ -33,11 +34,11 @@ class CachoBananas extends Alimento {
 
         if(quantidadeComeu < 1) {
             --quantidadeBananas;
-            return energia + 40;
+            return energia + energiaBanana;
         }
 
         --quantidadeBananas;
-        return energia - 40;
+        return energia - energiaBanana;
     }
 
     @Override
