@@ -38,10 +38,6 @@ abstract class Alimento {
         return id.equals("c");
     }
 
-    public boolean eHerbivoro() {
-        return id.equals("h");
-    }
-
     public boolean eBanana() {
         return id.equals("b");
     }

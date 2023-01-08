@@ -65,7 +65,7 @@ fun getPlayerInfo(manager: GameManager, args: List<String>): String? {
 
     val player = players[0]
 
-    return "${player.id} | ${player.nome} | ${player.especie.nome} | ${player.energia} | ${player.casaAtual}"
+    return "${player.id} | ${player.nome} | ${player.especieName} | ${player.energia} | ${player.casaAtual}"
 }
 
 fun getPlayersBySpecie(manager: GameManager, args: List<String>): String? {
@@ -74,7 +74,7 @@ fun getPlayersBySpecie(manager: GameManager, args: List<String>): String? {
         return null
     }
 
-    val especies = manager.jogadores.filter { a -> a.especie.id == args[1] }
+    val especies = manager.jogadores.filter { jogador -> jogador.especieId == args[1] }
 
     if (especies.isEmpty()) {
         return ""
@@ -103,7 +103,7 @@ fun getMostTraveled(manager: GameManager, args: List<String>): String? {
     val distanciaTotal = players.sumOf { it.distanciaPercorrida }
 
     return players
-        .joinToString(separator = "\n") { "${it.nome}:${it.especie.id}:${it.distanciaPercorrida}" }
+        .joinToString(separator = "\n") { "${it.nome}:${it.especieId}:${it.distanciaPercorrida}" }
         .plus("\nTotal:$distanciaTotal")
 
 }

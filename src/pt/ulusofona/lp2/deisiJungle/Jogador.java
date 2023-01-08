@@ -143,7 +143,7 @@ class Jogador {
     }
 
     public boolean podeComer(Alimento alimento) {
-        return !(getDieta().equals("h") && alimento.eCarne())
+        return !(eHerbivoro() && alimento.eCarne())
                 && alimento.getQuantidadeBananas() != 0;
     }
 
@@ -176,9 +176,16 @@ class Jogador {
                 + "]";
     }
 
-    public Especie getEspecie() {
-        return especie;
+    public String getEspecieName() {
+        return especie.getNome();
     }
 
+    public String getEspecieId() {
+        return especie.getId();
+    }
+
+    public boolean eHerbivoro() {
+        return especie.getDieta().equals("h");
+    }
 
 }

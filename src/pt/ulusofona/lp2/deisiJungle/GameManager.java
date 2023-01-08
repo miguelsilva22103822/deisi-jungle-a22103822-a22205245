@@ -17,6 +17,7 @@ public class GameManager {
     private int indiceJogadorAtual;
     private int numJogada;
     private ArrayList<Alimento> alimentosIngeridos;
+    private final int nrLadosDado = 6;
 
     public GameManager() {
         this.jogadores = new HashMap<>();
@@ -103,8 +104,6 @@ public class GameManager {
             return null;
         }
 
-
-
         return mapa.getSquareInfo(squareNr,numJogada);
     }
 
@@ -152,7 +151,7 @@ public class GameManager {
         Jogador jogadorAtual = jogadores.get(getIDJogadorAtual());
 
         if (!bypassValidations) {
-            if (nrSquares < -6 || nrSquares > 6) {
+            if (nrSquares < -nrLadosDado || nrSquares > nrLadosDado) {
                 updateJogada();
                 return new MovementResult(MovementResultCode.INVALID_MOVEMENT, null);
             }
@@ -279,7 +278,7 @@ public class GameManager {
         for (int i = 0; i < iDsOrdenados.size(); i++) {
             Jogador jogador = jogadores.get(iDsOrdenados.get(i));
             String playerResult = "#" + (i+1) + " " + jogador.getNome() + ", "
-                    + jogador.getEspecie().getNome() + ", "
+                    + jogador.getEspecieName() + ", "
                     + mapa.findNrCasaContaining(jogador.getID()) + ", "
                     + jogador.getDistanciaPercorrida() + ", "
                     + jogador.getQuantidadeComeu();
