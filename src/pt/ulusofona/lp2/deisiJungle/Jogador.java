@@ -77,8 +77,7 @@ class Jogador {
 
         nrPositions = Math.abs(nrPositions);
 
-        if (nrPositions < Character.getNumericValue(especie.getVelocidade().charAt(0))
-                || nrPositions > Character.getNumericValue(especie.getVelocidade().charAt(3))) {
+        if (nrPositions < especie.getVelocidadeMin() || nrPositions > especie.getVelocidadeMax()) {
             return false;
         }
 
@@ -141,6 +140,11 @@ class Jogador {
             energia = 0;
         }
 
+    }
+
+    public boolean podeComer(Alimento alimento) {
+        return !(getDieta().equals("h") && alimento.eCarne())
+                && alimento.getQuantidadeBananas() != 0;
     }
 
     public int getQuantidadeComeu () {

@@ -4,12 +4,18 @@ abstract class Especie {
     private final String id;
     private final String nome;
     private final String nomeImagem;
-
+    protected int energiaInicial;
+    protected int consumoEnergia;
+    protected int energiaDescanso;
+    protected int velocidadeMin;
+    protected int velocidadeMax;
 
     public Especie(String id, String nome, String nomeImagem) {
+
         this.id = id;
         this.nome = nome;
         this.nomeImagem = nomeImagem;
+
     }
 
     public String getId() {
@@ -40,13 +46,27 @@ abstract class Especie {
 
     abstract public String getDieta();
 
-    abstract public int getEnergiaInicial();
-    abstract public int getConsumoEnergia();
-    abstract public int getEnergiaDescanso();
-    abstract public String getVelocidade();
+    public int getEnergiaInicial() {
+        return energiaInicial;
+    }
 
+    public int getConsumoEnergia() {
+        return consumoEnergia;
+    }
 
+    public int getEnergiaDescanso() {
+        return energiaDescanso;
+    }
 
-    // não sei se se pode usar intStream
-    //não sei se as classes podem ter constantes mágicas
+    public int getVelocidadeMin() {
+        return velocidadeMin;
+    }
+
+    public int getVelocidadeMax() {
+        return velocidadeMax;
+    }
+
+    public String getVelocidade() {
+        return velocidadeMin + ".." + velocidadeMax;
+    }
 }
