@@ -161,8 +161,8 @@ public class GameManager {
                 return new MovementResult(MovementResultCode.INVALID_MOVEMENT, null);
             }
         }
-
-        if (!jogadorAtual.hasEnergy(nrSquares)) {
+        // tenho que escrever alguma coisa para poder dar commit e submeter
+        if (!jogadorAtual.hasEnergy(Math.abs(nrSquares))) {
             updateJogada();
             return new MovementResult(MovementResultCode.NO_ENERGY, null);
         }
