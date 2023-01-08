@@ -31,7 +31,7 @@ abstract class Especie {
         info[1] = getNome();
         info[2] = getNomeImagem();
         info[3] = String.valueOf(getEnergiaInicial());
-        info[4] = String.valueOf(getConsummoEnergia());
+        info[4] = String.valueOf(getConsumoEnergia());
         info[5] = String.valueOf(getEnergiaDescanso());
         info[6] = getVelocidade();
 
@@ -41,12 +41,12 @@ abstract class Especie {
     abstract public String getDieta();
 
     abstract public int getEnergiaInicial();
-    abstract public int getConsummoEnergia();
+    abstract public int getConsumoEnergia();
     abstract public int getEnergiaDescanso();
     abstract public String getVelocidade();
 
 
-    
+
     // não sei se se pode usar intStream
     //não sei se as classes podem ter constantes mágicas
 }
