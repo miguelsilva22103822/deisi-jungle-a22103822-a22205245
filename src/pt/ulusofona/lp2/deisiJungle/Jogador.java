@@ -94,7 +94,7 @@ class Jogador {
         if (energia >= nrPositions * especie.getConsumoEnergia()) {
             return true;
         }
-        
+
         return false;
     }
 

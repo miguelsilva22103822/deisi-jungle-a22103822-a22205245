@@ -104,7 +104,7 @@ public class GameManager {
             return null;
         }
 
-        return mapa.getSquareInfo(squareNr,numJogada);
+        return mapa.getSquareInfo(squareNr, numJogada);
     }
 
     public String[] getPlayerInfo(int playerId) {
@@ -155,7 +155,7 @@ public class GameManager {
                 updateJogada();
                 return new MovementResult(MovementResultCode.INVALID_MOVEMENT, null);
             }
-            if (!jogadores.get(getIDJogadorAtual()).movementIsValid(nrSquares)) {
+            if (!jogadorAtual.movementIsValid(nrSquares)) {
                 updateJogada();
                 return new MovementResult(MovementResultCode.INVALID_MOVEMENT, null);
             }
@@ -211,28 +211,28 @@ public class GameManager {
         int posicaoDoJogador2 = 0;
         int iDdoJogador2 = 0;
 
-        if (mapa.nrJogadoresInCasa(mapa.getNrCasas()) > 0){
+        if (mapa.nrJogadoresInCasa(mapa.getNrCasas()) > 0) {
             return jogadores.get(mapa.getJogadorIDMenorInCasa(mapa.getNrCasas())).getInfo();
         }
 
-        for (int i = mapa.getNrCasas() - 1; i >= 1 ; i--){
+        for (int i = mapa.getNrCasas() - 1; i >= 1 ; i--) {
             if (mapa.nrJogadoresInCasa(i) > 1) {
                 if (primeiroJogadorEncontrado) {
                     posicaoDoJogador2 = i + 1;
                     iDdoJogador2 = jogadores.get(mapa.getJogadorIDMenorInCasa(i)).getID();
                     break;
                 }
-                else{
+                else {
                     return null;
                 }
             }
 
             if (mapa.nrJogadoresInCasa(i) == 1) {
-                if (!primeiroJogadorEncontrado){
+                if (!primeiroJogadorEncontrado) {
                     posicaoDoJogador1 = i + 1;
                     primeiroJogadorEncontrado = true;
                 }
-                else{
+                else {
                     posicaoDoJogador2 = i + 1;
                     iDdoJogador2 = jogadores.get(mapa.getJogadorIDMenorInCasa(i)).getID();
                     break;
@@ -243,7 +243,7 @@ public class GameManager {
 
         int distanciaDosJogadores = posicaoDoJogador1 - posicaoDoJogador2 ;
 
-        if (distanciaDosJogadores > (mapa.getNrCasas()/ 2)){
+        if (distanciaDosJogadores > (mapa.getNrCasas()/ 2)) {
             return jogadores.get(iDdoJogador2).getInfo();
         }
 
@@ -290,7 +290,7 @@ public class GameManager {
     }
 
     public JPanel getAuthorsPanel() {
-        JPanel panel=new JPanel();
+        JPanel panel = new JPanel();
         panel.setBackground(Color.getHSBColor(0f, 0f, 0.1f));
 
         JLabel label1 = new JLabel("<html><font face=\"Big Money-sw\" size=\"10px\" color=\"#FF7A59\"><pre>Ana Weng : 22205245\nMiguel Silva : 22103822\n" +
@@ -500,7 +500,7 @@ public class GameManager {
         return true;
     }
 
-    private void saveIDsJogadores() {
+    private void saveIDsJogadores() {  //Põe os ids dos jogadores que estão no hashmap no array iDsJogadores, ordenados.
         iDsJogadores = new int[jogadores.size()];
 
         int i = 0;
