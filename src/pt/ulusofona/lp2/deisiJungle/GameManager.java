@@ -187,8 +187,21 @@ public class GameManager {
         mapa.addPlayerToCasa(getIDJogadorAtual(), casaDestino);
         jogadorAtual.setCasaAtual(casaDestino);
 
+
+        if (jogadorAtual.getDieta().equals("U")) {
+
+            if (mapa.getAlimentoCasa(casaDestino) == null){
+                jogadorAtual.energiaUnicornio();
+            }
+
+            updateJogada();
+            return new MovementResult(MovementResultCode.VALID_MOVEMENT, null);
+        }
+
+
         if (mapa.getAlimentoCasa(casaDestino) != null
                 && jogadorAtual.podeComer(mapa.getAlimentoCasa(casaDestino))) {
+
 
             jogadorAtual.comer(mapa.getAlimentoCasa(casaDestino),numJogada);
 
@@ -200,7 +213,6 @@ public class GameManager {
 
         }
 
-
         updateJogada();
         return new MovementResult(MovementResultCode.VALID_MOVEMENT, null);
 
@@ -208,14 +220,18 @@ public class GameManager {
 
     public String[] getWinnerInfo() {
 
-        int casaDoMeio = (mapa.getNrCasas()/2) + 1;
+        int casaDoMeio = (mapa.getNrCasas()/2);
+
+        if (mapa.nrJogadoresInCasa(mapa.getNrCasas()) > 0) {
+            return jogadores.get(mapa.getJogadorIDMenorInCasa(mapa.getNrCasas())).getInfo();
+        }
 
         if (mapa.nrJogadoresInCasa(casaDoMeio) != 2){
             return null;
         }
 
-        for (int i = mapa.getNrCasas(); i >= casaDoMeio + 1 ; i--) {
-            if (mapa.nrJogadoresInCasa(i) >= 1 ) {
+        for (int i = casaDoMeio + 1 ; i <= mapa.getNrCasas() ; i++) {
+            if (mapa.nrJogadoresInCasa(i) > 0 ) {
                 int[] jogadoresDoMeio = mapa.getPlayerIds(casaDoMeio);
 
                 if (jogadores.get(jogadoresDoMeio[0]).getEnergia() > jogadores.get(jogadoresDoMeio[1]).getEnergia()){
@@ -225,7 +241,7 @@ public class GameManager {
                 return jogadores.get(jogadoresDoMeio[1]).getInfo();
             }
         }
-        
+
         return null;
     }
 

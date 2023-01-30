@@ -103,12 +103,12 @@ class Jogador {
         if (nrPositions == 0) {
             energia += especie.getEnergiaDescanso();
 
-            if (getDieta().equals("nuv")) {
-                energia += 2;
-            }
-
             if(energia > 200) {
                 energia = 200;
+            }
+
+            if (getDieta().equals("nuv")) {
+                energia += 2;
             }
         }
         else {
@@ -199,5 +199,8 @@ class Jogador {
         return especie.getDieta().equals("h");
     }
 
+    public void energiaUnicornio() {
+        energia += 2;
+    }
 
 }

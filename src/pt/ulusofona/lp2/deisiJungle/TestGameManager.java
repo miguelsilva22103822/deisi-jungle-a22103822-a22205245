@@ -687,7 +687,7 @@ public class TestGameManager {
 
         gameManager.getWinnerInfo();
 
-        Assert.assertEquals("[1, João, E, 200, 1..6]", Arrays.toString(gameManager.getWinnerInfo()));
+        Assert.assertEquals(null, gameManager.getWinnerInfo());
 
     }
 
@@ -1190,6 +1190,34 @@ public class TestGameManager {
         manager.getWinnerInfo();
 
         System.out.println(Arrays.toString(manager.getWinnerInfo()));
+    }
+
+
+    @Test
+    public void testalimento() throws InvalidInitialJungleException {
+
+        GameManager manager = new GameManager();
+
+        String[] jogador1 = {"1", "João", "P"};
+        String[] jogador2 = {"3", "Maria", "E"};
+        String[] jogador3 = {"5", "Pedro", "U"};
+        String[] jogador4 = {"8", "Daniel", "L"};
+
+
+        String[][] jogadores = {jogador1, jogador2, jogador3, jogador4};
+
+        manager.createInitialJungle(11, jogadores);
+
+        manager.moveCurrentPlayer(2,true); //1
+        manager.moveCurrentPlayer(2,true);//2
+        manager.moveCurrentPlayer(2,true);//3
+        manager.moveCurrentPlayer(2,true);//4
+        manager.moveCurrentPlayer(3,true);//1
+        manager.moveCurrentPlayer(3,true);//2
+        manager.moveCurrentPlayer(4,true);
+        manager.moveCurrentPlayer(2,true);
+
+        System.out.println(manager.moveCurrentPlayer(2, true));
     }
 
 }
