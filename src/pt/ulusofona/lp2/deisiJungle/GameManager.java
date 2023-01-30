@@ -228,7 +228,7 @@ public class GameManager {
         int iDdoJogador2 = 0;
 
         int casaDoMeio = (mapa.getNrCasas()/2);
-        
+
         if (mapa.nrJogadoresInCasa(mapa.getNrCasas()) > 0) {
             return jogadores.get(mapa.getJogadorIDMenorInCasa(mapa.getNrCasas())).getInfo();
         }
