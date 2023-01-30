@@ -220,11 +220,49 @@ public class GameManager {
 
     public String[] getWinnerInfo() {
 
-        int casaDoMeio = (mapa.getNrCasas()/2);
+        boolean primeiroJogadorEncontrado = false;
+        int posicaoDoJogador1 = 0;
+        int posicaoDoJogador2 = 0;
+        int iDdoJogador2 = 0;
 
         if (mapa.nrJogadoresInCasa(mapa.getNrCasas()) > 0) {
             return jogadores.get(mapa.getJogadorIDMenorInCasa(mapa.getNrCasas())).getInfo();
         }
+
+        for (int i = mapa.getNrCasas() - 1; i >= 1 ; i--) {
+            if (mapa.nrJogadoresInCasa(i) > 1) {
+                if (primeiroJogadorEncontrado) {
+                    posicaoDoJogador2 = i + 1;
+                    iDdoJogador2 = jogadores.get(mapa.getJogadorIDMenorInCasa(i)).getID();
+                    break;
+                }
+                else {
+                    return null;
+                }
+            }
+
+            if (mapa.nrJogadoresInCasa(i) == 1) {
+                if (!primeiroJogadorEncontrado) {
+                    posicaoDoJogador1 = i + 1;
+                    primeiroJogadorEncontrado = true;
+                }
+                else {
+                    posicaoDoJogador2 = i + 1;
+                    iDdoJogador2 = jogadores.get(mapa.getJogadorIDMenorInCasa(i)).getID();
+                    break;
+                }
+            }
+        }
+
+        int distanciaDosJogadores = posicaoDoJogador1 - posicaoDoJogador2 ;
+
+        if (distanciaDosJogadores > (mapa.getNrCasas()/ 2)) {
+            return jogadores.get(iDdoJogador2).getInfo();
+        }
+
+        //Nova condicao
+
+        int casaDoMeio = (mapa.getNrCasas()/2);
 
         if (mapa.nrJogadoresInCasa(casaDoMeio) != 2){
             return null;
