@@ -188,7 +188,7 @@ public class GameManager {
         jogadorAtual.setCasaAtual(casaDestino);
 
 
-        if (jogadorAtual.getDieta().equals("U")) {
+        if (jogadorAtual.getDieta().equals("nuv")) {
 
             if (mapa.getAlimentoCasa(casaDestino) == null){
                 jogadorAtual.energiaUnicornio();
@@ -229,6 +229,13 @@ public class GameManager {
             return jogadores.get(mapa.getJogadorIDMenorInCasa(mapa.getNrCasas())).getInfo();
         }
 
+        int casaDoMeio = (mapa.getNrCasas()/2);
+
+        if (mapa.nrJogadoresInCasa(casaDoMeio) != 2){
+            return null;
+        }
+
+
         for (int i = mapa.getNrCasas() - 1; i >= 1 ; i--) {
             if (mapa.nrJogadoresInCasa(i) > 1) {
                 if (primeiroJogadorEncontrado) {
@@ -253,10 +260,23 @@ public class GameManager {
                 }
             }
         }
+        //Nova condicao
+
+        for (int i = casaDoMeio + 1 ; i <= mapa.getNrCasas() ; i++) {
+            if (mapa.nrJogadoresInCasa(i) > 0 ) {
+                int[] jogadoresDoMeio = mapa.getPlayerIds(casaDoMeio);
+
+                if (jogadores.get(jogadoresDoMeio[0]).getEnergia() > jogadores.get(jogadoresDoMeio[1]).getEnergia()){
+                    return jogadores.get(jogadoresDoMeio[0]).getInfo();
+
+                }
+                return jogadores.get(jogadoresDoMeio[1]).getInfo();
+            }
+        }
 
         int distanciaDosJogadores = posicaoDoJogador1 - posicaoDoJogador2 ;
 
-        if (distanciaDosJogadores > (mapa.getNrCasas()/ 2)) {
+        if (distanciaDosJogadores > casaDoMeio) {
             return jogadores.get(iDdoJogador2).getInfo();
         }
 

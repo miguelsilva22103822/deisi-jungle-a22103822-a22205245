@@ -1220,4 +1220,33 @@ public class TestGameManager {
         System.out.println(manager.moveCurrentPlayer(2, true));
     }
 
+    @Test
+    public void testUnicornio() throws InvalidInitialJungleException {
+
+        GameManager manager = new GameManager();
+
+        String[] jogador1 = {"1", "João", "U"};
+        String[] jogador2 = {"3", "Maria", "E"};
+        String[] jogador3 = {"5", "Pedro", "E"};
+        String[] jogador4 = {"8", "Daniel", "L"};
+
+        String[] alimento1 = {"c", "3"};
+        String[] alimento2 = {"b", "5"};
+
+        String[][] jogadores = {jogador1, jogador2, jogador3, jogador4};
+
+        String[][] alimentos = {alimento1, alimento2};
+
+        manager.createInitialJungle(11, jogadores, alimentos);
+
+        System.out.println(manager.moveCurrentPlayer(2,true)); //1
+        manager.moveCurrentPlayer(2,true);//2
+
+
+        manager.getWinnerInfo();
+
+       // System.out.println(manager.moveCurrentPlayer(,true));
+    }
+
+
 }
