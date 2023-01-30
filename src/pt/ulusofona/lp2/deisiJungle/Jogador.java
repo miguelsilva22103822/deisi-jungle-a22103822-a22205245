@@ -203,4 +203,8 @@ class Jogador {
         energia += 2;
     }
 
+    public void energiaUnicornioCasaComAlimento() {
+        energia += 2;
+    }
+
 }
