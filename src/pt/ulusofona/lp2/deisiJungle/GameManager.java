@@ -36,8 +36,9 @@ public class GameManager {
         String[] passaro = new Passaro().getInfo();
         String[] tarzan = new Tarzan().getInfo();
         String[] esquilo = new Esquilo().getInfo();
+        String[] unicornio = new Unicornio().getInfo();
 
-        return new String[][]{elefante, leao, tartaruga, passaro, tarzan, esquilo};
+        return new String[][]{elefante, leao, tartaruga, passaro, tarzan, esquilo, unicornio};
     }
 
     public String[][] getFoodTypes() {
@@ -199,6 +200,7 @@ public class GameManager {
 
         }
 
+
         updateJogada();
         return new MovementResult(MovementResultCode.VALID_MOVEMENT, null);
 
@@ -206,47 +208,22 @@ public class GameManager {
 
     public String[] getWinnerInfo() {
 
-        boolean primeiroJogadorEncontrado = false;
-        int posicaoDoJogador1 = 0;
-        int posicaoDoJogador2 = 0;
-        int iDdoJogador2 = 0;
-
-        if (mapa.nrJogadoresInCasa(mapa.getNrCasas()) > 0) {
-            return jogadores.get(mapa.getJogadorIDMenorInCasa(mapa.getNrCasas())).getInfo();
+        if (mapa.nrJogadoresInCasa(mapa.getNrCasas()/2) != 2){
+            return null;
         }
 
-        for (int i = mapa.getNrCasas() - 1; i >= 1 ; i--) {
-            if (mapa.nrJogadoresInCasa(i) > 1) {
-                if (primeiroJogadorEncontrado) {
-                    posicaoDoJogador2 = i + 1;
-                    iDdoJogador2 = jogadores.get(mapa.getJogadorIDMenorInCasa(i)).getID();
-                    break;
-                }
-                else {
-                    return null;
-                }
-            }
+        for (int i = mapa.getNrCasas(); i >= mapa.getNrCasas()/2 ; i--) {
+            if (mapa.nrJogadoresInCasa(i) > 1 ) {
+                int[] jogadoresDoMeio = mapa.getPlayerIds(mapa.getNrCasas()/2);
 
-            if (mapa.nrJogadoresInCasa(i) == 1) {
-                if (!primeiroJogadorEncontrado) {
-                    posicaoDoJogador1 = i + 1;
-                    primeiroJogadorEncontrado = true;
+                if (jogadores.get(jogadoresDoMeio[0]).getEnergia() > jogadores.get(jogadoresDoMeio[1]).getEnergia()){
+                    return jogadores.get(jogadoresDoMeio[0]).getInfo();
+
                 }
-                else {
-                    posicaoDoJogador2 = i + 1;
-                    iDdoJogador2 = jogadores.get(mapa.getJogadorIDMenorInCasa(i)).getID();
-                    break;
-                }
+                return jogadores.get(jogadoresDoMeio[1]).getInfo();
             }
         }
-
-
-        int distanciaDosJogadores = posicaoDoJogador1 - posicaoDoJogador2 ;
-
-        if (distanciaDosJogadores > (mapa.getNrCasas()/ 2)) {
-            return jogadores.get(iDdoJogador2).getInfo();
-        }
-
+        
         return null;
     }
 

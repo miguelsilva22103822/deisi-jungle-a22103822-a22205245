@@ -16,6 +16,10 @@ class Erva extends Alimento {
     @Override
     public int calcularEnergia(int energia , String dieta,int quantidadeComeu, int numJogada) {
 
+        if (dieta.equals("nuv")){
+            return energia - 2 ;
+        }
+
         if (dieta.equals("h") || dieta.equals("o")){
             return energia + energiaErva;
         }

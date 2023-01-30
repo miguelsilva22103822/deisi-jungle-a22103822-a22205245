@@ -1138,4 +1138,25 @@ public class TestGameManager {
 
     }
 
+    @Test
+    public void testeCreate() throws InvalidInitialJungleException {
+
+        GameManager manager = new GameManager();
+
+        String[] jogador1 = {"1", "João", "P"};
+        String[] jogador2 = {"3", "Maria", "E"};
+        String[] jogador3 = {"5", "Pedro", "U"};
+        String[] jogador4 = {"8", "Daniel", "L"};
+
+        String[] alimento1 = {"e", "7"};
+        String[] alimento2 = {"b", "2"};
+
+        String[][] jogadores = {jogador1, jogador2, jogador3, jogador4};
+
+        String[][] alimentos = {alimento1, alimento2};
+
+        manager.createInitialJungle(30, jogadores, alimentos);
+
+    }
+
 }

@@ -21,7 +21,7 @@ class Carne extends Alimento {
     @Override
     public int calcularEnergia(int energia, String dieta, int quantidadeComeu, int numJogada) {
 
-        if (dieta.equals("h")){
+        if (dieta.equals("h") || dieta.equals("nuv")){
             return energia;
         }
 

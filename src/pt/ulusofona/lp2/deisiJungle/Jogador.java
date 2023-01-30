@@ -24,6 +24,7 @@ class Jogador {
             case "P" -> especie = new Passaro();
             case "Z" -> especie = new Tarzan();
             case "Q" -> especie = new Esquilo();
+            case "U" -> especie = new Unicornio();
         }
 
         this.energia = especie.getEnergiaInicial();
@@ -84,7 +85,7 @@ class Jogador {
         return true;
     }
 
-    public boolean hasEnergy(int nrPositions) {
+    public boolean hasEnergy(int nrPositions) { //ver se tem energia pra x casas
         if (nrPositions == 0) {
             return true;
         }
@@ -102,15 +103,22 @@ class Jogador {
         if (nrPositions == 0) {
             energia += especie.getEnergiaDescanso();
 
+            if (getDieta().equals("nuv")) {
+                energia += 2;
+            }
+
             if(energia > 200) {
                 energia = 200;
             }
-
         }
         else {
             energia -= Math.abs(nrPositions) * especie.getConsumoEnergia();
-        }
 
+            if (getDieta().equals("nuv")) {
+                energia += 2;
+            }
+
+        }
         distanciaPercorrida += Math.abs(nrPositions);
     }
 
@@ -190,5 +198,6 @@ class Jogador {
     public boolean eHerbivoro() {
         return especie.getDieta().equals("h");
     }
+
 
 }
