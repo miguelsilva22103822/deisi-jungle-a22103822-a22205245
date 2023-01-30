@@ -1159,4 +1159,37 @@ public class TestGameManager {
 
     }
 
+    @Test
+    public void testGetWineerNovo() throws InvalidInitialJungleException {
+
+        GameManager manager = new GameManager();
+
+        String[] jogador1 = {"1", "João", "P"};
+        String[] jogador2 = {"3", "Maria", "E"};
+        String[] jogador3 = {"5", "Pedro", "U"};
+        String[] jogador4 = {"8", "Daniel", "L"};
+
+        String[] alimento1 = {"e", "7"};
+        String[] alimento2 = {"b", "2"};
+
+        String[][] jogadores = {jogador1, jogador2, jogador3, jogador4};
+
+        String[][] alimentos = {alimento1, alimento2};
+
+        manager.createInitialJungle(11, jogadores, alimentos);
+
+        manager.moveCurrentPlayer(2,true); //1
+        manager.moveCurrentPlayer(2,true);//2
+        manager.moveCurrentPlayer(2,true);//3
+        manager.moveCurrentPlayer(2,true);//4
+        manager.moveCurrentPlayer(3,true);//1
+        manager.moveCurrentPlayer(3,true);//2
+        manager.moveCurrentPlayer(4,true);
+        manager.moveCurrentPlayer(2,true);
+
+        manager.getWinnerInfo();
+
+        System.out.println(Arrays.toString(manager.getWinnerInfo()));
+    }
+
 }

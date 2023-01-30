@@ -208,13 +208,15 @@ public class GameManager {
 
     public String[] getWinnerInfo() {
 
-        if (mapa.nrJogadoresInCasa(mapa.getNrCasas()/2) != 2){
+        int casaDoMeio = (mapa.getNrCasas()/2) + 1;
+
+        if (mapa.nrJogadoresInCasa(casaDoMeio) != 2){
             return null;
         }
 
-        for (int i = mapa.getNrCasas(); i >= mapa.getNrCasas()/2 ; i--) {
-            if (mapa.nrJogadoresInCasa(i) > 1 ) {
-                int[] jogadoresDoMeio = mapa.getPlayerIds(mapa.getNrCasas()/2);
+        for (int i = mapa.getNrCasas(); i >= casaDoMeio + 1 ; i--) {
+            if (mapa.nrJogadoresInCasa(i) >= 1 ) {
+                int[] jogadoresDoMeio = mapa.getPlayerIds(casaDoMeio);
 
                 if (jogadores.get(jogadoresDoMeio[0]).getEnergia() > jogadores.get(jogadoresDoMeio[1]).getEnergia()){
                     return jogadores.get(jogadoresDoMeio[0]).getInfo();
