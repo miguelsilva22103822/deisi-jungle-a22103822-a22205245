@@ -224,28 +224,9 @@ public class GameManager {
         int posicaoDoJogador1 = 0;
         int posicaoDoJogador2 = 0;
         int iDdoJogador2 = 0;
-        int casaDoMeio = (mapa.getNrCasas()/2);
 
         if (mapa.nrJogadoresInCasa(mapa.getNrCasas()) > 0) {
             return jogadores.get(mapa.getJogadorIDMenorInCasa(mapa.getNrCasas())).getInfo();
-        }
-
-        //Nova condicao
-
-        if (mapa.nrJogadoresInCasa(casaDoMeio) != 2){
-            return null;
-        }
-
-        for (int i = casaDoMeio + 1 ; i <= mapa.getNrCasas() ; i++) {
-            if (mapa.nrJogadoresInCasa(i) > 0 ) {
-                int[] jogadoresDoMeio = mapa.getPlayerIds(casaDoMeio);
-
-                if (jogadores.get(jogadoresDoMeio[0]).getEnergia() > jogadores.get(jogadoresDoMeio[1]).getEnergia()){
-                    return jogadores.get(jogadoresDoMeio[0]).getInfo();
-
-                }
-                return jogadores.get(jogadoresDoMeio[1]).getInfo();
-            }
         }
 
         for (int i = mapa.getNrCasas() - 1; i >= 1 ; i--) {
