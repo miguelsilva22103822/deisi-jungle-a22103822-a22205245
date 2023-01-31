@@ -227,7 +227,7 @@ public class GameManager {
         int posicaoDoJogador2 = 0;
         int iDdoJogador2 = 0;
 
-        int casaDoMeio = Math.round(mapa.getNrCasas() / 2.0f);
+        int casaDoMeio = (int)Math.round(mapa.getNrCasas() / 2.0);
 
         if (mapa.nrJogadoresInCasa(mapa.getNrCasas()) > 0) {
             return jogadores.get(mapa.getJogadorIDMenorInCasa(mapa.getNrCasas())).getInfo();
@@ -275,7 +275,7 @@ public class GameManager {
 
         int distanciaDosJogadores = posicaoDoJogador1 - posicaoDoJogador2 ;
 
-        if (distanciaDosJogadores > casaDoMeio) {
+        if (distanciaDosJogadores > mapa.getNrCasas()/2) {
             return jogadores.get(iDdoJogador2).getInfo();
         }
 

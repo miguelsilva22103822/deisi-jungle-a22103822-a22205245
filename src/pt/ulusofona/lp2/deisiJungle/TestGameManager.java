@@ -1186,8 +1186,12 @@ public class TestGameManager {
         manager.moveCurrentPlayer(3,true);//2
         manager.moveCurrentPlayer(4,true);
         manager.moveCurrentPlayer(2,true);
+        manager.moveCurrentPlayer(2,true);
+        manager.moveCurrentPlayer(2,true);
 
         manager.getWinnerInfo();
+
+        System.out.println(manager.getGameResults());
 
         System.out.println(Arrays.toString(manager.getWinnerInfo()));
     }
