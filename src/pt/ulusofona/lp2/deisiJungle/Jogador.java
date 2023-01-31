@@ -106,17 +106,9 @@ class Jogador {
             if(energia > 200) {
                 energia = 200;
             }
-
-            if (getDieta().equals("nuv")) {
-                energia += 2;
-            }
         }
         else {
             energia -= Math.abs(nrPositions) * especie.getConsumoEnergia();
-
-            if (getDieta().equals("nuv")) {
-                energia += 2;
-            }
 
         }
         distanciaPercorrida += Math.abs(nrPositions);

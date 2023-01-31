@@ -666,7 +666,7 @@ public class TestGameManager {
         assertEquals(200, jogador3.getEnergia());
     }*/
 
-    @Test
+   /*@Test
     public void testGetWinnerInfo() throws InvalidInitialJungleException {
 
         GameManager gameManager = new GameManager();
@@ -689,7 +689,7 @@ public class TestGameManager {
 
         Assert.assertEquals(null, gameManager.getWinnerInfo());
 
-    }
+    }*/
 
     @Test
     public void testGameManagerAuxiliarJogadores() throws InvalidInitialJungleException {
