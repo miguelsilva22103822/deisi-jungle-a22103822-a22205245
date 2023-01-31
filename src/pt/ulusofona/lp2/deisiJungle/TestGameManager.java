@@ -1299,12 +1299,12 @@ public class TestGameManager {
 
         manager.createInitialJungle(11, jogadores, alimentos);
 
-        manager.moveCurrentPlayer(1,true); //1
+        manager.moveCurrentPlayer(2,true); //1
         manager.moveCurrentPlayer(5,true); //2
         manager.moveCurrentPlayer(8,true); //3
         manager.moveCurrentPlayer(0,true); //4
         manager.moveCurrentPlayer(4,true); //1
-        manager.moveCurrentPlayer(0,true); //2
+        manager.moveCurrentPlayer(1,true); //2
 
         manager.getWinnerInfo();
 
