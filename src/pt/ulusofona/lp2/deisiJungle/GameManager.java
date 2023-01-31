@@ -227,7 +227,7 @@ public class GameManager {
         int posicaoDoJogador2 = 0;
         int iDdoJogador2 = 0;
 
-        int casaDoMeio = (mapa.getNrCasas()/2);
+        int casaDoMeio = Math.round(mapa.getNrCasas() / 2.0f);
 
         if (mapa.nrJogadoresInCasa(mapa.getNrCasas()) > 0) {
             return jogadores.get(mapa.getJogadorIDMenorInCasa(mapa.getNrCasas())).getInfo();
@@ -238,7 +238,8 @@ public class GameManager {
                 if (mapa.nrJogadoresInCasa(i) > 0 ) {
                     int[] jogadoresDoMeio = mapa.getPlayerIds(casaDoMeio);
 
-                    if (jogadores.get(jogadoresDoMeio[0]).getEnergia() > jogadores.get(jogadoresDoMeio[1]).getEnergia()){
+                    if (jogadores.get(jogadoresDoMeio[0]).getEnergia() > jogadores.get(jogadoresDoMeio[1]).getEnergia()
+                    ){
                         return jogadores.get(jogadoresDoMeio[0]).getInfo();
 
                     }
