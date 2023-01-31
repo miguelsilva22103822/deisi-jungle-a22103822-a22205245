@@ -234,7 +234,7 @@ public class GameManager {
         }
 
         if (mapa.nrJogadoresInCasa(casaDoMeio) == 2){
-            for (int i = casaDoMeio + 1 ; i <= mapa.getNrCasas() ; i++) {
+            for (int i = casaDoMeio ; i <= mapa.getNrCasas() ; i++) {
                 if (mapa.nrJogadoresInCasa(i) > 0 ) {
                     int[] jogadoresDoMeio = mapa.getPlayerIds(casaDoMeio);
 
