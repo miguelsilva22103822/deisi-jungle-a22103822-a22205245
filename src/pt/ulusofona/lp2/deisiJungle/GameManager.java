@@ -234,16 +234,16 @@ public class GameManager {
         }
 
         if (mapa.nrJogadoresInCasa(casaDoMeio) == 2){
-            for (int i = casaDoMeio + 2 ; i <= mapa.getNrCasas() ; i++) {
+            for (int i = casaDoMeio + 1 ; i <= mapa.getNrCasas() ; i++) {
                 if (mapa.nrJogadoresInCasa(i) > 0 ) {
-                    int[] jogadoresDoMeio = mapa.getPlayerIds(casaDoMeio);
+                    int[] jogadoresDoMeio = mapa.getPlayerIds(casaDoMeio + 1);
 
-                    if (jogadores.get(jogadoresDoMeio[0]).getEnergia() > jogadores.get(jogadoresDoMeio[1]).getEnergia()
+                    if (jogadores.get(jogadoresDoMeio[0]).getEnergia() < jogadores.get(jogadoresDoMeio[1]).getEnergia()
                     ){
-                        return jogadores.get(jogadoresDoMeio[0]).getInfo();
-
+                        return jogadores.get(jogadoresDoMeio[1]).getInfo();
                     }
-                    return jogadores.get(jogadoresDoMeio[1]).getInfo();
+                    return jogadores.get(jogadoresDoMeio[0]).getInfo();
+
                 }
             }
         }
