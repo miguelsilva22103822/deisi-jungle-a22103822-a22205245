@@ -1300,8 +1300,8 @@ public class TestGameManager {
         manager.moveCurrentPlayer(5,false);
 
         manager.moveCurrentPlayer(1,false);
-        manager.moveCurrentPlayer(3,false);
         manager.moveCurrentPlayer(1,false);
+        manager.moveCurrentPlayer(3,false);
 
         manager.getWinnerInfo();
         manager.getGameResults();

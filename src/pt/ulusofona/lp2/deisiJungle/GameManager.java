@@ -230,6 +230,7 @@ public class GameManager {
         int casaDoMeio = (int)Math.round(mapa.getNrCasas() / 2.0);
 
         if (mapa.nrJogadoresInCasa(mapa.getNrCasas()) > 0) {
+            updateJogada();
             return jogadores.get(mapa.getJogadorIDMenorInCasa(mapa.getNrCasas())).getInfo();
         }
 
@@ -240,13 +241,16 @@ public class GameManager {
 
                     if (jogadores.get(jogadoresDoMeio[0]).getEnergia() < jogadores.get(jogadoresDoMeio[1]).getEnergia()
                     ){
+                        updateJogada();
                         return jogadores.get(jogadoresDoMeio[1]).getInfo();
                     }
+                    updateJogada();
                     return jogadores.get(jogadoresDoMeio[0]).getInfo();
 
                 }
             }
         }
+
 
         for (int i = mapa.getNrCasas() - 1; i >= 1 ; i--) {
             if (mapa.nrJogadoresInCasa(i) > 1) {
@@ -276,6 +280,7 @@ public class GameManager {
         int distanciaDosJogadores = posicaoDoJogador1 - posicaoDoJogador2 ;
 
         if (distanciaDosJogadores > mapa.getNrCasas()/2) {
+            updateJogada();
             return jogadores.get(iDdoJogador2).getInfo();
         }
 
@@ -287,7 +292,7 @@ public class GameManager {
         ArrayList <String> listaResultados = new ArrayList<>();
         ArrayList <Integer> iDsOrdenados = new ArrayList<>();
 
-        int idWinner = -2;
+        int idWinner = -1;
         if (getWinnerInfo() != null) {
             idWinner = Integer.parseInt(getWinnerInfo()[0]);
             iDsOrdenados.add(idWinner);
