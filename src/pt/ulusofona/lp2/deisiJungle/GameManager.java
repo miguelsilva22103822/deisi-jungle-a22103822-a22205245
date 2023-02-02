@@ -233,20 +233,6 @@ public class GameManager {
             return jogadores.get(mapa.getJogadorIDMenorInCasa(mapa.getNrCasas())).getInfo();
         }
 
-        if (mapa.nrJogadoresInCasa(casaDoMeio) == 2){
-            for (int i = casaDoMeio - 1 ; i <= mapa.getNrCasas() ; i++) {
-                if (mapa.nrJogadoresInCasa(i) > 0 ) {
-                    int[] jogadoresDoMeio = mapa.getPlayerIds(casaDoMeio);
-
-                    if (jogadores.get(jogadoresDoMeio[0]).getEnergia() < jogadores.get(jogadoresDoMeio[1]).getEnergia()
-                    ){
-                        return jogadores.get(jogadoresDoMeio[1]).getInfo();
-                    }
-                    return jogadores.get(jogadoresDoMeio[0]).getInfo();
-
-                }
-            }
-        }
 
         for (int i = mapa.getNrCasas() - 1; i >= 1 ; i--) {
             if (mapa.nrJogadoresInCasa(i) > 1) {
@@ -277,6 +263,21 @@ public class GameManager {
 
         if (distanciaDosJogadores > mapa.getNrCasas()/2) {
             return jogadores.get(iDdoJogador2).getInfo();
+        }
+
+        if (mapa.nrJogadoresInCasa(casaDoMeio) == 2){
+            for (int i = casaDoMeio + 1 ; i <= mapa.getNrCasas() ; i++) {
+                if (mapa.nrJogadoresInCasa(i) > 0 ) {
+                    int[] jogadoresDoMeio = mapa.getPlayerIds(casaDoMeio);
+
+                    if (jogadores.get(jogadoresDoMeio[0]).getEnergia() < jogadores.get(jogadoresDoMeio[1]).getEnergia()
+                    ){
+                        return jogadores.get(jogadoresDoMeio[1]).getInfo();
+                    }
+                    return jogadores.get(jogadoresDoMeio[0]).getInfo();
+
+                }
+            }
         }
 
         return null;
