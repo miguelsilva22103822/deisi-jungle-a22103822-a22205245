@@ -230,14 +230,12 @@ public class GameManager {
 
         int casaDoMeio = (int)Math.round(mapa.getNrCasas() / 2.0);
 
-
-
         if (mapa.nrJogadoresInCasa(mapa.getNrCasas()) > 0) {
             return jogadores.get(mapa.getJogadorIDMenorInCasa(mapa.getNrCasas())).getInfo();
         }
 
         if (mapa.nrJogadoresInCasa(casaDoMeio) == 2){
-            for (int i = casaDoMeio ; i < mapa.getNrCasas() ; i++) {
+            for (int i = casaDoMeio + 1 ; i <= mapa.getNrCasas() ; i++) {
                 if (mapa.nrJogadoresInCasa(i) > 0 ) {
                     int[] jogadoresDoMeio = mapa.getPlayerIds(casaDoMeio);
 
@@ -311,6 +309,7 @@ public class GameManager {
             }
         }
 
+        updateJogada();
         for (int i = 0; i < iDsOrdenados.size(); i++) {
             Jogador jogador = jogadores.get(iDsOrdenados.get(i));
             String playerResult = "#" + (i+1) + " " + jogador.getNome() + ", "
