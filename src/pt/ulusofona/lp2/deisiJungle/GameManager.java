@@ -287,7 +287,7 @@ public class GameManager {
         ArrayList <String> listaResultados = new ArrayList<>();
         ArrayList <Integer> iDsOrdenados = new ArrayList<>();
 
-        int idWinner = -1;
+        int idWinner = -2;
         if (getWinnerInfo() != null) {
             idWinner = Integer.parseInt(getWinnerInfo()[0]);
             iDsOrdenados.add(idWinner);

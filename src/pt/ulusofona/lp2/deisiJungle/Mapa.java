@@ -71,7 +71,7 @@ class Mapa {
     }
 
     public int findNrCasaContaining(int playerID) {
-        for (int i = 0; i <= casas.size(); i++) {
+        for (int i = 0; i < casas.size(); i++) {
             if (casas.get(i).containsJogador(playerID)) {
                 return i + 1;
             }
