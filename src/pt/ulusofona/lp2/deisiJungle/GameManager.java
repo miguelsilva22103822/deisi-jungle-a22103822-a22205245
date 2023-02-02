@@ -207,6 +207,7 @@ public class GameManager {
 
             jogadorAtual.comer(mapa.getAlimentoCasa(casaDestino),numJogada);
 
+
             alimentosIngeridos.add(mapa.getAlimentoCasa(casaDestino));
 
             updateJogada();
@@ -229,22 +230,21 @@ public class GameManager {
 
         int casaDoMeio = (int)Math.round(mapa.getNrCasas() / 2.0);
 
+
+
         if (mapa.nrJogadoresInCasa(mapa.getNrCasas()) > 0) {
-            updateJogada();
             return jogadores.get(mapa.getJogadorIDMenorInCasa(mapa.getNrCasas())).getInfo();
         }
 
         if (mapa.nrJogadoresInCasa(casaDoMeio) == 2){
-            for (int i = casaDoMeio + 1 ; i <= mapa.getNrCasas() ; i++) {
+            for (int i = casaDoMeio ; i < mapa.getNrCasas() ; i++) {
                 if (mapa.nrJogadoresInCasa(i) > 0 ) {
                     int[] jogadoresDoMeio = mapa.getPlayerIds(casaDoMeio);
 
                     if (jogadores.get(jogadoresDoMeio[0]).getEnergia() < jogadores.get(jogadoresDoMeio[1]).getEnergia()
                     ){
-                        updateJogada();
                         return jogadores.get(jogadoresDoMeio[1]).getInfo();
                     }
-                    updateJogada();
                     return jogadores.get(jogadoresDoMeio[0]).getInfo();
 
                 }
@@ -279,8 +279,7 @@ public class GameManager {
 
         int distanciaDosJogadores = posicaoDoJogador1 - posicaoDoJogador2 ;
 
-        if (distanciaDosJogadores > mapa.getNrCasas()/2) {
-            updateJogada();
+        if (distanciaDosJogadores > (mapa.getNrCasas()/2)) {
             return jogadores.get(iDdoJogador2).getInfo();
         }
 
