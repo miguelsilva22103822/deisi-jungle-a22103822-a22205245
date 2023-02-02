@@ -14,7 +14,7 @@ public class GameManager {
     private Mapa mapa;
     private HashMap<Integer, Jogador> jogadores;
     private int[] iDsJogadores;
-    private int indiceJogadorAtual;
+    private int indiceJogadorAtual ;
     private int numJogada;
     private ArrayList<Alimento> alimentosIngeridos;
     private final int nrLadosDado = 6;
@@ -67,9 +67,16 @@ public class GameManager {
             throw new InvalidInitialJungleException("foodsInfo inválido", false, true);
         }
 
+        indiceJogadorAtual = 0;
+        jogadores = new HashMap<>();
+        numJogada = 0;
+        iDsJogadores = new int[0];
+        alimentosIngeridos = new ArrayList<>();
+
         mapa = new Mapa(jungleSize);
         mapa.initializeMap(playersInfo);
         mapa.initialzeMapFood(foodsInfo);
+
 
         for (String[] player : playersInfo) {
             Jogador tempJogador = new Jogador(Integer.parseInt(player[0]), player[1], player[2]);
@@ -309,7 +316,7 @@ public class GameManager {
             }
         }
 
-        updateJogada();
+
         for (int i = 0; i < iDsOrdenados.size(); i++) {
             Jogador jogador = jogadores.get(iDsOrdenados.get(i));
             String playerResult = "#" + (i+1) + " " + jogador.getNome() + ", "

@@ -60,7 +60,6 @@ class Mapa {
         return casas.get(cIndex(nrCasa)).nrJogadores();
     }
 
-    //public int getJogadorMaisEnergiaMaInCasa(int nrCasa){ return casas.get(cIndex(nrCasa)).getIDsJogadores(); }
 
     public int getJogadorIDMenorInCasa(int nrCasa) {
         return casas.get(cIndex(nrCasa)).jogadorIDMenor();

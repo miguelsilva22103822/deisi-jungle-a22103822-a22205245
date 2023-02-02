@@ -1293,15 +1293,21 @@ public class TestGameManager {
         String[][] jogadores = {jogador1, jogador2, jogador3};
 
 
-        manager.createInitialJungle(11, jogadores);
+        manager.createInitialJungle(11, jogadores,null);
 
         manager.moveCurrentPlayer(5,false);
         manager.moveCurrentPlayer(5,false);
         manager.moveCurrentPlayer(5,false);
+        manager.moveCurrentPlayer(5,false);
+        manager.moveCurrentPlayer(5,false);
 
-        manager.moveCurrentPlayer(1,false);
-        manager.moveCurrentPlayer(1,false);
-        manager.moveCurrentPlayer(3,false);
+
+        System.out.println(manager.getGameResults());
+
+        manager.createInitialJungle(11,jogadores, null);
+
+        manager.moveCurrentPlayer(5,false);
+
 
         manager.getWinnerInfo();
         manager.getGameResults();
