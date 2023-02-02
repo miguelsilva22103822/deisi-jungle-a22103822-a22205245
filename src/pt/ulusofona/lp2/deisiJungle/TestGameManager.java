@@ -1286,8 +1286,8 @@ public class TestGameManager {
         GameManager manager = new GameManager();
 
         String[] jogador1 = {"1", "João", "P"};
-        String[] jogador2 = {"2", "Maria", "P"};
-        String[] jogador3 = {"3", "Pedro", "E"};
+        String[] jogador2 = {"5", "Maria", "E"};
+        String[] jogador3 = {"3", "Pedro", "P"};
 
 
         String[][] jogadores = {jogador1, jogador2, jogador3};
@@ -1300,8 +1300,8 @@ public class TestGameManager {
         manager.moveCurrentPlayer(5,false);
 
         manager.moveCurrentPlayer(1,false);
-        manager.moveCurrentPlayer(1,false);
         manager.moveCurrentPlayer(3,false);
+        manager.moveCurrentPlayer(1,false);
 
         manager.getWinnerInfo();
         manager.getGameResults();
